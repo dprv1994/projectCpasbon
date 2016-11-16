@@ -76,18 +76,16 @@ if(!empty($_POST)) {
 require_once 'header.php';
 ?>
 
-		<form method="post" enctype="multipart/form-data">
-			<label for="password">Nouveau mot de passe : </label><br>
-			<input type="password" id="password" name="password">
-
-			<br><br>
-
-			<label for="avatar">Nouveau avatar :</label><br>
-			<input type="file" id="avatar" name="avatar">
-
-			<br><br>
-
-			<input type="submit" value="Mettre à jour de votre profil">
+		<form method="post" enctype="multipart/form-data" class="col-lg-4 col-lg-offset-4">
+            <div class="from-group">
+                <label for="password">Nouveau mot de passe : </label><br>
+                <input class="form-control" type="password" id="password" name="password">
+            </div>
+            <div class="from-group">
+                <label for="avatar">Nouveau avatar :</label><br>
+                <input class="" type="file" id="avatar" name="avatar">
+            </div>
+            <br><br>
+			<input class="btn btn-info btn-lg center-block" type="submit" value="Mettre à jour de votre profil">
 		</form>
-	</body>
-</html>
+<?php require_once 'footer.php'; ?>

@@ -10,6 +10,12 @@ if ($query->execute()) {
 
 }
 
+$query = $bdd->prepare('SELECT * FROM contact_information');
+if ($query->execute()) {
+	$info = $query->fetch(PDO::FETCH_ASSOC);
+
+}
+
 $query = $bdd->prepare('SELECT * FROM recipe');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -22,34 +28,15 @@ if ($query->execute()) {
 require_once 'header.php';
  ?>
 
- 	<h1>Modification site du restaurant</h1>
 
  		<div>
-	 		<label for="name">Nom Restaurant:</label>
-	 		<input type="text" id="name" name="name">
-	 		<br><br>
+            <h1>
+                <?= $info['name']; ?>
+            </h1>
+            <span><?= $info['adress'] . ' - ' . $info['zipcode'] . ' - ' .$info['city'] . ' - ' .$info['phone']; ?>
+                <?= (isset($is_logged) && $is_logged == 'admin') ? '<a href="editInfoResto.php">Modifier les infos du restaurant</a>' : '' ; ?>
+            </span>
 
-	 		<label for="adress">Adresse:</label>
-	 		<input type="text" id="adress" name="adress">
-	 		<br><br>
-
-	 		<label for="zipcode">Code Postal:</label>
-	 		<input type="text" id="zipcode" name="zipcode">
-	 		<br><br>
-
-	 		<label for="city">Ville:</label>
-	 		<input type="text" id="city" name="city">
-	 		<br><br>
-
-	 		<label for="phone">Téléphone:</label>
-	 		<input type="num" id="phone" name="phone">
-	 		<br><br>
-
-	 		<label for="picture">Photo:</label>
-	 		<input type="file" id="picture" name="picture">
-	 		<br><br>
-
-	 		<input type="submit" value="Modifier">
 		</div>
 
 		<hr>

@@ -24,7 +24,7 @@
                 <?= (isset($is_logged) && $is_logged == 'admin')? '<a class="nav-link" href="listUser.php">Liste des Users</a>' : ''; ?>
             </li>
             <li class="navitem">
-                <?= (isset($is_logged))? '<a class="nav-link" href="viewUser.php">Mon Profil</a>' : ''; ?>
+                <?= (isset($is_logged))? '<a class="nav-link" href="updateUser.php">Mon Profil</a>' : ''; ?>
             </li>
           </ul>
         </nav>

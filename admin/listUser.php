@@ -12,15 +12,16 @@ if($query->execute()) {
 
 require_once 'header.php';
 ?>
-		<table>
+        <h1>Liste des utilisateurs :</h1>
+		<table class="table-striped col-lg-12">
 			<thead>
 				<tr>
-					<th>Nom :</th>
-					<th>Prénom :</th>
-					<th>Email :</th>
-					<th>Pseudo :</th>
-					<th>Modifier :</th>
-					<th>Information :</th>
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Email</th>
+					<th>Pseudo</th>
+					<th>Modifier</th>
+					<th>Information</th>
 				</tr>
 			</thead>
 
@@ -33,7 +34,7 @@ require_once 'header.php';
 		</table>
 
 		<br><br>
-		
+
 		<a href="addUser.php">Ajout d'utilisateur</a>
 	</body>
 </html>
