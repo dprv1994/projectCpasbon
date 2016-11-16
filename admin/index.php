@@ -51,14 +51,14 @@ if ($query->execute()) {
 	 		<br><br>
 	 		
 	 		<input type="submit" value="Modifier">
-		</div>	
+		</div>
+
+		<hr>
 
 		<div>
-			
 			<h2>Vos Messages:</h2>
 
-			<hr>
-				<table class="table">
+							<table class="table">
 					<thead>
 						<tr>
 							<th>Sujet</th>
@@ -73,6 +73,37 @@ if ($query->execute()) {
 								<td><?=$user['']?></td>
 								<td><?=$user['subject']?></td>
 								<td><?=$user['email']?></td>
+								
+								<td>
+									<a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
+									&nbsp; - &nbsp;
+									<a href="delete_message.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					</tbody>
+				</table>
+		</div>
+		
+		<hr>
+
+		<div>
+			<h2>Liste de recette:</h2>
+
+						<table class="table">
+					<thead>
+						<tr>
+							<th>titre</th>
+							<th>ingrédient</th>
+							
+						</tr>	
+					</thead>
+
+					<tbody>
+						<?php foreach ($users as $user): ?>
+							<tr>
+								<td><?=$user['title']?></td>
+								<td><?=$user['ingredient']?></td>
 								
 								<td>
 									<a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
