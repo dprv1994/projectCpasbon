@@ -23,5 +23,8 @@
             <li class="nav-item">
               <a class="nav-link" href="addUser.php">Utilisateur</a>
             </li>
+            <li class="navitem">
+                <?= (isset($is_logged))? '<a class="nav-link" href="viewUser.php">Mon Profil</a>' : ''; ?>
+            </li>
           </ul>
         </nav>
