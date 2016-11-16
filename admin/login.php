@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once '../inc/connect.php';
 require_once '../inc/session.php';
@@ -56,14 +56,8 @@ if (empty($_SESSION) && !empty($_POST)) {
 	}
 }
  ?>
-
- <!DOCTYPE html>
- <html lang="fr">
- <head>
- <meta charset="utf-8">
- 	<title>Login</title>
- </head>
- <body>
+<!-- Debut HTML -->
+<?php require_once 'header.php'; ?>
 
 	<?php
 		if ($hasError){
@@ -75,7 +69,7 @@ if (empty($_SESSION) && !empty($_POST)) {
 		}
 	?>
 
- 	<h1>Connexion</h1>	
+ 	<h1>Connexion</h1>
 
 	 <form method="post">
 		 <label for="username">Nom de l'utlisateur:</label>
@@ -89,6 +83,6 @@ if (empty($_SESSION) && !empty($_POST)) {
 		 <button id="" name="" class="btn btn-info ">Connexion</button>
 
 		 </form>
- 
- </body>
- </html>
+
+
+<?php require_once 'footer.php'; ?>
