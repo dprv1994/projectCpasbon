@@ -16,6 +16,9 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 		var_dump($query->errorInfo());
 		die;
 	}
+}else {
+    header('Location:listUser.php');
+    die;
 }
 
 
@@ -28,7 +31,7 @@ require_once 'header.php';
 		</ul>
 
 		<br><br>
-		
+
 		<a href="addUser.php">Ajout d'utilisateur</a>
 		<a href="listUser.php">Liste des utilisateurs</a>
 	</body>
