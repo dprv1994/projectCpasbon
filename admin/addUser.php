@@ -97,7 +97,7 @@ elseif($haserror == true) {
 	echo '<p style="color:DarkRed;">'.implode('<br>', $errors).'</p>';
 }
 ?>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 		<label for="lastname">Nom :</label><br>
 		<input type="text" id="lastname" name="lastname">
 
@@ -133,7 +133,7 @@ elseif($haserror == true) {
 		<br><br>
 
 		<label for="avatar">Avatar :</label><br>
-		<input type="file" id="avatar" name="avatar">
+		<input type="file" id="avatar" name="avatar" accept="image/*">
 
 		<br><br>
 
