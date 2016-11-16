@@ -1,12 +1,16 @@
 <?php 
 
+require_once '../inc/connect.php';
+require_once '../inc/session.php';
+
 
 
 $post = [];
 $error = [];
 $success = false;
 $hasError = false;
-$verif = new Respect\Validation\Validator;
+
+use Respect\Validation\Validator as verif;
 
 if (!empty($_SESSION)) {
 	header('Location:../index.php');
@@ -68,13 +72,7 @@ if (!empty($_SESSION)) {
 		if($success){
 			echo '<p style="color:green;">LOGIN OK !</p>';
 		}
-		
-	
-
-
 	  ?>
-
-
 
  	<h1>Connexion</h1>	
 
