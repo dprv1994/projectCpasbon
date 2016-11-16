@@ -4,16 +4,24 @@ require_once '../inc/connect.php';
 
 session_start();
 
+$post = [];
+$error = [];
+$success = false;
+$hasError = false;
+$verif = new Respect\Validation\Validator;
 
 if (!empty($_SESSION)) {
-	header('Location: ');
+	header('Location:../index.php');
+
+	if(!$verif::length(3,null)->validate($post['username'])){
+			$error[] = 'L\'username doit faire au moins 3 caractères';
+		}
+	if (!$verif) {
+			# code...
+		}
+
+
 }
-
-if (!empty($_POST)) {
-	$post = array_map('trim', array_map('strip_tags',$_POST));
-}
-
-
  ?>
 
  <!DOCTYPE html>
