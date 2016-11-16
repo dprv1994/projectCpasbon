@@ -113,12 +113,12 @@ require_once 'header.php';
                         <label for="email">Email :</label>
                         <input class="form-control" type="email" id="email" name="email">
                     </div>
-                </div>
-                <div class="col-lg-6">
                     <div class="form-group">
                         <label for="username">Pseudo :</label>
                         <input class="form-control" type="text" id="username" name="username">
                     </div>
+                </div>
+                <div class="col-lg-6">
                     <div class="form-group">
                         <label for="password">Mot de passe :</label>
                         <input class="form-control" type="password" id="password" name="password">

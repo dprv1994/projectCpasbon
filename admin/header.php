@@ -20,8 +20,8 @@
             <li class="nav-item">
               <a class="nav-link" href="/recette/add_recipe.php">Recette</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="addUser.php">Utilisateur</a>
+            <li class="navitem">
+                <?= (isset($is_logged) && $is_logged == 'admin')? '<a class="nav-link" href="addUser.php">Liste des Users</a>' : ''; ?>
             </li>
             <li class="navitem">
                 <?= (isset($is_logged))? '<a class="nav-link" href="viewUser.php">Mon Profil</a>' : ''; ?>
