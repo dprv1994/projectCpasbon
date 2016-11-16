@@ -4,6 +4,10 @@ require_once '../inc/connect.php';
 require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
 
+$query = $bdd->prepare('SELECT * FROM message');
+if ($query->execute()) {
+	$users = $query->fetchAll(PDO::FETCH_ASSOC);
+}
 
 
 
@@ -57,9 +61,9 @@ require_once '../vendor/autoload.php';
 				<table class="table">
 					<thead>
 						<tr>
-							<th>icone</th>
-							<th>email</th>
 							<th>Sujet</th>
+							<th>email</th>
+							
 						</tr>	
 					</thead>
 
@@ -67,12 +71,13 @@ require_once '../vendor/autoload.php';
 						<?php foreach ($users as $user): ?>
 							<tr>
 								<td><?=$user['']?></td>
-								<td><?=$user['email']?></td>
 								<td><?=$user['subject']?></td>
+								<td><?=$user['email']?></td>
+								
 								<td>
-									<a  href="view_user.php?id=<?=$user['id'];?>" title="Voir le message">Editer</a>
+									<a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
 									&nbsp; - &nbsp;
-									<a href="delete_user.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+									<a href="delete_message.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
 								</td>
 							</tr>
 						<?php endforeach; ?>
