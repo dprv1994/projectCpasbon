@@ -31,5 +31,9 @@ require_once 'header.php';
 				?>
 			</tbody>
 		</table>
+
+		<br><br>
+		
+		<a href="addUser.php">Ajout d'utilisateur</a>
 	</body>
 </html>
