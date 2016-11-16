@@ -1,5 +1,7 @@
 <?php 
 
+require_once '../inc/connect/php';
+
 session_start();
 
 
