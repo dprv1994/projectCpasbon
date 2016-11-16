@@ -39,23 +39,23 @@ if(!empty($_POST)) {
 		$errors[] = 'Veuillez sélectionner un rôle à cet utilisateur';
 	}
 
-	if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){ 
+	if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){
 		$errors[] = 'Il faut uploader une image';
 	}
 	else{
 		$finfo = new finfo();
-		$mimeType = $finfo->file($_FILES['avatar']['tmp_name'], FILEINFO_MIME_TYPE); 
+		$mimeType = $finfo->file($_FILES['avatar']['tmp_name'], FILEINFO_MIME_TYPE);
 		$mimeTypeAllow = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/pjpeg'];
-		
-		if(in_array($mimeType, $mimeTypeAllow)){ 
+
+		if(in_array($mimeType, $mimeTypeAllow)){
 			$photoName = uniqid('pic_');
 			$photoName.= '.'.pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
 
-		if(!is_dir($dirUpload)){ 
+		if(!is_dir($dirUpload)){
 			mkdir($dirUpload, 0755);
 		}
-		
-		if(!move_uploaded_file($_FILES['avatar']['tmp_name'], $dirUpload.$photoName)){ 
+
+		if(!move_uploaded_file($_FILES['avatar']['tmp_name'], $dirUpload.$photoName)){
 				$errors[] = 'Erreur lors de l\'upload de la photo';
 			}
 
@@ -89,61 +89,57 @@ if(!empty($_POST)) {
 }
 
 require_once 'header.php';
-
-if($formValid == true) {
-	echo '<p style="color:green;">Vous avez réussi !</p>';
-}
-elseif($haserror == true) {
-	echo '<p style="color:DarkRed;">'.implode('<br>', $errors).'</p>';
-}
 ?>
-		<form method="post" enctype="multipart/form-data">
-		<label for="lastname">Nom :</label><br>
-		<input type="text" id="lastname" name="lastname">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h1>Ajout D'utilisateurs</h1>
 
-		<br><br>
+            <?php if ($formValid == true): ?>
+                <p style="color:green;">Vous avez réussi !</p>
+            <?php elseif ($haserror == true): ?>
+                <p style="color:DarkRed;">'.implode('<br>', $errors).'</p>
+            <?php endif; ?>
 
-		<label for="firstname">Prénom :</label><br>
-		<input type="text" id="firstname" name="firstname">
+    		<form method="post" enctype="multipart/form-data">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="lastname">Nom :</label>
+                        <input class="form-control" type="text" id="lastname" name="lastname">
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">Prénom :</label>
+                        <input class="form-control" type="text" id="firstname" name="firstname">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email :</label>
+                        <input class="form-control" type="email" id="email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Pseudo :</label>
+                        <input class="form-control" type="text" id="username" name="username">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="password">Mot de passe :</label>
+                        <input class="form-control" type="password" id="password" name="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Droit :</label>
+                        <select class="form-control" id="role" name="role">
+                            <option disabled selected>Définir un rôle</option>
+                            <option value="1">Admin</option>
+                            <option value="2">Editeur</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">Avatar :</label>
+                        <input type="file" id="avatar" name="avatar" accept="image/*">
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <input class="btn btn-info btn-lg center-block" type="submit" name="Enregistrer cet utilisateur">
+                </div>
 
-		<br><br>
-
-		<label for="email">Email :</label><br>
-		<input type="email" id="email" name="email">
-
-		<br><br>
-
-		<label for="username">Pseudo :</label><br>
-		<input type="text" id="username" name="username">
-
-		<br><br>
-
-		<label for="password">Mot de passe :</label><br>
-		<input type="password" id="password" name="password">
-
-		<br><br>
-
-		<label for="role">Droit :</label>
-		<select id="role" name="role">
-			<option disabled selected>Définir un rôle</option>
-			<option value="1">Admin</option>
-			<option value="2">Editeur</option>
-		</select>
-
-		<br><br>
-
-		<label for="avatar">Avatar :</label><br>
-		<input type="file" id="avatar" name="avatar" accept="image/*">
-
-		<br><br>
-
-		<input type="submit" name="Enregistrer cet utilisateur">
-		</form>
-
-		<?php 
-			if($formValid == true) {
-				echo '<a href="listUser.php">Liste des utilisateurs</a>';
-			}
-		?>
-	</body>
-</html>
+    		</form>
+        </div>
+        <?php require_once 'footer.php'; ?>

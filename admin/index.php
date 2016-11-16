@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once '../inc/connect.php';
 require_once '../inc/session.php';
@@ -7,24 +7,23 @@ require_once '../vendor/autoload.php';
 $query = $bdd->prepare('SELECT * FROM message');
 if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
+
+}
+
+$query = $bdd->prepare('SELECT * FROM recipe');
+if ($query->execute()) {
+	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
 }
 
 
 
-
-
+require_once 'header.php';
  ?>
 
-
- <!DOCTYPE html>
- <html>
- <head>
- 	<title>Back</title>
- </head>
- <body>
-
  	<h1>Modification site du restaurant</h1>
- 		
+
  		<div>
 	 		<label for="name">Nom Restaurant:</label>
 	 		<input type="text" id="name" name="name">
@@ -49,7 +48,7 @@ if ($query->execute()) {
 	 		<label for="picture">Photo:</label>
 	 		<input type="file" id="picture" name="picture">
 	 		<br><br>
-	 		
+
 	 		<input type="submit" value="Modifier">
 		</div>
 
@@ -61,19 +60,20 @@ if ($query->execute()) {
 							<table class="table">
 					<thead>
 						<tr>
+							<th>Lu/Pas lu</th>
 							<th>Sujet</th>
 							<th>email</th>
-							
-						</tr>	
+
+						</tr>
 					</thead>
 
 					<tbody>
 						<?php foreach ($users as $user): ?>
 							<tr>
-								<td><?=$user['']?></td>
+								<td><?=$user['see']?></td>
 								<td><?=$user['subject']?></td>
 								<td><?=$user['email']?></td>
-								
+
 								<td>
 									<a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
 									&nbsp; - &nbsp;
@@ -84,31 +84,37 @@ if ($query->execute()) {
 					</tbody>
 				</table>
 		</div>
-		
+
 		<hr>
 
 		<div>
 			<h2>Liste de recette:</h2>
 
-						<table class="table">
+				<table class="table">
 					<thead>
 						<tr>
 							<th>titre</th>
-							<th>ingrédient</th>
-							
-						</tr>	
+							<th>recette</th>
+							<th>photo</th>
+							<th>date/heure</th>
+							<th>#</th>
+
+						</tr>
 					</thead>
 
 					<tbody>
-						<?php foreach ($users as $user): ?>
+						<?php foreach ($preparation as $prep): ?>
 							<tr>
-								<td><?=$user['title']?></td>
-								<td><?=$user['ingredient']?></td>
-								
+								<td><?=$prep['title']?></td>
+								<td><?=$prep['preparation']?></td>
+								<td><?=$prep['url_img']?></td>
+								<td><?=$prep['date_creation']?></td>
+								<td><?=$prep['id_autor']?></td>
+
 								<td>
-									<a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
+									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Actualiser recette">Actualiser recette</a>
 									&nbsp; - &nbsp;
-									<a href="delete_message.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+									<a href="delte_recette.php?id=<?=$prep['id'];?>" title="Supprimer recette">Supprimer recette</a>
 								</td>
 							</tr>
 						<?php endforeach; ?>
@@ -118,6 +124,5 @@ if ($query->execute()) {
 
 
 
- 
  </body>
  </html>
