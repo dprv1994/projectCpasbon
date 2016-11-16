@@ -9,9 +9,5 @@ if (isset($_SESSION['user'])) {
         case '2':
             $is_logged = 'editeur' ;
             break;
-
-        default:
-            echo "KO";
-            break;
     }
 }
