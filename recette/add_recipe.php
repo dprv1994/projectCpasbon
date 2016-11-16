@@ -1,8 +1,9 @@
 <?php  
 
-require_once 'inc/connect.php';
-require_once 'inc/data.php';
-require_once 'vendor/autoload.php';
+require_once '../inc/session.php'
+require_once '../inc/connect.php';
+require_once '../inc/data.php';
+require_once '../vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
