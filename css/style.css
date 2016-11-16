@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+*{
+	margin: auto;
+}
+
+.logo h2 {
+	 padding-top: 20px;
+}
+
+.topbar {
+	padding-left: 15px;
+	padding-bottom: 20px;
+	background-color: #906F11;
+
+}
+
+.recettes {
+    background-color: #574031;
+}
+.slider {
+    margin: 15px;
+    padding: 100px 0;
+    background-color: #7e6c6c;
+  	text-align: center;
+}
+.wrapper{
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+.two-thirds {
+    padding-top: 25px;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 25px;
+    color: white;
+}
+
+.wrapper2 {
+    padding: 100px 0;
+    color: white;
+    text-align: center;
+}
+
+.boutonRecettes {
+	border-radius: 3px;
+	font-size: 18px;
+	padding: 20px 40px;
+}

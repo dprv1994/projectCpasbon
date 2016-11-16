@@ -18,10 +18,10 @@
               <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Recette</a>
+              <a class="nav-link" href="/recette/add_recipe.php">Recette</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Utilisateur</a>
+              <a class="nav-link" href="addUser.php">Utilisateur</a>
             </li>
           </ul>
         </nav>

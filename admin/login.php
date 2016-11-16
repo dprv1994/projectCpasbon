@@ -68,21 +68,22 @@ if (empty($_SESSION) && !empty($_POST)) {
 			echo '<p style="color:green;">LOGIN OK !</p>';
 		}
 	?>
-
+<div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
  	<h1>Connexion</h1>
+    <div class="card">
+    	<form method="post">
+    		<label for="username">Nom de l'utlisateur:</label>
+    		<input type="text" class='form-control' id="username" name="username">
+    		<br><br>
 
-	 <form method="post">
-		 <label for="username">Nom de l'utlisateur:</label>
-		 <input type="text" id="username" name="username">
-		 <br><br>
+    		<label for="password">Mot de passe:</label>
+    		<input type="password" class='form-control' id="password" name="password">
+    		<br><br>
 
-		 <label for="password">Mot de passe:</label>
-		 <input type="password" id="password" name="password">
-		 <br><br>
-
-		 <button id="" name="" class="btn btn-info ">Connexion</button>
-
-		 </form>
+    	    <button id="" name="" class="btn btn-info btn-block ">Connexion</button>
+        </form>
+    </div>
+</div>
 
 
 <?php require_once 'footer.php'; ?>
