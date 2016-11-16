@@ -16,7 +16,7 @@ if ($query->execute()) {
 
 }
 
-$query = $bdd->prepare('SELECT * FROM recipe');
+$query = $bdd->prepare('SELECT * FROM recipe ORDER BY date_creation LIMIT 5');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -27,7 +27,12 @@ if ($query->execute()) {
 
 require_once 'header.php';
  ?>
+<code>
 
+    a faire :
+
+    id auteur : rechercher si c l'id ou le nom que l'on doit rentrer et sinon si c l'id faire une jointure.
+</code>
 
  		<div>
             <h1>
@@ -42,7 +47,7 @@ require_once 'header.php';
 		<hr>
 
 		<div>
-			<h2>Vos Messages:</h2>
+			<h2>Vos Messages: <small><a href="#">afficher tous les messages</a></small></h2>
 
 							<table class="table">
 					<thead>
@@ -57,7 +62,7 @@ require_once 'header.php';
 					<tbody>
 						<?php foreach ($users as $user): ?>
 							<tr>
-								<td><?=$user['see']?></td>
+								<td><?= ($user['read_msg'] == 0)? 'non lu': 'lu' ; ?></td>
 								<td><?=$user['subject']?></td>
 								<td><?=$user['email']?></td>
 
@@ -75,16 +80,15 @@ require_once 'header.php';
 		<hr>
 
 		<div>
-			<h2>Liste de recette:</h2>
+			<h2>Liste de recette: <small><a href="#">afficher toute les recettes</a></small></h2>
 
 				<table class="table">
 					<thead>
 						<tr>
 							<th>titre</th>
 							<th>recette</th>
-							<th>photo</th>
 							<th>date/heure</th>
-							<th>#</th>
+							<th>Auteur</th>
 
 						</tr>
 					</thead>
@@ -94,14 +98,11 @@ require_once 'header.php';
 							<tr>
 								<td><?=$prep['title']?></td>
 								<td><?=$prep['preparation']?></td>
-								<td><?=$prep['url_img']?></td>
 								<td><?=$prep['date_creation']?></td>
 								<td><?=$prep['id_autor']?></td>
 
 								<td>
-									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Actualiser recette">Actualiser recette</a>
-									&nbsp; - &nbsp;
-									<a href="delte_recette.php?id=<?=$prep['id'];?>" title="Supprimer recette">Supprimer recette</a>
+									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Actualiser recette"><i class='glyphicon glyphicon-pencil'></i></a><a href="delete_recipe.php?id=<?=$prep['id'];?>" title="Supprimer recette"> <i class="glyphicon glyphicon-remove"></i></a>
 								</td>
 							</tr>
 						<?php endforeach; ?>

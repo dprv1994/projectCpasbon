@@ -1,5 +1,5 @@
 <?php require_once 'header.php'; ?>
-        
+
         <div class="slider">
             <div class="wrapper">
                 <img src="http://lorempixel.com/g/400/200" alt="" />
@@ -22,7 +22,7 @@
                         <span><a href="#">lire la recette</a></span>
                     </div>
                 </div>
-                <button class="boutonRecettes">decouvrir toutes les recettes des chefs</button>
+                <a href="listRecipeFront.php"><button class="boutonRecettes">decouvrir toutes les recettes des chefs</button></a>
             </div>
         </div>
 
