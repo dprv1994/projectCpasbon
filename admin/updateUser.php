@@ -87,7 +87,7 @@ require_once 'header.php';
 
 			<br><br>
 
-			<input type="submit" value="Mettre à jour votre profil">
+			<input type="submit" value="Mettre à jour de votre profil">
 		</form>
 	</body>
 </html>
