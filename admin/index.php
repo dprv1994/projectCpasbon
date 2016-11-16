@@ -8,13 +8,6 @@ $query = $bdd->prepare('SELECT * FROM message');
 if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
 
-<<<<<<< HEAD
-}	
-=======
-
-
-}
->>>>>>> origin/master
 
 $query = $bdd->prepare('SELECT * FROM recipe');
 if ($query->execute()) {
