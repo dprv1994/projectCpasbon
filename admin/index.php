@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 require_once '../inc/connect.php';
 require_once '../inc/session.php';
@@ -9,26 +9,23 @@ if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
-	if ($preparation['read_msg'] < 0) {
-		$user[]
-	}
 
-}	
+}
 
 $query = $bdd->prepare('SELECT * FROM recipe');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
 
-	
+
 }
 
 
 
 require_once 'header.php';
  ?>
- 
+
  	<h1>Modification site du restaurant</h1>
- 		
+
  		<div>
 	 		<label for="name">Nom Restaurant:</label>
 	 		<input type="text" id="name" name="name">
@@ -53,7 +50,7 @@ require_once 'header.php';
 	 		<label for="picture">Photo:</label>
 	 		<input type="file" id="picture" name="picture">
 	 		<br><br>
-	 		
+
 	 		<input type="submit" value="Modifier">
 		</div>
 
@@ -65,11 +62,11 @@ require_once 'header.php';
 							<table class="table">
 					<thead>
 						<tr>
-							<th>Lu/Pas lu</th>	
+							<th>Lu/Pas lu</th>
 							<th>Sujet</th>
 							<th>email</th>
-							
-						</tr>	
+
+						</tr>
 					</thead>
 
 					<tbody>
@@ -78,7 +75,7 @@ require_once 'header.php';
 								<td><?=$user['see']?></td>
 								<td><?=$user['subject']?></td>
 								<td><?=$user['email']?></td>
-								
+
 								<td>
 									<a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
 									&nbsp; - &nbsp;
@@ -89,7 +86,7 @@ require_once 'header.php';
 					</tbody>
 				</table>
 		</div>
-		
+
 		<hr>
 
 		<div>
@@ -103,8 +100,8 @@ require_once 'header.php';
 							<th>photo</th>
 							<th>date/heure</th>
 							<th>#</th>
-							
-						</tr>	
+
+						</tr>
 					</thead>
 
 					<tbody>
@@ -115,7 +112,7 @@ require_once 'header.php';
 								<td><?=$prep['url_img']?></td>
 								<td><?=$prep['date_creation']?></td>
 								<td><?=$prep['id_autor']?></td>
-								
+
 								<td>
 									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Actualiser recette">Actualiser recette</a>
 									&nbsp; - &nbsp;
@@ -129,6 +126,6 @@ require_once 'header.php';
 
 
 <!-- (titre + contenu + photo + date & heure + id auteur -->
- 
+
  </body>
  </html>
