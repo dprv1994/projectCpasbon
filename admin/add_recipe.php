@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 require_once '../inc/session.php';
 require_once '../inc/connect.php';
@@ -15,13 +15,13 @@ if (!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
 
-	if (!v::alnum()->length(3, 30)->validate($post['title'])) {
+	/*if (!v::alnum()->length(3, 30)->validate($post['title'])) {
 		$errors[] = 'Vous devez entrer entre 3 et 30 caractères.';
 	}
 
 	if (!v::alnum()->length(15, 300)->validate($post['preparation'])) {
-		$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';	
-	}
+		$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
+	}*/
 
 	if(!is_uploaded_file($_FILES['url_img']['tmp_name']) || !file_exists($_FILES['url_img']['tmp_name'])){
 		$errors[] = 'Vous devez ajouter une photo.';
@@ -34,7 +34,7 @@ if (!empty($_POST)) {
 			$url_imgName = uniqid('url_img_');
 			$url_imgName.= '.'.pathinfo($_FILES['url_img']['name'], PATHINFO_EXTENSION);
 
-			
+
 			if(!is_dir($dirUpload)){
 				mkdir($dirUpload, 0755);
 			}
@@ -44,10 +44,10 @@ if (!empty($_POST)) {
 			}
 		}
 		else{
-			$errors[] = 'Le type de fichier est invalide. Seules les extensions jpg/jpeg/gif/png sont autorisées.'; 
+			$errors[] = 'Le type de fichier est invalide. Seules les extensions jpg/jpeg/gif/png sont autorisées.';
 		}
 
-	}	
+	}
 
 
 		if (count($errors) === 0) {
@@ -62,38 +62,20 @@ if (!empty($_POST)) {
 			if ($insert->execute()) {
 				$formValid=true;
 			}else {
-			
+
 			var_dump($insert->errorInfo());
 			}
-			
+
 		} // fin count
 
 
 } // fin verif
 
 
+require_once '../admin/header.php';
 
+?>
 
-
-
-
-?><!DOCTYPE html>
-
-	<html>
-
-		<head>
-
-			<meta charset="utf-8">
-			<title>ajouter recette</title>
-
-			<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-			<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-			<link rel="stylesheet" type="text/css" href="">
-
-
-		</head>
-
-		<body>
 
 			<main class="container">
 
@@ -110,33 +92,31 @@ if (!empty($_POST)) {
 						La recette a été ajoutée.
 					</div>
 				<?php endif; ?>
+                <div class="col-lg-8 col-lg-offset-2">
+    				<form method="post" enctype="multipart/form-data">
 
-				<form method="post" enctype="multipart/form-data">
+    					<div class="form-group">
+    						<label for="title">Titre :</label>
+    						<input class='form-control' type="text" id="title" name="title">
+    					</div>
 
-					<div class="form-group">
-						<label for="title">Titre : </label>
-						<input type="text" id="title" name="title">
-					</div>
+    					<div class="form-group">
+    						<label for="preparation">Contenu :</label>
+    						<textarea class='form-control' type="text" id="preparation" name="preparation"></textarea>
+    					</div>
 
-					<div class="form-group">
-						<label for="preparation">Contenu : </label>
-						<textarea type="text" id="preparation" name="preparation"></textarea>
-					</div>
-
-					<div class="form-group">
-						<label for="url_img">Photo : </label>
-						<input type="file" id="url_img" name="url_img">
-					</div>
+    					<div class="form-group">
+    						<label for="url_img">Photo :</label>
+    						<input type="file" id="url_img" name="url_img">
+    					</div>
 
 
-					<div class="form-group">
-						<input type="submit" name="submit" value="Envoyer" class="btn">
-					</div>
-
-				</form>
+    					<div class="form-group">
+    						<input type="submit" name="submit" value="Envoyer" class="btn btn-info btn-lg center-block">
+    					</div>
+    				</form>
+                </div>
 
 			</main>
-
-		</body>
-
-	</html>
+<?php
+require_once '../admin/footer.php';

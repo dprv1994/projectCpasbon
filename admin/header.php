@@ -12,13 +12,13 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-light bg-faded">
+        <nav class="navbar navbar-light bg-faded col-lg-8 col-lg-offset-2">
           <ul class="nav navbar-nav">
             <li class="nav-item active">
               <a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/recette/add_recipe.php">Recette</a>
+              <a class="nav-link" href="add_recipe.php">Recette</a>
             </li>
             <li class="navitem">
                 <?= (isset($is_logged) && $is_logged == 'admin')? '<a class="nav-link" href="listUser.php">Liste des Users</a>' : ''; ?>
@@ -28,3 +28,5 @@
             </li>
           </ul>
         </nav>
+
+        <div class="col-lg-8 col-lg-offset-2">
