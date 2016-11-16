@@ -8,11 +8,6 @@ $query = $bdd->prepare('SELECT * FROM message');
 if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
-	if ($preparation['read_msg'] < 0) {
-		$user[]
-	}
-
 }	
 
 $query = $bdd->prepare('SELECT * FROM recipe');
