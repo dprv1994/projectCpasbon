@@ -1,6 +1,3 @@
-<?php
-require_once '../inc/connect.php';
-?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
