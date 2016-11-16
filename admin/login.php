@@ -11,7 +11,6 @@ $error = [];
 $success = false;
 $hasError = false;
 
-				var_dump($_SESSION);
 use Respect\Validation\Validator as verif;
 
 if (empty($_SESSION) && !empty($_POST)) {
