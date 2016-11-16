@@ -97,8 +97,10 @@ if ($query->execute()) {
 					<thead>
 						<tr>
 							<th>titre</th>
-							<th>ingrédient</th>
 							<th>recette</th>
+							<th>photo</th>
+							<th>date/heure</th>
+							<th>#</th>
 							
 						</tr>	
 					</thead>
@@ -107,11 +109,13 @@ if ($query->execute()) {
 						<?php foreach ($preparation as $prep): ?>
 							<tr>
 								<td><?=$prep['title']?></td>
-								<td><?=$prep['ingredient']?></td>
 								<td><?=$prep['preparation']?></td>
+								<td><?=$prep['url_img']?></td>
+								<td><?=$prep['date_creation']?></td>
+								<td><?=$prep['id_autor']?></td>
 								
 								<td>
-									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Actualiser recette">Udpdate recette</a>
+									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Actualiser recette">Actualiser recette</a>
 									&nbsp; - &nbsp;
 									<a href="delte_recette.php?id=<?=$prep['id'];?>" title="Supprimer recette">Supprimer recette</a>
 								</td>
@@ -122,7 +126,7 @@ if ($query->execute()) {
 		</div>
 
 
-
+<!-- (titre + contenu + photo + date & heure + id auteur -->
  
  </body>
  </html>

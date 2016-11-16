@@ -35,19 +35,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			<meta charset="utf-8">
 			<title>supprimer recette</title>
 		</head>
-
 		<body>
 
 		<h1>Supprimer une recette</h1>
 
 		<main class="container">
 
-		<?php if(empty($recipe)): ?>
-			<div class="alert alert-danger">
-				Cette recette n'existe pas.
-			</div>
-		<?php else: ?>
-			<p>Voulez-vous vraiment supprimer la recette <?=$recipe['title'];?>?</p>
+			<?php if(empty($recipe)): ?>
+				<div class="alert alert-danger">
+					Cette recette n'existe pas.
+				</div>
+			<?php else: ?>
+				<p>Voulez-vous vraiment supprimer la recette <?=$recipe['title'];?>?</p>
 
 			<form method="POST">
 				
@@ -57,6 +56,5 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			</form>
 
 		</main>
-
 		</body>
 	</html>
