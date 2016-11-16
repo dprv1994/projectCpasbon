@@ -47,7 +47,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 				Cette recette n'existe pas.
 			</div>
 		<?php else: ?>
-			<p>Voulez-vous vraiment supprimer la recette <?=$recipe['title'];?>?</p>
+			<p>Voulez-vous vraiment supprimer la recette : <?=$recipe['title'];?>?</p>
 		<?php endif; ?>
 
 			<form method="POST">
