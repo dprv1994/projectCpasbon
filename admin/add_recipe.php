@@ -9,19 +9,18 @@ use Respect\Validation\Validator as v;
 
 $post = [];
 $errors= [];
-$dirUpload = 'img/';
+$dirUpload = '../img/recette/';
 
 if (!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-
-	/*if (!v::alnum()->length(3, 30)->validate($post['title'])) {
+	if (!v::alnum()->length(3, 30)->validate($post['title'])) {
 		$errors[] = 'Vous devez entrer entre 3 et 30 caractères.';
 	}
 
 	if (!v::alnum()->length(15, 300)->validate($post['preparation'])) {
 		$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
-	}*/
+	}
 
 	if(!is_uploaded_file($_FILES['url_img']['tmp_name']) || !file_exists($_FILES['url_img']['tmp_name'])){
 		$errors[] = 'Vous devez ajouter une photo.';
@@ -77,7 +76,7 @@ require_once '../admin/header.php';
 ?>
 
 
-			<main class="container">
+			<main>
 
 				<h1 class="text-center">Ajouter une recette</h1>
 
