@@ -35,13 +35,9 @@ if (!empty($_SESSION)) {
 				$success = true;
 
 				if ($success) {
-					$_SESSION = [
-						'id' => $user['id'],
-						'username' => $user['username'],
-						'password' => $user['password'],
-						'role' => $user['role'], 
+					$_SESSION['user'] = $user;
 					];
-					header('Location: ')
+					header('Location: index.php')
 
 				}
 			}
