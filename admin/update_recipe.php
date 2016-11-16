@@ -1,5 +1,6 @@
 <?php  
 
+
 require_once '../inc/session.php';
 require_once '../inc/connect.php';
 require_once '../inc/data.php';
@@ -11,10 +12,13 @@ $post = [];
 $errors= [];
 $dirUpload = 'img/';
 
+
+
 if(isset($is_logged)) {
 
+
 	if (!empty($_POST)) {
-		$post = array_map('trim', array_map('strip_tags', $_POST));
+		$post = array_map('trim', array_map('strip_tags', $_POST)); var_dump($_POST); var_dump($_SESSION);
 
 
 		if (!v::alnum()->length(3, 30)->validate($post['title'])) {
@@ -52,7 +56,7 @@ if(isset($is_logged)) {
 		}	
 
 
-			if (count($errors) === 0) {
+			if (count($errors) === 0) { /*a modifier avec $columnSQL*/
 
 				$update = $bdd->prepare('UPDATE recipe
 					SET title = :title, preparation = :preparation, url_img = :url_img, id_autor = :id_autor,  WHERE id = :idUser'); /* /!\ajouter date*/
@@ -75,7 +79,6 @@ if(isset($is_logged)) {
 
 	} // fin verif
 
-} //fin islogged
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
@@ -86,6 +89,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 		$recipe = $select->fetch(PDO::FETCH_ASSOC);
 	}
 }
+} //fin islogged
 
 
 ?><!DOCTYPE html>
@@ -118,22 +122,22 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 				<?php elseif(isset($formValid) && $formValid == true): ?>
 
 					<div class="alert alert-success">
-						La recette a été ajoutée.
+						La recette a été modifiée.
 					</div>
 				<?php endif; ?>
 
-				<?php if(!isset($formValid) && !empty($user)): ?>
+				<?php if(!empty($recipe)): ?>
 
 					<form method="post" enctype="multipart/form-data">
 
 						<div class="form-group">
 							<label for="title">Titre : </label>
-							<input type="text" id="title" name="title">
+							<input type="text" id="title" name="title" value="<?=$recipe['title'];?>">
 						</div>
 
 						<div class="form-group">
 							<label for="preparation">Contenu : </label>
-							<textarea type="text" id="preparation" name="preparation"></textarea>
+							<textarea type="text" id="preparation" name="preparation"><?=$recipe['preparation'];?></textarea>
 						</div>
 
 						<div class="form-group">
@@ -143,7 +147,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
 						<div class="form-group">
-							<input type="submit" name="submit" value="Envoyer" class="btn">
+							<input type="submit" name="submit" value="Mettre à jour" class="btn">
 						</div>
 
 					</form>
