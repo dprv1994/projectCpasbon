@@ -139,5 +139,11 @@ elseif($haserror == true) {
 
 		<input type="submit" name="Enregistrer cet utilisateur">
 		</form>
+
+		<?php 
+			if($formValid == true) {
+				echo '<a href="listUser.php">Liste des utilisateurs</a>';
+			}
+		?>
 	</body>
 </html>
