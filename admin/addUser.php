@@ -9,7 +9,7 @@ use Respect\Validation\Validator as verif;
 $post=[];
 $errors=[];
 $formValid=false;
-$hasError=false;
+$haserror=false;
 $dirUpload='../img/';
 
 if(!empty($_POST)) {
@@ -35,13 +35,69 @@ if(!empty($_POST)) {
 		$errors[] = 'Veuillez taper un mot de passe valide compris entre 8 et 30 caractères';
 	}
 
-	if(!verif)
+	if(!isset($post['role'])) {
+		$errors[] = 'Veuillez sélectionner un rôle à cet utilisateur';
+	}
+
+	if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){ 
+		$errors[] = 'Il faut uploader une image';
+	}
+	else{
+		$finfo = new finfo();
+		$mimeType = $finfo->file($_FILES['avatar']['tmp_name'], FILEINFO_MIME_TYPE); 
+		$mimeTypeAllow = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/pjpeg'];
+		
+		if(in_array($mimeType, $mimeTypeAllow)){ 
+			$photoName = uniqid('pic_');
+			$photoName.= '.'.pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+
+		if(!is_dir($dirUpload)){ 
+			mkdir($dirUpload, 0755);
+		}
+		
+		if(!move_uploaded_file($_FILES['avatar']['tmp_name'], $dirUpload.$photoName)){ 
+				$errors[] = 'Erreur lors de l\'upload de la photo';
+			}
+
+		}else{
+			$errors[] = 'Le fichier est invalide';
+		}
+	}
+
+	if(count($errors) === 0) {
+		$query = $bdd->prepare('INSERT INTO users(lastname, firstname, email, username, password, role, avatar) VALUES(:lastname, :firstname, :email, :username, :password, :role, :avatar)');
+		$query->bindValue(':lastname', $post['lastname']);
+		$query->bindValue(':firstname', $post['firstname']);
+		$query->bindValue(':email', $post['email']);
+		$query->bindValue(':username', $post['username']);
+		$query->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
+		$query->bindValue(':role', $post['role']);
+		$query->bindValue('avatar', $dirUpload.$photoName);
+
+		if($query->execute()) {
+			$formValid = true;
+		}
+		else {
+			var_dump($query->errorInfo());
+			die;
+		}
+	}
+	else {
+		$haserror = true;
+	}
 
 }
 
-include_once 'header.php';
+require_once 'header.php';
+
+if($formValid == true) {
+	echo '<p style="color:green;">Vous avez réussi !</p>';
+}
+elseif($haserror == true) {
+	echo '<p style="color:DarkRed;">'.implode('<br>', $errors).'</p>';
+}
 ?>
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 		<label for="lastname">Nom :</label><br>
 		<input type="text" id="lastname" name="lastname">
 
@@ -77,11 +133,17 @@ include_once 'header.php';
 		<br><br>
 
 		<label for="avatar">Avatar :</label><br>
-		<input type="file" id="avatar" name="avatar">
+		<input type="file" id="avatar" name="avatar" accept="image/*">
 
 		<br><br>
 
 		<input type="submit" name="Enregistrer cet utilisateur">
 		</form>
+
+		<?php 
+			if($formValid == true) {
+				echo '<a href="listUser.php">Liste des utilisateurs</a>';
+			}
+		?>
 	</body>
 </html>
