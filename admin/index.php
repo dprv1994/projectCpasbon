@@ -8,6 +8,7 @@ $query = $bdd->prepare('SELECT * FROM message');
 if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
 
+}
 
 $query = $bdd->prepare('SELECT * FROM recipe');
 if ($query->execute()) {
@@ -122,7 +123,6 @@ require_once 'header.php';
 		</div>
 
 
-<!-- (titre + contenu + photo + date & heure + id auteur -->
 
  </body>
  </html>
