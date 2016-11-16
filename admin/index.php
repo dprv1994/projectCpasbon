@@ -7,26 +7,26 @@ require_once '../vendor/autoload.php';
 $query = $bdd->prepare('SELECT * FROM message');
 if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
-}
+
+
+	if ($preparation['read_msg'] < 0) {
+		$user[]
+	}
+
+}	
 
 $query = $bdd->prepare('SELECT * FROM recipe');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
+
+	
 }
 
 
 
-
+require_once 'header.php';
  ?>
-
-
- <!DOCTYPE html>
- <html>
- <head>
- 	<title>Back</title>
- </head>
- <body>
-
+ 
  	<h1>Modification site du restaurant</h1>
  		
  		<div>
@@ -65,6 +65,7 @@ if ($query->execute()) {
 							<table class="table">
 					<thead>
 						<tr>
+							<th>Lu/Pas lu</th>	
 							<th>Sujet</th>
 							<th>email</th>
 							
@@ -74,7 +75,7 @@ if ($query->execute()) {
 					<tbody>
 						<?php foreach ($users as $user): ?>
 							<tr>
-								<td><?=$user['']?></td>
+								<td><?=$user['see']?></td>
 								<td><?=$user['subject']?></td>
 								<td><?=$user['email']?></td>
 								
