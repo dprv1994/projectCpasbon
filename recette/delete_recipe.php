@@ -48,6 +48,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			</div>
 		<?php else: ?>
 			<p>Voulez-vous vraiment supprimer la recette <?=$recipe['title'];?>?</p>
+		<?php endif; ?>
 
 			<form method="POST">
 				
