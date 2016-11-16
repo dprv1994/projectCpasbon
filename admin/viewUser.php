@@ -23,7 +23,7 @@ require_once 'header.php';
 ?>
 		<ul>
 			<?php
-				echo '<li> <strong> Nom : </strong> '.$user['lastname'].'</li> <li> <strong> Prénom : </strong> '.$user['firstname'].'</li> <li> <strong> Email : </strong>'.$user['email'].'</li> <li> <strong> Pseudo : </strong>'.$user['username'].'</li> <li> <strong> Rôle : </strong>'.affichRole($user['role']).'</li> <li> <strong> Avatar : </strong> <img src="'.$user['avatar'].'"> </li>';
+				echo '<li> <strong> Nom : </strong> '.$user['lastname'].'</li> <li> <strong> Prénom : </strong> '.$user['firstname'].'</li> <li> <strong> Email : </strong>'.$user['email'].'</li> <li> <strong> Pseudo : </strong>'.$user['username'].'</li> <li> <strong> Rôle : </strong>'.affichRole($user['role']).'</li> <li> <strong> Avatar : </strong> <img src="'.$user['avatar'].'"> </li> <li> <a href="deleteUser.php?id='.$user['id'].'">Suppression</a> </li>';
 			?>
 		</ul>
 
