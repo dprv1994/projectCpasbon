@@ -1,8 +1,10 @@
 <?php 
 
 require_once '../inc/connect.php';
+require_once '../header.php';
 
-session_start();
+
+
 
 $post = [];
 $error = [];
@@ -16,9 +18,35 @@ if (!empty($_SESSION)) {
 	if(!$verif::length(3,null)->validate($post['username'])){
 			$error[] = 'L\'username doit faire au moins 3 caractères';
 		}
-	if (!$verif) {
-			# code...
+
+	if (!$verif::length(3, null)->validate($post['password'])) {
+			$error[] = 'le mot de passe doit faire au moin 3 caractères';
 		}
+
+	if (count($error)===0) {
+		$select = $bdd-> prepare('SELECT * FROM users WHERE username = :username');
+		$select->bindValue(':username', $post['username']);
+
+		if ($select->execute()) {
+			$user = $select->fetch(PDO::FETCH_ASSOC);
+
+			if (password_verify($post['password'], $user['password'])) {
+				
+				$success = true;
+
+				if ($success) {
+					$_SESSION = [
+						'id' => $user['id'],
+						'username' => $user['username'],
+						'password' => $user['password'],
+						'role' => $user['role'], 
+					];
+					header('Location: ')
+
+				}
+			}
+		}
+	}
 
 
 }
