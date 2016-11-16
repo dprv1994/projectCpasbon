@@ -11,16 +11,18 @@ $error = [];
 $success = false;
 $hasError = false;
 
+				var_dump($_SESSION);
 use Respect\Validation\Validator as verif;
 
-if (!empty($_SESSION)) {
-	header('Location:../index.php');
+if (empty($_SESSION) && !empty($_POST)) {
 
-	if(!$verif::length(3,null)->validate($post['username'])){
+	$post = array_map('trim', array_map('strip_tags', $_POST));
+
+	if(!verif::length(3,null)->validate($post['username'])){
 			$error[] = 'L\'username doit faire au moins 3 caractères';
 		}
 
-	if (!$verif::length(3, null)->validate($post['password'])) {
+	if (!verif::length(3, null)->validate($post['password'])) {
 			$error[] = 'le mot de passe doit faire au moin 3 caractères';
 		}
 
@@ -32,14 +34,15 @@ if (!empty($_SESSION)) {
 			$user = $select->fetch(PDO::FETCH_ASSOC);
 
 			if (password_verify($post['password'], $user['password'])) {
-				
 				$success = true;
 
 				if ($success) {
 					$_SESSION['user'] = $user;
+					echo "OK";
 					header('Location: index.php');
 				}
 				else{
+					echo "KO";
 					header('Location: login.php');
 				}
 			}
@@ -52,8 +55,6 @@ if (!empty($_SESSION)) {
 	else{
 		$hasError = true;
 	}
-
-
 }
  ?>
 
@@ -73,7 +74,7 @@ if (!empty($_SESSION)) {
 		if($success){
 			echo '<p style="color:green;">LOGIN OK !</p>';
 		}
-	  ?>
+	?>
 
  	<h1>Connexion</h1>	
 
