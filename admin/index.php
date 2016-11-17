@@ -11,7 +11,7 @@ if (!isset($is_logged)) {
 
 
 
-$query = $bdd->prepare('SELECT * FROM message');
+$query = $bdd->prepare('SELECT * FROM message WHERE read_msg = 0');
 if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -42,7 +42,6 @@ require_once 'header.php';
     Uniformiser le nom des fichier <br>
     view message a faire entier + admin seulement <br>
     Update recette a faire bootstrap <br>
-    une fois fait mettre le lien sur index et dans view message<br>
     page 404 a faire
 
 </code>
