@@ -91,27 +91,27 @@ require_once 'header.php';
 <h1>Mon Profil</h1>
 <div class="col-lg-6">
     <ul>
-        <strong> Nom : </strong><?= $users['lastname'] ?><br>
-        <strong> Prénom : </strong><?= $users['firstname'] ?><br>
-        <strong> Email : </strong><?= $users['email'] ?><br>
-        <strong> Pseudo : </strong><?= $users['username'] ?><br>
-        <h4>Modification d'informations :</h4>
+        <strong>Nom : </strong><?= $users['lastname'] ?><br>
+        <strong>Prénom : </strong><?= $users['firstname'] ?><br>
+        <strong>Email : </strong><?= $users['email'] ?><br>
+        <strong>Pseudo : </strong><?= $users['username'] ?><br>
+        <h4>Modifier votre mot de passe ou votre avatar :</h4>
         <form method="post" enctype="multipart/form-data">
             <div class="from-group">
                 <label for="password">Nouveau mot de passe : </label><br>
                 <input class="form-control" type="password" id="password" name="password">
             </div>
             <div class="from-group">
-                <label for="avatar">Nouveau avatar :</label><br>
+                <label for="avatar">Nouvel avatar :</label><br>
                 <input class="" type="file" id="avatar" name="avatar">
             </div>
             <br><br>
-            <input class="btn btn-info btn-lg center-block" type="submit" value="Mettre à jour de votre profil">
+            <input class="btn btn-info btn-lg center-block" type="submit" value="Mettre à jour votre profil">
         </form>
 
     </ul>
 </div>
 <div class="col-lg-6">
-    <strong> Avatar : </strong><img class="img-responsive" src="<?= $users['avatar'] ?>">
+    <strong>Avatar : </strong><img class="img-responsive" src="<?= $users['avatar'] ?>">
 </div>
 <?php require_once 'footer.php'; ?>

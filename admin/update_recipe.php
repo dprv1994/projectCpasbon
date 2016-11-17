@@ -76,7 +76,7 @@ if(isset($is_logged)) {
 
 				$update->bindValue(':title', $post['title']);
 				$update->bindValue(':preparation', $post['preparation']);
-				$update->bindValue(':id_autor', $_SESSION['user']['username']);
+				$update->bindValue(':id_autor', $_SESSION['user']['id']);
 
 				$update->bindValue(':idRecipe', $_GET['id'], PDO::PARAM_INT);
 
@@ -113,7 +113,7 @@ require_once 'header.php';
 
 ?>
 
-				<h1 class="text-center">Modifier une recette</h1>
+				<h1 class="text-center">Mettre à jour la recette</h1>
 
 				<?php if(count($errors) > 0): ?>
 					<div class="alert alert-danger">
@@ -123,7 +123,7 @@ require_once 'header.php';
 				<?php elseif(isset($formValid) && $formValid == true): ?>
 
 					<div class="alert alert-success">
-						La recette a été modifiée.
+						La recette a été mise à jour.
 					</div>
 				<?php endif; ?>
 

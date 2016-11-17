@@ -75,15 +75,15 @@ if (empty($_SESSION) && !empty($_POST)) {
  	<h1>Connexion</h1>
     <div class="card">
     	<form method="post">
-    		<label for="username">Nom de l'utlisateur:</label>
+    		<label for="username">Pseudo : </label>
     		<input type="text" class='form-control' id="username" name="username">
     		<br><br>
 
-    		<label for="password">Mot de passe:</label>
+    		<label for="password">Mot de passe : </label>
     		<input type="password" class='form-control' id="password" name="password">
     		<br><br>
 
-    	    <button id="" name="" class="btn btn-info btn-block ">Connexion</button>
+    	    <button id="" name="" class="btn btn-info btn-block ">Se connecter</button>
         </form>
     </div>
 </div>

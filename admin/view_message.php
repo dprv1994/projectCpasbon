@@ -57,11 +57,11 @@ require_once 'header.php';
 
 ?>
 
-        <h1>Message de <?=$message['username'];?></h1>
+        <h1>Message envoyé par <?=$message['username'];?></h1>
 
-        <strong> Pseudo : </strong><?=$message['username'];?><br>
-        <strong> Email : </strong><?=$message['email'];?><br>
-        <strong> Subject: </strong><?=$message['subject'];?><br>
+        <strong>Pseudo : </strong><?=$message['username'];?><br>
+        <strong>Email : </strong><?=$message['email'];?><br>
+        <strong>Objet: </strong><?=$message['subject'];?><br>
         <strong>Message : </strong>
         <br><?=$message['content'];?><br>
         <br><br>
@@ -70,15 +70,15 @@ require_once 'header.php';
             <div class="col-lg-6">
                 <form method="post">
                     <?php if($message['read_msg'] == 0) : ?>
-                        <input type="submit" name="msgLu" id="msgLu" class="btn btn-success btn-lg" value="Marquer Lus">
+                        <input type="submit" name="msgLu" id="msgLu" class="btn btn-success btn-lg" value="Marquer comme lu">
                     <?php elseif($message['read_msg'] == 1) : ?>
-                        <input type="submit" name="msgNonLu" id="msgNonLu" class="btn btn-warning btn-lg" value="Marquer Non Lus">
+                        <input type="submit" name="msgNonLu" id="msgNonLu" class="btn btn-warning btn-lg" value="Marquer comme non lu">
                     <?php endif; ?>
-                    <a class="btn btn-info btn-lg"  href="listMessages.php">Liste des messages</a>
+                    <a class="btn btn-info btn-lg"  href="listMessages.php">Voir la liste des messages</a>
                 </form>
             </div>
             <div class="col-lg-6">
-                <a class="btn btn-danger btn-lg" href="deleteMessage.php?id=<?=$message['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+                <a class="btn btn-danger btn-lg" href="deleteMessage.php?id=<?=$message['id'];?>" title="Editer cet utilisateur">Supprimer le message</a>
             </div>
 
         </div>

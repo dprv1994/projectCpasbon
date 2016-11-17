@@ -20,7 +20,7 @@ if($query->execute()) {
 
 require_once 'header.php';
 ?>
-        <h1>Liste des utilisateurs :</h1>
+        <h1>Liste des utilisateurs</h1>
         <?php if ($is_logged == 'admin') {
             echo '<a href="addUser.php"><button class="btn btn-xs btn-info" type="button">Ajout d\'utilisateur</button></a><br><br>';
         }
@@ -29,22 +29,22 @@ require_once 'header.php';
 		<table class="table-striped col-lg-12">
 			<thead>
 				<tr>
-					<th>Role</th>
+					<th>Statut</th>
 					<th>Nom</th>
 					<th>Prénom</th>
-					<th>Email</th>
+					<th>Adresse email</th>
 					<th>Pseudo</th>
                     <th>Information</th>
-					<th>Modifier</th>
+					<th>Modification</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<?php foreach ($users as $user) {
 					echo '<tr><td>'. affichRole($user['role']).'</td><td>'.$user['lastname'].'</td><td>'.$user['firstname'].'</td><td>'.$user['email'].'</td><td>'.$user['username'].'</td><td>';
-                    echo '<a href="viewUser.php?id='.$user['id'].'">Voir l\'utilisateur</a>';
+                    echo '<a href="viewUser.php?id='.$user['id'].'">Voir le profil</a>';
                     echo '</td><td>';
-                    echo ($is_logged == 'admin') ? '<a href="updateUser.php?id='.$user['id'].'">Modifier l\'utilisateur</a>' : 'Non autorisé';
+                    echo ($is_logged == 'admin') ? '<a href="updateUser.php?id='.$user['id'].'">Modifier le profil</a>' : 'Vous n\'êtes pas autorisé à voir cette page.';
                     echo '</td></tr>';
 				}
 				?>

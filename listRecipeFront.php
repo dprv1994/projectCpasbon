@@ -15,7 +15,7 @@ if ($query->execute()) {
 </div>
 <div class="listRecipes">
     <div class="wrapper">
-        <h1>Liste des recettes</h1>
+        <h1>La liste des recettes</h1>
         <div class="grid-4">
 
             <?php foreach ($preparation as $value): ?>
@@ -23,8 +23,8 @@ if ($query->execute()) {
                     <h1><a href="RecipeFront.php?id=<?= $value['id'];?>"><?= $value['title'];?></a><small class="author"><?= $value['id_autor'];?></small></h1>
                     <img src="<?= $value['url_img'];?>" alt="">
                     <?php if (isset($is_logged)): ?>
-                        <a href="admin/update_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Modifier</button></a>
-                        <a href="admin/delete_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Supprimer</button></a>
+                        <a href="admin/update_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Modifier la recette</button></a>
+                        <a href="admin/delete_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Supprimer la recette</button></a>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>

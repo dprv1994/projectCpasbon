@@ -25,9 +25,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             <img src="<?= $recette['url_img'];?>" alt="">
             <div class="grid-2">
                 <div class="info">
-                    <span>date de creation : <?= $recette['date_creation'];?></span>
-                    <span>categorie : <?= $recette['category'];?></span><br>
-                    <span>auteur : <?= $recette['id_autor'];?></span><br>
+                    <span>Date de creation : <?= date('d/m/Y H:i', strtotime($recette['date_creation']));?></span>
+                    <span>Categorie : <?= $recette['category'];?></span><br>
+                    <span>Auteur : <?= $recette['id_autor'];?></span><br>
                 </div>
                 <div class="ingredients">
                     <ul>
@@ -47,7 +47,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
         <!-- admin seulement -->
         <button type="button" name="button">Modifier la recette</button>
-        <button type="button" name="button">Suprimmer la recette</button>
+        <button type="button" name="button">Supprimmer la recette</button>
     </div>
 
 

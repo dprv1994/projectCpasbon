@@ -17,7 +17,7 @@
         <div class="wrapper grid-2">
             <div class="logo one-third">
                 <h2>CPasBon</h2>
-                <span>1rue de l'adresse, 33150 Cenon</span>
+                <span>1 rue de l'adresse, 33150 Cenon</span>
                 <span>06.66.66.99</span>
             </div>
             <nav>

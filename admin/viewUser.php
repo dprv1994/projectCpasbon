@@ -34,7 +34,7 @@ require_once 'header.php';
         <strong> Prénom : </strong><?= $user['firstname']; ?><br>
         <strong> Email : </strong><?= $user['email']; ?><br>
         <strong> Pseudo : </strong><?= $user['username']; ?><br>
-        <strong> Rôle : </strong><?= affichRole($user['role'])?><br>
+        <strong> Statut : </strong><?= affichRole($user['role'])?><br>
         <?php if ($is_logged == 'admin'): ?>
             <!-- <form method="post"> Nécessite AJAX
                 <button class="btn btn-danger btn-lg center-block" id="delete" name="delete" onClick="if(confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?'))
@@ -45,7 +45,7 @@ require_once 'header.php';
             </form> -->
 
             <br><br>
-            <a class="btn btn-danger btn-lg center-block" href="deleteUser.php?id=<?= $user['id']; ?>">Supprimer l'utilisateur</a>
+            <a class="btn btn-danger btn-lg center-block" href="deleteUser.php?id=<?= $user['id']; ?>">Supprimer le profil</a>
         <?php endif; ?>
     </div>
     <div class="col-lg-6">
