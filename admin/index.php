@@ -40,7 +40,6 @@ require_once 'header.php';
     id auteur : rechercher si c l'id ou le nom que l'on doit rentrer et sinon si c l'id faire une jointure.<br>
     Penser a mettre Unique au champ email dans la table <br>
     Uniformiser le nom des fichier ?????????? <br>
-    page 404 a faire
 
 </code>
 <br><br>
