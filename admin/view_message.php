@@ -5,7 +5,7 @@ require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
 require_once '../inc/functions.php';
 
-if (!isset($is_logged)) {
+if (!isset($is_logged) && $is_logged == 'editeur') {
     header('Location:login.php');
     die;
 }
@@ -27,17 +27,18 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 require_once 'header.php';
 ?>
-		<ul>
-			<?php
-				echo '<li> <strong> Subject: </strong> '.$message['subject'].'</li> <li> <strong> Preparation : </strong> '.$message['content'].'</li> <li> <strong> Email : </strong>'.$message['email'].'</li> <li> <strong> Pseudo : </strong>'.$message['username'].'</li>'
-			?>
-		</ul>
 
-		<br><br>
 
-		<a href="delete_message.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer
-		</a>
+        <strong> Pseudo : </strong><?=$message['username'];?><br>
+        <strong> Email : </strong><?=$message['email'];?><br>
+        <strong> Subject: </strong><?=$message['subject'];?><br>
+        <strong>Message : </strong>
+        <br><?=$message['content'];?><br>
+        <br><br>
 
-		<a href="index.php">Liste des messages</a>
+
+        <a class="btn btn-info btn-lg"  href="index.php">Liste des messages</a>
+		<a class="btn btn-danger btn-lg" href="delete_message.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+
 	</body>
 </html>
