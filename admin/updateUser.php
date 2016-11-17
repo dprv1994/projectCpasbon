@@ -67,7 +67,7 @@ if(!empty($_POST)) {
 	}
 
 	if(count($errors) === 0) {
-		$query = $bdd->prepare('UPDATE users SET password = :password, avatar =:avatar WHERE id = :idUser');
+		$query = $bdd->prepare('UPDATE users SET password = :password, avatar = :avatar WHERE id = :idUser');
 		$user = $query->fetch(PDO::FETCH_ASSOC);
 		$query->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
 		$query->bindValue('avatar', $dirUpload.$photoName);
