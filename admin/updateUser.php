@@ -17,6 +17,14 @@ if(isset($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
 		$users = $query->fetch();
 	}
 }
+elseif(isset($_GET['id']) && is_numeric($_GET['id'])) {
+	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
+	$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
+
+	if($query->execute()) {
+		$users = $query->fetch();
+	}
+}
 
 use Respect\Validation\Validator as verif;
 
