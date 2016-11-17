@@ -39,16 +39,17 @@ require_once 'header.php';
     a faire :<br>
     id auteur : rechercher si c l'id ou le nom que l'on doit rentrer et sinon si c l'id faire une jointure.<br>
     Penser a mettre Unique au champ email dans la table <br>
-    Uniformiser le nom des fichier
+    Uniformiser le nom des fichier <br>
+    view message a faire entier + admin seulement <br>
+    Update recette a faire bootstrap <br>
+    list messages a faire (daniel)<br>
+    suppression utilisateur ne fonctionne pas faire la même page que valerie pour uniformiser(theo)
 </code>
-
+<br><br>
  		<div>
-            <h1>
-                <?= $info['name']; ?>
-                <?= (isset($is_logged) && $is_logged == 'admin') ? '<a class="btn btn-info btn-xs" href="editInfoResto.php">Modifier les infos du restaurant</a>' : '' ; ?>
-            </h1>
-            <span><?= $info['adress'] . ' - ' . $info['zipcode'] . ' - ' .$info['city'] . ' - ' .$info['phone']; ?>
-            </span>
+            <h1><?= $info['name']; ?></h1>
+                <?= (isset($is_logged) && $is_logged == 'admin') ? '<a class="btn btn-info btn-xs" href="editInfoResto.php">Modifier les infos du restaurant</a><br><br>' : '' ; ?>
+            <span><?= $info['adress'] . ' - ' . $info['zipcode'] . ' - ' .$info['city'] . ' - ' .$info['phone']; ?></span>
 
 		</div>
 
@@ -56,8 +57,8 @@ require_once 'header.php';
 
 <?php if ($is_logged == 'admin'): ?>
     <div>
-        <h2>Vos Messages: <small><a href="#">afficher tous les messages</a></small></h2>
-
+        <h2>Vos Messages:</h2>
+        <a class="btn btn-info btn-xs" href="#">afficher tous les messages</a>
                         <table class="table">
                 <thead>
                     <tr>
@@ -90,8 +91,8 @@ require_once 'header.php';
 <?php endif; ?>
 
 		<div>
-			<h2>Liste de recette: <small><a href="#">afficher toute les recettes</a></small></h2>
-
+			<h2>Liste de recette:</h2>
+            <a class="btn btn-xs btn-info" href="list_recipes.php">afficher toute les recettes</a><br><br>
 				<table class="table">
 					<thead>
 						<tr>
