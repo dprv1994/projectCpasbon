@@ -26,17 +26,6 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
     die;
 }
 
-
-if(isset($_POST['delete']) && $_POST['delete'] == true){
-
-	$delete = $bdd->prepare('DELETE FROM users WHERE id = :idUser');
-	$delete->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
-
-	if($delete->execute()){
-		header('Location: listUser.php');
-		die;
-	}
-}
 require_once 'header.php';
 ?>
 
@@ -47,20 +36,18 @@ require_once 'header.php';
         <strong> Pseudo : </strong><?= $user['username']; ?><br>
         <strong> Rôle : </strong><?= affichRole($user['role'])?><br>
         <?php if ($is_logged == 'admin'): ?>
-            <form method="post">
+            <!-- <form method="post"> Nécessite AJAX
                 <button class="btn btn-danger btn-lg center-block" id="delete" name="delete" onClick="if(confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?'))
                 alert('Utilisateur supprimer !');
                 else alert('Utilisateur sauvé !');">
                 	Supprimer l'utilisateur
                 </button>
-            </form>
+            </form> -->
+            <a href="deleteUser.php?id=<?= $user['id'] ?>">Supprimer l'utilisateur</a>
         <?php endif; ?>
     </div>
     <div class="col-lg-6">
         <strong> Avatar : </strong> <img class="img-responsive" src="<?= $user['avatar']; ?>">
     </div>
-
-
-		<script type="text/javascript" src="../js/script.js"></script>
 	</body>
 </html>
