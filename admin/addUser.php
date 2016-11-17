@@ -98,7 +98,7 @@ if(!empty($_POST)) {
 
 require_once 'header.php';
 ?>
-        <div class="col-lg-8 col-lg-offset-2">
+        <div class="">
             <h1>Ajout D'utilisateurs</h1>
 
             <?php if ($formValid == true): ?>
