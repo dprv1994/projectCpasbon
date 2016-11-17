@@ -11,6 +11,13 @@ $post = [];
 $errors= [];
 $dirUpload = '../img/recette/';
 
+if (!isset($is_logged)) {
+    header('Location:login.php');
+    die;
+}
+
+
+
 if (!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 

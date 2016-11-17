@@ -4,6 +4,13 @@ require_once '../inc/connect.php';
 require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
 
+if (!isset($is_logged)) {
+    header('Location:login.php');
+    die;
+}
+
+
+
 $query = $bdd->prepare('SELECT * FROM message');
 if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
