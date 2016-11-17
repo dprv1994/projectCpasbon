@@ -41,7 +41,8 @@ require_once 'header.php';
     Penser a mettre Unique au champ email dans la table <br>
     Uniformiser le nom des fichier ?????????? <br>
     Faire l'Update information resto (Théo) <br>
-    Faire le slid en JavaScript (Théo) <br>
+    Faire le slid en JavaScript (Théo)
+    Finir Token (Théo) <br>
 
 </code>
 <br><br>
