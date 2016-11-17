@@ -9,7 +9,7 @@ if (!isset($is_logged)) {
 }
 
 
-$recipe = null;
+$user = null;
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 

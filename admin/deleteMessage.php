@@ -9,7 +9,7 @@ if (!isset($is_logged)) {
 }
 
 
-$recipe = null;
+$message = null;
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
@@ -26,10 +26,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 		}
 	}
 
-	$select = $bdd->prepare('SELECT * FROM message WHERE id = :idUser');
-	$select->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
+	$select = $bdd->prepare('SELECT * FROM message WHERE id = :idMessage');
+	$select->bindValue(':idMessage', $_GET['id'], PDO::PARAM_INT);
 	if ($select->execute()) {
-		$user = $select->fetch(PDO::FETCH_ASSOC);
+		$message = $select->fetch(PDO::FETCH_ASSOC);
 	}	
 } //fin verif
 
@@ -40,12 +40,12 @@ require_once 'header.php';
 
 		<main class="container">
 
-		<?php if(empty($user)): ?>
+		<?php if(empty($message)): ?>
 			<div class="alert alert-danger">
 				Cet utilisateur n'existe pas.
 			</div>
 		<?php else: ?>
-			<p>Voulez-vous vraiment supprimer la recette : <?=$user['username'];?>?</p>
+			<p>Voulez-vous vraiment supprimer la recette : <?=$message['subject'];?>?</p>
 		<?php endif; ?>
 
 			<form method="POST">
