@@ -34,8 +34,12 @@ require_once 'header.php';
 
 			<tbody>
 				<?php foreach ($users as $user) {
-					echo '<tr><td>'.$user['lastname'].'</td>'.'<td>'.$user['firstname'].'</td>'.'<td>'.$user['email'].'</td>'.'<td>'.$user['username'].'</td>'.'<td><a href="updateUser.php?id='.$user['id'].'">Modifier l\'utilisateur</a></td>'.'<td><a href="viewUser.php?id='.$user['id'].'">Voir l\'utilisateur</a></td>'.'</tr>';
-					}
+					echo '<tr><td>'.$user['lastname'].'</td><td>'.$user['firstname'].'</td><td>'.$user['email'].'</td><td>'.$user['username'].'</td><td>';
+                    echo (isset($is_logged) && $is_logged == 'admin') ? '<a href="updateUser.php?id='.$user['id'].'">Modifier l\'utilisateur</a>' : '';
+                    echo '</td><td>';
+                    echo (isset($is_logged) && $is_logged == 'admin')? '<a href="viewUser.php?id='.$user['id'].'">Voir l\'utilisateur</a>' :'';
+                    echo '</td></tr>';
+				}
 				?>
 			</tbody>
 		</table>
