@@ -80,9 +80,13 @@ if(!empty($_POST)) {
 
 require_once 'header.php';
 ?>
-<<<<<<< HEAD
-
-		<form method="post" enctype="multipart/form-data" class="col-lg-4 col-lg-offset-4">
+<div class="col-lg-6">
+    <ul>
+        <strong> Nom : </strong><?= $users['lastname'] ?><br>
+        <strong> Prénom : </strong><?= $users['firstname'] ?><br>
+        <strong> Email : </strong><?= $users['email'] ?><br>
+        <strong> Pseudo : </strong><?= $users['username'] ?><br>
+        <form method="post" enctype="multipart/form-data">
             <div class="from-group">
                 <label for="password">Nouveau mot de passe : </label><br>
                 <input class="form-control" type="password" id="password" name="password">
@@ -92,32 +96,12 @@ require_once 'header.php';
                 <input class="" type="file" id="avatar" name="avatar">
             </div>
             <br><br>
-			<input class="btn btn-info btn-lg center-block" type="submit" value="Mettre à jour de votre profil">
-		</form>
-=======
-<div class="col-lg-6">
-    <ul>
-        <li> <strong> Nom : </strong><?= $users['lastname'] ?></li>
-        <li> <strong> Prénom : </strong><?= $users['firstname'] ?></li>
-        <li> <strong> Email : </strong><?= $users['email'] ?></li>
-        <li> <strong> Pseudo : </strong><?= $users['username'] ?></li>
-        <li> <strong> Avatar : </strong><img src="<?= $users['avatar'] ?>"> </li>
+            <input class="btn btn-info btn-lg center-block" type="submit" value="Mettre à jour de votre profil">
+        </form>
 
     </ul>
 </div>
 <div class="col-lg-6">
-    <form method="post" enctype="multipart/form-data">
-        <div class="from-group">
-            <label for="password">Nouveau mot de passe : </label><br>
-            <input class="form-control" type="password" id="password" name="password">
-        </div>
-        <div class="from-group">
-            <label for="avatar">Nouveau avatar :</label><br>
-            <input class="" type="file" id="avatar" name="avatar">
-        </div>
-        <br><br>
-        <input class="btn btn-info btn-lg center-block" type="submit" value="Mettre à jour de votre profil">
-    </form>
+    <li> <strong> Avatar : </strong><img src="<?= $users['avatar'] ?>"> </li>
 </div>
->>>>>>> origin/master
 <?php require_once 'footer.php'; ?>
