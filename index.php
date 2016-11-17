@@ -6,20 +6,26 @@
             </div>
         </div>
         <div class="recettes">
-            <div class="wrapper">
+            <div class="wrapper recettesFlex">
                 <h1>les recettes des chefs</h1>
                 <div class="containerRecipes grid-3">
                     <div class="recipe">
-                        <div class="img"></div>
-                        <span><a href="#">lire la recette</a></span>
+                        <div class="recipeContent">
+                            <div class="img"></div>
+                            <span><a href="#">lire la recette</a></span>
+                        </div>
                     </div>
                     <div class="recipe">
-                        <div class="img"></div>
-                        <span><a href="#">lire la recette</a></span>
+                        <div class="recipeContent">
+                            <div class="img"></div>
+                            <span><a href="#">lire la recette</a></span>
+                        </div>
                     </div>
                     <div class="recipe">
-                        <div class="img"></div>
-                        <span><a href="#">lire la recette</a></span>
+                        <div class="recipeContent">
+                            <div class="img"></div>
+                            <span><a href="#">lire la recette</a></span>
+                        </div>
                     </div>
                 </div>
                 <a href="listRecipeFront.php"><button class="boutonRecettes">decouvrir toutes les recettes des chefs</button></a>

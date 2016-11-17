@@ -15,14 +15,16 @@
 <body>
     <div class="topbar">
         <div class="wrapper grid-2">
-            <div class="logo">
+            <div class="logo one-third">
                 <h2>CPasBon</h2>
                 <span>1rue de l'adresse, 33150 Cenon</span>
                 <span>06.66.66.99</span>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#">Nous Contacter</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="listRecipeFront.php">Recettes</a></li>
+                    <li><a href="contact.php">Nous Contacter</a></li>
                 </ul>
             </nav>
         </div>
