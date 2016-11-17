@@ -15,28 +15,17 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'yes') {
 	die();
 }
 
- ?>
 
- <!DOCTYPE html>
- <html lang="fr">
- <head>
- <meta charset="utf-8">
- 	<title>Deconnexion</title>
- </head>
- <body>
+require_once 'header.php';
 
-	<?php if (isset($_SESSION['user'])) : ?>
+ if (isset($_SESSION['user'])){
 
-	<?php echo $_SESSION['user']['username']; ?>, veux-tu te déconnecter ? Vraiment
+     echo $_SESSION['user']['username'] . ', veux-tu te déconnecter ? Vraiment';
+     echo '<br><br><a href="logout.php?logout=yes">Oui, je veux me déconnecter</a>' ;
 
-	<br><br>
+ }else {
+    echo "Tu es déjà déconnecté, tu n'existes pas !!";
+    echo '<br><br>' ;
+ }
 
-	<a href="logout.php?logout=yes">Oui, je veux me déconnecter</a>
-
-	<?php else: ?>
-		Tu es déjà déconnecté, tu n'existes pas !!
-	<br><br>
- 	<?php endif; ?>
-
- </body>
- </html>
+require_once 'footer.php';
