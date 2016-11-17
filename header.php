@@ -7,10 +7,32 @@
         <!-- Données du Theme -->
 
         <!----webfonts---->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+        <link href="css/style.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		<!----webfonts---->
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<!----//webfonts---->
+		<!---script---->
+		<script src="js/jquery.min.js"></script>
+		<!---//script---->
+		<!-----768px-menu----->
+		<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+		<script type="text/javascript" src="js/jquery.mmenu.js"></script>
+			<script type="text/javascript">
+				//	The menu on the left
+				$(function() {
+					$('nav#menu-left').mmenu();
+				});
+		</script>
+		<!-----//768px-menu----->
+		 <!---strat-slider---->
+	    <link rel="stylesheet" type="text/css" href="css/style2.css" />
+	    <link rel="stylesheet" type="text/css" href="css/style3.css" />
 
-
-
+		<script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
+		<!---//strat-slider---->
 
         <!-- Fin de Données du Theme -->
 
@@ -30,7 +52,7 @@
         <div class="header-left">
             <!----start-logo---->
             <div class="logo">
-            <a href="index.html"><h2>CPasBon!</h2>
+            <a href="index.php"><h2>CPasBon!</h2>
             <p>1rue de l'adresse, 33150 Cenon</p><br>
             <p>06.66.66.99</p>
             </a>
@@ -42,8 +64,8 @@
             <div class="top-nav">
                 <ul>
                     <li class="active"><a href="#work">Accueil</a></li>
-                    <li><a href="blog.html">Recettes</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="listRecipeFront.php">Recettes</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
             <!----//End-top-nav---->

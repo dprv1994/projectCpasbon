@@ -66,16 +66,22 @@ require_once 'header.php';
         <br><?=$message['content'];?><br>
         <br><br>
 
-        <form method="post">
-      		<?php if($message['read_msg'] == 0) : ?>
-        		<input type="submit" name="msgLu" id="msgLu" class="btn btn-success btn-lg" value="icone qui va bien Lus">
-        	<?php elseif($message['read_msg'] == 1) : ?>
-        		<input type="submit" name="msgNonLu" id="msgNonLu" class="btn btn-warning btn-lg" value="icone qui va bien Non Lus">
-        	<?php endif; ?>
-        </form>
+        <div class="row">
+            <div class="col-lg-6">
+                <form method="post">
+                    <?php if($message['read_msg'] == 0) : ?>
+                        <input type="submit" name="msgLu" id="msgLu" class="btn btn-success btn-lg" value="Marquer Lus">
+                    <?php elseif($message['read_msg'] == 1) : ?>
+                        <input type="submit" name="msgNonLu" id="msgNonLu" class="btn btn-warning btn-lg" value="Marquer Non Lus">
+                    <?php endif; ?>
+                    <a class="btn btn-info btn-lg"  href="listMessages.php">Liste des messages</a>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <a class="btn btn-danger btn-lg" href="deleteMessage.php?id=<?=$message['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+            </div>
 
-        <a class="btn btn-info btn-lg"  href="listMessages.php">Liste des messages</a>
-		<a class="btn btn-danger btn-lg" href="deleteMessage.php?id=<?=$message['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+        </div>
 
 	</body>
 </html>
