@@ -44,11 +44,10 @@ require_once 'header.php';
  		<div>
             <h1>
                 <?= $info['name']; ?>
-                <?= ($is_logged == 'admin') ? '<a href="editInfoResto.php"><button class="btn btn-xs btn-info" type="button">Modifier les infos du restaurant</button></a>' : '' ; ?>
             </h1>
             <span><?= $info['adress'] . ' - ' . $info['zipcode'] . ' - ' .$info['city'] . ' - ' .$info['phone']; ?>
+                <?= (isset($is_logged) && $is_logged == 'admin') ? '<a href="editInfoResto.php">Modifier les infos du restaurant</a>' : '' ; ?>
             </span>
-
 
 		</div>
 

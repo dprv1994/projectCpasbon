@@ -26,18 +26,17 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
     die;
 }
 
-if(isset($_POST['delete'])){
-	if(isset($_POST['delete'])){
-		$delete = $bdd->prepare('DELETE FROM users WHERE id = :idUser');
-		$delete->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
 
-		if($delete->execute()){
-			header('Location: listUser.php'); 
-			die;
-		}
+if(isset($_POST['delete'])){
+
+	$delete = $bdd->prepare('DELETE FROM users WHERE id = :idUser');
+	$delete->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
+
+	if($delete->execute()){
+		header('Location: listUser.php');
+		die;
 	}
 }
-
 require_once 'header.php';
 ?>
 
