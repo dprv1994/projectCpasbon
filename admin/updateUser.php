@@ -9,8 +9,6 @@ if (!isset($is_logged)) {
     die;
 }
 
-
-
 if(isset($_SESSION['id']) && is_numeric($_SESSION['id'])) {
 	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
 	$query->bindValue(':idUser', $_SESSION['id'], PDO::PARAM_INT);
@@ -82,8 +80,8 @@ if(!empty($_POST)) {
 
 require_once 'header.php';
 ?>
+
 		<form method="post" enctype="multipart/form-data" class="col-lg-4 col-lg-offset-4">
-            <h1>Mon Profil</h1>
             <div class="from-group">
                 <label for="password">Nouveau mot de passe : </label><br>
                 <input class="form-control" type="password" id="password" name="password">
