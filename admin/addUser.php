@@ -4,6 +4,14 @@ require_once '../inc/connect.php';
 require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
 
+
+if (!isset($is_logged)) {
+    header('Location:login.php');
+    die;
+}
+
+
+
 use Respect\Validation\Validator as verif;
 
 $post=[];
