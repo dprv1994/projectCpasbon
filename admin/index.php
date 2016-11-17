@@ -112,8 +112,12 @@ require_once 'header.php';
 								<td><?=$prep['id_autor']?></td>
 
 								<td>
-									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Actualiser recette"><i class='glyphicon glyphicon-pencil'></i></a><a href="delete_recipe.php?id=<?=$prep['id'];?>" title="Supprimer recette"> <i class="glyphicon glyphicon-remove"></i></a>
+									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Modifier recette"><i class='glyphicon glyphicon-pencil'></i></a>
 								</td>
+                                <td>
+                                    <a href="delete_recipe.php?id=<?=$prep['id'];?>" title="Supprimer recette"> <i class="glyphicon glyphicon-remove"></i></a>
+
+                                </td>
 							</tr>
 						<?php endforeach; ?>
 					</tbody>

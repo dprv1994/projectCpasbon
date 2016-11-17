@@ -20,12 +20,12 @@ if($query->execute()) {
 
 require_once 'header.php';
 ?>
-        <h1>Liste des utilisateurs :
+        <h1>Liste des utilisateurs :</h1>
         <?php if ($is_logged == 'admin') {
-            echo '<a href="addUser.php"><button class="btn btn-xs btn-info" type="button">Ajout d\'utilisateur</button></a>';
+            echo '<a href="addUser.php"><button class="btn btn-xs btn-info" type="button">Ajout d\'utilisateur</button></a><br><br>';
         }
         ?>
-        </h1>
+
 		<table class="table-striped col-lg-12">
 			<thead>
 				<tr>

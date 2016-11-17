@@ -20,7 +20,7 @@
               <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
             </li>
             <li class="navitem">
-                <?= (isset($is_logged))? '<a class="nav-link" href="add_recipe.php">Ajout Recette</a>' : ''; ?>
+                <?= (isset($is_logged))? '<a class="nav-link" href="list_recipes.php">Liste des Recettes</a>' : ''; ?>
             </li>
             <li class="navitem">
                 <?= (isset($is_logged))? '<a class="nav-link" href="listUser.php">Liste des Users</a>' : ''; ?>
