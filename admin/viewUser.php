@@ -43,7 +43,7 @@ require_once 'header.php';
                 	Supprimer l'utilisateur
                 </button>
             </form> -->
-            <a class="btn btn-danger btn-lg center-block" href="deleteUser.php?id=<?= $user['id'] ?>">Supprimer l'utilisateur</a>
+            <a class="btn btn-danger btn-lg center-block" href="deleteUser.php?id=<?= $user['id']; ?>">Supprimer l'utilisateur</a>
         <?php endif; ?>
     </div>
     <div class="col-lg-6">
