@@ -102,6 +102,6 @@ require_once 'header.php';
     </ul>
 </div>
 <div class="col-lg-6">
-    <li> <strong> Avatar : </strong><img src="<?= $users['avatar'] ?>"> </li>
+    <strong> Avatar : </strong><img src="<?= $users['avatar'] ?>">
 </div>
 <?php require_once 'footer.php'; ?>
