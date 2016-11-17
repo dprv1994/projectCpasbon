@@ -29,7 +29,7 @@ if($query->execute()){
 require_once 'header.php';
 ?>
         <h1>Liste des recettes :</h1>
-        <a href="add_recipe.php" class='btn btn-xs btn-info'>Ajout d'une recette</a>
+        <a href="add_recipe.php" class='btn btn-xs btn-info'>Ajouter une recette</a>
         <br><br>
 
         <form method="get">
@@ -44,8 +44,7 @@ require_once 'header.php';
 					<th>Préparation</th>
 					<th>Date de création</th>
 					<th>Auteur</th>
-                    <th></th>
-                    <th></th>
+                    <th>Action</th>
 				</tr>
 			</thead>
 
@@ -82,9 +81,9 @@ require_once 'header.php';
 							else { 
 								echo date('d/m/Y H:i', strtotime($recipe['date_creation']));
 							}?></td>
-						<td><?php echo $recipe['id_autor'];?></td>
-	                    <td style="min-width:20px;"><a  href="update_recipe.php?id=<?php $recipe['id']?>" title="Modifier recette"><i class="glyphicon glyphicon-pencil"></i> </a></td>
-	                    <td style="min-width:20px;"><a href="delete_recipe.php?id=<?php  $recipe['id']?>" title="Supprimer recette"><i class="glyphicon glyphicon-remove"></i></a></td>
+						<td style="min-width:20px;"><?php echo $recipe['id_autor'];?></td>
+	                    <td style="min-width:20px;"><a  href="update_recipe.php?id=<?php $recipe['id']?>" title="Modifier recette"><i class="glyphicon glyphicon-pencil"></i> </a>
+	                    <a href="delete_recipe.php?id=<?php  $recipe['id']?>" title="Supprimer recette"><i class="glyphicon glyphicon-remove"></i></a></td>
 	                    </tr>
 					<?php } ?>
 					
@@ -94,5 +93,5 @@ require_once 'header.php';
 		</table>
 
 		<br><br>
-	</body><!-- /*preg_replace($patterns, $replacements, $string);*/ -->
+	</body>
 </html>

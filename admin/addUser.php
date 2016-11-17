@@ -24,27 +24,27 @@ if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
 	if(!verif::length(3, null)->validate($post['lastname'])) {
-		$errors[] = 'Veuillez entrer un Nom valide';
+		$errors[] = 'Veuillez entrer un nom valide.';
 	}
 
 	if(!verif::length(3, null)->validate($post['firstname'])) {
-		$errors[] = 'Veuillez entrer un Prénom valide';
+		$errors[] = 'Veuillez entrer un prénom valide.';
 	}
 
 	if(!verif::email()->validate($post['email'])) {
-		$errors[] = 'Veuillez entrer un Email valide';
+		$errors[] = 'Veuillez entrer une adresse email valide0';
 	}
 
 	if(!verif::length(3, 30)->validate($post['username'])) {
-		$errors[] = 'Veuillez entrer Pseudo valide';
+		$errors[] = 'Veuillez entrer un pseudo valide.';
 	}
 
 	if(!verif::length(8, 30)->validate($post['password'])) {
-		$errors[] = 'Veuillez taper un mot de passe valide compris entre 8 et 30 caractères';
+		$errors[] = 'Veuillez entrer un mot de passe compris entre 8 et 30 caractères';
 	}
 
 	if(!isset($post['role'])) {
-		$errors[] = 'Veuillez sélectionner un rôle à cet utilisateur';
+		$errors[] = 'Veuillez sélectionner un statut à cet utilisateur';
 	}
 
 	if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){
@@ -99,10 +99,10 @@ if(!empty($_POST)) {
 require_once 'header.php';
 ?>
         <div class="">
-            <h1>Ajout D'utilisateurs</h1>
+            <h1>Ajouter un profil</h1>
 
             <?php if ($formValid == true): ?>
-                <p class="alert-success">Vous avez réussi !</p>
+                <p class="alert-success">Un nouveau profil a été crée.</p>
             <?php elseif ($haserror == true): ?>
                 <p class="alert-danger"><?= implode('<br>', $errors);?></p>
             <?php endif; ?>
@@ -110,42 +110,42 @@ require_once 'header.php';
     		<form method="post" enctype="multipart/form-data">
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="lastname">Nom :</label>
+                        <label for="lastname">Nom : </label>
                         <input class="form-control" type="text" id="lastname" name="lastname">
                     </div>
                     <div class="form-group">
-                        <label for="firstname">Prénom :</label>
+                        <label for="firstname">Prénom : </label>
                         <input class="form-control" type="text" id="firstname" name="firstname">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email :</label>
+                        <label for="email">Adresse email : </label>
                         <input class="form-control" type="email" id="email" name="email">
                     </div>
                     <div class="form-group">
-                        <label for="username">Pseudo :</label>
+                        <label for="username">Pseudo : </label>
                         <input class="form-control" type="text" id="username" name="username">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
-                        <label for="password">Mot de passe :</label>
+                        <label for="password">Mot de passe : </label>
                         <input class="form-control" type="password" id="password" name="password">
                     </div>
                     <div class="form-group">
-                        <label for="role">Droit :</label>
+                        <label for="role">Droit : </label>
                         <select class="form-control" id="role" name="role">
-                            <option disabled selected>Définir un rôle</option>
-                            <option value="1">Admin</option>
+                            <option disabled selected>Choisir un statut</option>
+                            <option value="1">Administrateur</option>
                             <option value="2">Editeur</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="avatar">Avatar :</label>
+                        <label for="avatar">Avatar : </label>
                         <input type="file" id="avatar" name="avatar" accept="image/*">
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <input class="btn btn-info btn-lg center-block" type="submit" name="Enregistrer cet utilisateur">
+                    <input class="btn btn-info btn-lg center-block" type="submit" name="Enregistrer ce profil">
                 </div>
 
     		</form>

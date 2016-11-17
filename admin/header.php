@@ -20,16 +20,16 @@
               <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
             </li>
             <li class="navitem">
-                <?= (isset($is_logged))? '<a class="nav-link" href="list_recipes.php">Liste des Recettes</a>' : ''; ?>
+                <?= (isset($is_logged))? '<a class="nav-link" href="list_recipes.php">Liste des recettes</a>' : ''; ?>
             </li>
             <li class="navitem">
-                <?= (isset($is_logged))? '<a class="nav-link" href="listUser.php">Liste des Users</a>' : ''; ?>
+                <?= (isset($is_logged))? '<a class="nav-link" href="listUser.php">Liste des utilisateurs</a>' : ''; ?>
             </li>
             <li class="navitem">
-                <?= (isset($is_logged))? '<a class="nav-link" href="updateUser.php">Mon Profil</a>' : ''; ?>
+                <?= (isset($is_logged))? '<a class="nav-link" href="updateUser.php">Mon profil</a>' : ''; ?>
             </li>
             <li class="navitem">
-                <?=(isset($is_logged))? '<a class="nav-link" href="logout.php">Deconnexion</a>' : ''; ?>
+                <?=(isset($is_logged))? '<a class="nav-link" href="logout.php">Se déconnecter</a>' : ''; ?>
             </li>
           </ul>
         </nav>

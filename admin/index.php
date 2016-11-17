@@ -57,14 +57,15 @@ require_once 'header.php';
 
 <?php if ($is_logged == 'admin'): ?>
     <div>
-        <h2>Vos Messages:</h2>
-        <a class="btn btn-info btn-xs" href="listMessages.php">afficher tous les messages</a>
+        <h2>Vos Messages</h2>
+        <a class="btn btn-info btn-xs" href="listMessages.php">Afficher tous les messages</a>
                         <table class="table">
                 <thead>
                     <tr>
-                        <th>Lu/Pas lu</th>
-                        <th>Sujet</th>
-                        <th>email</th>
+                        <th>Lu/Non lu</th>
+                        <th>Objet</th>
+                        <th>Expéditeur</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
@@ -77,9 +78,9 @@ require_once 'header.php';
                             <td><?=$user['email']?></td>
 
                             <td>
-                                <a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
+                                <a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir le message</a>
                                 &nbsp; - &nbsp;
-                                <a href="deleteMessage.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+                                <a href="deleteMessage.php?id=<?=$user['id'];?>" title="Supprimer le message">Supprimer</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -91,15 +92,16 @@ require_once 'header.php';
 <?php endif; ?>
 
 		<div>
-			<h2>Liste de recette:</h2>
-            <a class="btn btn-xs btn-info" href="list_recipes.php">afficher toute les recettes</a><br><br>
+			<h2>Liste des recettes</h2>
+            <a class="btn btn-xs btn-info" href="list_recipes.php">Afficher toutes les recettes</a><br><br>
 				<table class="table">
 					<thead>
 						<tr>
-							<th>titre</th>
-							<th>recette</th>
-							<th>date/heure</th>
+							<th>Titre</th>
+							<th>Recette</th>
+							<th>Date de création</th>
 							<th>Auteur</th>
+                            <th>Action</th>
 
 						</tr>
 					</thead>
@@ -109,14 +111,14 @@ require_once 'header.php';
 							<tr>
 								<td><?=$prep['title']?></td>
 								<td><?=$prep['preparation']?></td>
-								<td><?=$prep['date_creation']?></td>
+								<td><?=date('d/m/Y H:i', strtotime($prep['date_creation']))?></td>
 								<td><?=$prep['id_autor']?></td>
 
 								<td>
-									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Modifier recette"><i class='glyphicon glyphicon-pencil'></i></a>
+									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Modifier la recette"><i class='glyphicon glyphicon-pencil'></i></a>
 								</td>
                                 <td>
-                                    <a href="delete_recipe.php?id=<?=$prep['id'];?>" title="Supprimer recette"> <i class="glyphicon glyphicon-remove"></i></a>
+                                    <a href="delete_recipe.php?id=<?=$prep['id'];?>" title="Supprimer la recette"> <i class="glyphicon glyphicon-remove"></i></a>
 
                                 </td>
 							</tr>

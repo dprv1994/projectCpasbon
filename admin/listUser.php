@@ -22,7 +22,7 @@ require_once 'header.php';
 ?>
         <h1>Liste des utilisateurs</h1>
         <?php if ($is_logged == 'admin') {
-            echo '<a href="addUser.php"><button class="btn btn-xs btn-info" type="button">Ajout d\'utilisateur</button></a><br><br>';
+            echo '<a href="addUser.php"><button class="btn btn-xs btn-info" type="button">Ajouter un profil</button></a><br><br>';
         }
         ?>
 

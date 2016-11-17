@@ -25,14 +25,15 @@ require_once 'header.php';
 
  <?php if ($is_logged == 'admin'): ?>
     <div>
-        <h2>Vos Messages:</h2>
+        <h2>Messages reçus</h2>
         
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Lu/Pas lu</th>
-                        <th>Sujet</th>
-                        <th>email</th>
+                        <th>Lu/Non lu</th>
+                        <th>Objet</th>
+                        <th>Expéditeur</th>
+                        <th>Action</th>
 
                     </tr>
                 </thead>
@@ -45,7 +46,7 @@ require_once 'header.php';
                             <td><?=$user['email']?></td>
 
                             <td>
-                                <a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
+                                <a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir le message</a>
                                 &nbsp; - &nbsp;
                                 <a href="deleteMessage.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
                             </td>

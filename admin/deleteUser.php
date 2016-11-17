@@ -36,23 +36,23 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 require_once 'header.php';
 ?>
 
-		<h1>Supprimer un Utilisateur</h1>
+		<h1>Supprimer le profil</h1>
 
 		<main class="container">
 
 		<?php if(empty($user)): ?>
 			<div class="alert alert-danger">
-				Cet utilisateur n'existe pas.
+				Ce profil n'existe pas.
 			</div>
 		<?php else: ?>
-			<p>Voulez-vous vraiment supprimer la recette : <?=$user['username'];?>?</p>
+			<p>Voulez-vous vraiment supprimer le profil de : <?=$user['username'];?>?</p>
 		<?php endif; ?>
 
 			<form method="POST">
 				
 				 <input type="button" onclick="history.back();" value="Annuler" class="btn btn-default">
 
-				 <input type="submit" name="delete" value="Oui, je veux supprimer cette recette." class="btn btn-success">
+				 <input type="submit" name="delete" value="Oui, je veux supprimer ce profil." class="btn btn-success">
 			</form>
 
 		</main>
