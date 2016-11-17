@@ -1,11 +1,17 @@
-<?php 
-session_start();
+<?php
+require_once '../inc/session.php';
+
+if (!isset($is_logged)) {
+    header('Location:login.php');
+    die;
+}
 
 if (isset($_GET['logout']) && $_GET['logout'] == 'yes') {
 	// Détruit les entrées de username et password de $_SESSION
-	unset($_SESSION['username'], $_SESSION['password']);
+	unset($_SESSION['user']);
+    session_destroy();
 	// Redirige vers la page voulu
-	header('Location: login.php');
+	header('Location:login.php');
 	die();
 }
 
@@ -19,18 +25,18 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'yes') {
  </head>
  <body>
 
-	<?php if (isset($_SESSION['username']) && isset($_SESSION['password'])) : ?>
+	<?php if (isset($_SESSION['user'])) : ?>
 
-	<?php echo $_SESSION['username']; ?>, veux-tu te déconnecter ? Vraiment
+	<?php echo $_SESSION['user']['username']; ?>, veux-tu te déconnecter ? Vraiment
 
 	<br><br>
 
-	<a href="deconnexion.php?logout=yes">Oui, je veux me déconnecter</a>
+	<a href="logout.php?logout=yes">Oui, je veux me déconnecter</a>
 
 	<?php else: ?>
 		Tu es déjà déconnecté, tu n'existes pas !!
 	<br><br>
  	<?php endif; ?>
- 	
+
  </body>
  </html>
