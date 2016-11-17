@@ -3,40 +3,54 @@ require_once 'inc/session.php';
 require_once 'inc/connect.php';
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $query = $bdd->prepare('SELECT * FROM recipe WHERE id = :id');
+    $query->bindValue(':id', $_GET['id']);
+    if ($query->execute()) {
+        $recette = $query->fetch(PDO::FETCH_ASSOC);
+    }
 
 }else {
     $notexist = true ;
 }
 
-$query = $bdd->prepare('SELECT * FROM recipe ORDER BY date_creation');
-if ($query->execute()) {
-	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
-}
 ?>
 
 
 <?php require_once 'header.php' ; ?>
 
-<div class="search">
-    <div class="wrapper"></div>
-</div>
-<div class="listRecipes">
-    <div class="wrapper">
-        <h1>Liste des recettes</h1>
-        <div class="grid-4">
 
-            <?php foreach ($preparation as $value): ?>
-                <div class="ficheRecipe">
-                    <h1><?= $value['title'];?><small class="author"><?= $value['id_autor'];?></small></h1>
-                    <img src="<?= $value['url_img'];?>" alt="">
-                    <?php if (isset($is_logged)): ?>
-                        <a href="admin/update_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Modifier</button></a>
-                        <a href="admin/delete_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Supprimer</button></a>
-                    <?php endif; ?>
+    <div class="wrapper">
+        <div class="recipeView">
+            <h1><?= $recette['title'];?></h1>
+            <img src="<?= $recette['url_img'];?>" alt="">
+            <div class="grid-2">
+                <div class="info">
+                    <span>date de creation : <?= $recette['date_creation'];?></span>
+                    <span>categorie : <?= $recette['category'];?></span><br>
+                    <span>auteur : <?= $recette['id_autor'];?></span><br>
                 </div>
-            <?php endforeach; ?>
+                <div class="ingredients">
+                    <ul>
+                        <li>ingredient 1</li>
+                        <li>ingredient 2</li>
+                        <li>ingredient 3</li>
+                        <li>ingredient 4</li>
+                        <li>ingredient 5</li>
+                        <li>ingredient 6</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="content">
+                        <?= $recette['id_autor'];?>
+            </p>
         </div>
+
+        <!-- admin seulement -->
+        <button type="button" name="button">Modifier la recette</button>
+        <button type="button" name="button">Suprimmer la recette</button>
     </div>
-</div>
+
+
+
 
 <?php require_once 'footer.php' ; ?>

@@ -20,7 +20,7 @@ if ($query->execute()) {
 
             <?php foreach ($preparation as $value): ?>
                 <div class="ficheRecipe">
-                    <h1><?= $value['title'];?><small class="author"><?= $value['id_autor'];?></small></h1>
+                    <h1><a href="RecipeFront.php?id=<?= $value['id'];?>"><?= $value['title'];?></a><small class="author"><?= $value['id_autor'];?></small></h1>
                     <img src="<?= $value['url_img'];?>" alt="">
                     <?php if (isset($is_logged)): ?>
                         <a href="admin/update_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Modifier</button></a>

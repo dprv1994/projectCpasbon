@@ -53,38 +53,29 @@ if(!empty($_POST)) {
 
 require_once 'header.php';
 ?>
-<h1>Contact</h1>
+<div class="wrapper">
+
         <div class="contact">
+            <h1>Contact</h1>
             <?php if ($formValid == true): ?>
                 <p class="success">Votre message a été envoyé !</p>
             <?php elseif ($haserror == true): ?>
                 <p class="noSuccess"><?= implode('<br>', $errors);?></p>
             <?php endif; ?>
 
-            <form class=""method="post">
-                <div class="grid-2-small-1">
-                        <div class="contactLeft">
+            <form class="contactForm" method="post">
                             <label for="username">Votre nom</label>
                             <input type="text" id="username" name="username" placeholder="ex : Pierre Marechal">
-
-                            <br><br>
-
                             <label for="email">Votre email</label>
                             <input type="email" id="email" name="email" placeholder="ex : votreemail@fai.fr">
-                        </div> <!-- contactLeft END! -->
-                        <div class="contactRight">
                             <label for="subject">Objet du message</label>
                             <input type="text" id="subject" name="subject" placeholder="ex : Surprise lors de notre dernière venue">
-
-                            <br><br>
-
                             <label for="content">Contenu de votre message</label>
                             <textarea id="content" name="content" placeholder="Bonjour , ......"></textarea>
-                        </div> <!-- contactRight END! -->
-                </div> <!-- grid-2-small-1 END! -->
                 <button type="submit" name="button">Envoyer le message</button>
             </form>
         </div> <!-- contact END! -->
-<?php 
+</div>
+<?php
 require_once 'footer.php';
 ?>
