@@ -28,6 +28,9 @@
             <li class="navitem">
                 <?= (isset($is_logged))? '<a class="nav-link" href="updateUser.php">Mon Profil</a>' : ''; ?>
             </li>
+            <li class="navitem">
+                <?=(isset($is_logged))? '<a class="nav-link" href="logout.php">Deconnexion</a>' : ''; ?>
+            </li>
           </ul>
         </nav>
 
