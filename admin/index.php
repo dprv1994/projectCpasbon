@@ -53,38 +53,40 @@ require_once 'header.php';
 
 		<hr>
 
-		<div>
-			<h2>Vos Messages: <small><a href="#">afficher tous les messages</a></small></h2>
+<?php if ($is_logged == 'admin'): ?>
+    <div>
+        <h2>Vos Messages: <small><a href="#">afficher tous les messages</a></small></h2>
 
-							<table class="table">
-					<thead>
-						<tr>
-							<th>Lu/Pas lu</th>
-							<th>Sujet</th>
-							<th>email</th>
+                        <table class="table">
+                <thead>
+                    <tr>
+                        <th>Lu/Pas lu</th>
+                        <th>Sujet</th>
+                        <th>email</th>
 
-						</tr>
-					</thead>
+                    </tr>
+                </thead>
 
-					<tbody>
-						<?php foreach ($users as $user): ?>
-							<tr>
-								<td><?= ($user['read_msg'] == 0)? 'non lu': 'lu' ; ?></td>
-								<td><?=$user['subject']?></td>
-								<td><?=$user['email']?></td>
+                <tbody>
+                    <?php foreach ($users as $user): ?>
+                        <tr>
+                            <td><?= ($user['read_msg'] == 0)? 'non lu': 'lu' ; ?></td>
+                            <td><?=$user['subject']?></td>
+                            <td><?=$user['email']?></td>
 
-								<td>
-									<a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
-									&nbsp; - &nbsp;
-									<a href="delete_message.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
-								</td>
-							</tr>
-						<?php endforeach; ?>
-					</tbody>
-				</table>
-		</div>
+                            <td>
+                                <a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
+                                &nbsp; - &nbsp;
+                                <a href="delete_message.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+    </div>
 
-		<hr>
+    <hr>
+<?php endif; ?>
 
 		<div>
 			<h2>Liste de recette: <small><a href="#">afficher toute les recettes</a></small></h2>

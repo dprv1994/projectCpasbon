@@ -26,25 +26,23 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
     die;
 }
 
+
 if(isset($_POST['delete'])){
-	if(isset($_POST['delete'])){ 
-		$delete = $bdd->prepare('DELETE FROM users WHERE id = :idUser');
-		$delete->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
 
+	$delete = $bdd->prepare('DELETE FROM users WHERE id = :idUser');
+	$delete->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
 
-		if($delete->execute()){
-			header('Location: listUser.php'); 
-			die;
-		}
+	if($delete->execute()){
+		header('Location: listUser.php');
+		die;
 	}
 }
-
 require_once 'header.php';
 ?>
 
         <ul>
 			<?php
-				echo '<li> <strong> Nom : </strong> '.$user['lastname'].'</li> <li> <strong> Prénom : </strong> '.$user['firstname'].'</li> <li> <strong> Email : </strong>'.$user['email'].'</li> <li> <strong> Pseudo : </strong>'.$user['username'].'</li> <li> <strong> Rôle : </strong>'.affichRole($user['role']).'</li> <li><span id="img" class="imgClass>" <strong> Avatar : </strong> <img src="'.$user['avatar'].'"> </span> </li>';
+				echo '<li> <strong> Nom : </strong> '.$user['lastname'].'</li> <li> <strong> Prénom : </strong> '.$user['firstname'].'</li> <li> <strong> Email : </strong>'.$user['email'].'</li> <li> <strong> Pseudo : </strong>'.$user['username'].'</li> <li> <strong> Rôle : </strong>'.affichRole($user['role']).'</li> <li> <strong> Avatar : </strong> <img src="'.$user['avatar'].'"> </li>';
 			?>
 		</ul>
 		<br>
