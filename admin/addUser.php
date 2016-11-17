@@ -5,7 +5,7 @@ require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
 
 
-if (!isset($is_logged)) {
+if (!isset($is_logged) || $is_logged == 'editeur') {
     header('Location:login.php');
     die;
 }

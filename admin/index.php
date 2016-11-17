@@ -45,9 +45,9 @@ require_once 'header.php';
  		<div>
             <h1>
                 <?= $info['name']; ?>
+                <?= (isset($is_logged) && $is_logged == 'admin') ? '<a class="btn btn-info btn-xs" href="editInfoResto.php">Modifier les infos du restaurant</a>' : '' ; ?>
             </h1>
             <span><?= $info['adress'] . ' - ' . $info['zipcode'] . ' - ' .$info['city'] . ' - ' .$info['phone']; ?>
-                <?= (isset($is_logged) && $is_logged == 'admin') ? '<a href="editInfoResto.php">Modifier les infos du restaurant</a>' : '' ; ?>
             </span>
 
 		</div>
