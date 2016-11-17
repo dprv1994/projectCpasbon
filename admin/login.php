@@ -4,7 +4,7 @@ require_once '../inc/connect.php';
 require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
 
-if ($is_logged) {
+if (isset($is_logged)) {
     header('Location:index.php');
     die;
 }
