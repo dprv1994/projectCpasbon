@@ -38,7 +38,7 @@ require_once 'header.php';
         <br><br>
 
 
-        <a class="btn btn-info btn-lg"  href="index.php">Liste des messages</a>
+        <a class="btn btn-info btn-lg"  href="listMessages.php">Liste des messages</a>
 		<a class="btn btn-danger btn-lg" href="deleteMessage.php?id=<?=$message['id'];?>" title="Editer cet utilisateur">Supprimer</a>
 
 	</body>
