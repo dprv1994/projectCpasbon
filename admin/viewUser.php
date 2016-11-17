@@ -28,7 +28,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 require_once 'header.php';
 ?>
-
+<h1><?= ucfirst($user['username']); ?></h1>
     <div class="col-lg-6">
         <strong> Nom : </strong><?= $user['lastname']; ?><br>
         <strong> Prénom : </strong><?= $user['firstname']; ?><br>
@@ -43,6 +43,7 @@ require_once 'header.php';
                 	Supprimer l'utilisateur
                 </button>
             </form> -->
+            <br><br>
             <a class="btn btn-danger btn-lg center-block" href="deleteUser.php?id=<?= $user['id'] ?>">Supprimer l'utilisateur</a>
         <?php endif; ?>
     </div>
