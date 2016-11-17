@@ -9,17 +9,17 @@ if (!isset($is_logged)) {
     die;
 }
 
-if(isset($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
+if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
-	$query->bindValue(':idUser', $_SESSION['user']['id'], PDO::PARAM_INT);
+	$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
 
 	if($query->execute()) {
 		$users = $query->fetch();
 	}
 }
-elseif(isset($_GET['id']) && is_numeric($_GET['id'])) {
+elseif(isset($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
 	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
-	$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
+	$query->bindValue(':idUser', $_SESSION['user']['id'], PDO::PARAM_INT);
 
 	if($query->execute()) {
 		$users = $query->fetch();
