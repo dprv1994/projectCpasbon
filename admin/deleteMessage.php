@@ -20,7 +20,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			$delete->bindValue(':idMessage', $_GET['id'], PDO::PARAM_INT);
 
 			if ($delete->execute()) {
-				header('Location: view_message.php');
+				header('Location: listMessages.php');
 				die;
 			}
 		}
