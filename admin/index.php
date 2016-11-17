@@ -58,7 +58,7 @@ require_once 'header.php';
 <?php if ($is_logged == 'admin'): ?>
     <div>
         <h2>Vos Messages:</h2>
-        <a class="btn btn-info btn-xs" href="#">afficher tous les messages</a>
+        <a class="btn btn-info btn-xs" href="listMessages.php">afficher tous les messages</a>
                         <table class="table">
                 <thead>
                     <tr>
