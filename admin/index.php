@@ -39,9 +39,7 @@ require_once 'header.php';
     a faire :<br>
     id auteur : rechercher si c l'id ou le nom que l'on doit rentrer et sinon si c l'id faire une jointure.<br>
     Penser a mettre Unique au champ email dans la table <br>
-    Uniformiser le nom des fichier <br>
-    view message a faire entier + admin seulement <br>
-    Update recette a faire bootstrap <br>
+    Uniformiser le nom des fichier ?????????? <br>
     page 404 a faire
 
 </code>

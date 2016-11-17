@@ -1,6 +1,13 @@
 <?php
 require_once 'inc/session.php';
 require_once 'inc/connect.php';
+
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+
+}else {
+    $notexist = true ;
+}
+
 $query = $bdd->prepare('SELECT * FROM recipe ORDER BY date_creation');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
