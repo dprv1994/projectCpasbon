@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 
 require_once '../inc/session.php';
@@ -23,7 +23,7 @@ if(isset($is_logged)) {
 
 
 	if (!empty($_POST)) {
-		$post = array_map('trim', array_map('strip_tags', $_POST)); 
+		$post = array_map('trim', array_map('strip_tags', $_POST));
 
 
 		if (!v::length(3, 30)->validate($post['title'])) {
@@ -31,7 +31,7 @@ if(isset($is_logged)) {
 		}
 
 		if (!v::length(15, 300)->validate($post['preparation'])) {
-			$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';	
+			$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
 		}
 
 		if (strlen($_FILES['url_img']['name']) > 0) {
@@ -47,7 +47,7 @@ if(isset($is_logged)) {
 					$url_imgName = uniqid('url_img_');
 					$url_imgName.= '.'.pathinfo($_FILES['url_img']['name'], PATHINFO_EXTENSION);
 
-					
+
 					if(!is_dir($dirUpload)){
 						mkdir($dirUpload, 0755);
 					}
@@ -57,14 +57,14 @@ if(isset($is_logged)) {
 					}
 				}
 				else{
-					$errors[] = 'Le type de fichier est invalide. Seules les extensions jpg/jpeg/gif/png sont autorisées.'; 
+					$errors[] = 'Le type de fichier est invalide. Seules les extensions jpg/jpeg/gif/png sont autorisées.';
 				}
 
 			}
-		}	
+		}
 
 
-			if (count($errors) === 0) { 
+			if (count($errors) === 0) {
 
 				$columnSQL = 'title = :title, preparation = :preparation, id_autor = :id_autor, date_creation = NOW()';
 
@@ -77,20 +77,20 @@ if(isset($is_logged)) {
 				$update->bindValue(':title', $post['title']);
 				$update->bindValue(':preparation', $post['preparation']);
 				$update->bindValue(':id_autor', $_SESSION['user']['username']);
-		
+
 				$update->bindValue(':idRecipe', $_GET['id'], PDO::PARAM_INT);
 
 				if ($updatephoto) {
-					$update->bindValue(':url_img', $_FILES['url_img']);	
+					$update->bindValue(':url_img', $_FILES['url_img']);
 				}
 
 				if ($update->execute()) {
 					$formValid=true;
 				}else {
-				
+
 				var_dump($update->errorInfo());
 				}
-				
+
 			} // fin count
 
 
@@ -112,9 +112,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 require_once 'header.php';
 
 ?>
-		<body>
-
-			<main class="container">
 
 				<h1 class="text-center">Modifier une recette</h1>
 
@@ -136,12 +133,12 @@ require_once 'header.php';
 
 						<div class="form-group">
 							<label for="title">Titre : </label>
-							<input type="text" id="title" name="title" value="<?=$recipe['title'];?>">
+							<input class="form-control" type="text" id="title" name="title" value="<?=$recipe['title'];?>">
 						</div>
 
 						<div class="form-group">
 							<label for="preparation">Contenu : </label>
-							<textarea type="text" id="preparation" name="preparation"><?=$recipe['preparation'];?></textarea>
+							<textarea class="form-control" type="text" id="preparation" name="preparation"><?=$recipe['preparation'];?></textarea>
 						</div>
 
 						<div class="form-group">
@@ -151,7 +148,7 @@ require_once 'header.php';
 
 
 						<div class="form-group">
-							<input type="submit" name="submit" value="Mettre à jour" class="btn">
+							<input class="btn btn-info btn-lg center-block" type="submit" name="submit" value="Mettre à jour" class="btn">
 						</div>
 
 					</form>
@@ -159,7 +156,4 @@ require_once 'header.php';
 				<?php endif; ?>
 
 			</main>
-
-		</body>
-
-	</html>
+<?php require_once  'footer.php'; ?>
