@@ -8,6 +8,15 @@ if (!isset($is_logged)) {
     die;
 }
 
+use Respect\Validation\Validator as verif;
+
+$post=[];
+$errors=[];
+$formValid=false;
+$haserror=false;
+$dirUpload='../img/';
+
+
 
 require_once 'header.php'; ?>
 

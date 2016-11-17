@@ -40,6 +40,8 @@ require_once 'header.php';
     id auteur : rechercher si c l'id ou le nom que l'on doit rentrer et sinon si c l'id faire une jointure.<br>
     Penser a mettre Unique au champ email dans la table <br>
     Uniformiser le nom des fichier ?????????? <br>
+    Faire l'Update information resto (Théo) <br>
+    Faire le slid en JavaScript (Théo) <br>
 
 </code>
 <br><br>
