@@ -76,7 +76,7 @@ require_once 'header.php';
                             <td>
                                 <a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir message</a>
                                 &nbsp; - &nbsp;
-                                <a href="delete_message.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+                                <a href="deleteMessage.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
