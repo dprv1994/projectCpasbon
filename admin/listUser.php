@@ -34,17 +34,17 @@ require_once 'header.php';
 					<th>Prénom</th>
 					<th>Email</th>
 					<th>Pseudo</th>
+                    <th>Information</th>
 					<th>Modifier</th>
-					<th>Information</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<?php foreach ($users as $user) {
 					echo '<tr><td>'. affichRole($user['role']).'</td><td>'.$user['lastname'].'</td><td>'.$user['firstname'].'</td><td>'.$user['email'].'</td><td>'.$user['username'].'</td><td>';
-                    echo ($is_logged == 'admin') ? '<a href="updateUser.php?id='.$user['id'].'">Modifier l\'utilisateur</a>' : 'Non autorisé';
-                    echo '</td><td>';
                     echo '<a href="viewUser.php?id='.$user['id'].'">Voir l\'utilisateur</a>';
+                    echo '</td><td>';
+                    echo ($is_logged == 'admin') ? '<a href="updateUser.php?id='.$user['id'].'">Modifier l\'utilisateur</a>' : 'Non autorisé';
                     echo '</td></tr>';
 				}
 				?>

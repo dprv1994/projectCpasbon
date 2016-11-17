@@ -94,6 +94,7 @@ require_once 'header.php';
         <strong> Prénom : </strong><?= $users['firstname'] ?><br>
         <strong> Email : </strong><?= $users['email'] ?><br>
         <strong> Pseudo : </strong><?= $users['username'] ?><br>
+        <h4>Modification d'informations :</h4>
         <form method="post" enctype="multipart/form-data">
             <div class="from-group">
                 <label for="password">Nouveau mot de passe : </label><br>
