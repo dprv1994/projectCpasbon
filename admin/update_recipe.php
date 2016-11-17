@@ -8,64 +8,81 @@ require_once '../vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
+if (!isset($is_logged)) {
+    header('Location:login.php');
+    die;
+}
+
 $post = [];
 $errors= [];
-$dirUpload = 'img/';
-
+$dirUpload = '../img/recette/';
+$updatephoto = false ;
 
 
 if(isset($is_logged)) {
 
 
 	if (!empty($_POST)) {
-		$post = array_map('trim', array_map('strip_tags', $_POST)); var_dump($_POST); var_dump($_SESSION);
+		$post = array_map('trim', array_map('strip_tags', $_POST)); 
 
 
-		if (!v::alnum()->length(3, 30)->validate($post['title'])) {
+		if (!v::length(3, 30)->validate($post['title'])) {
 			$errors[] = 'Vous devez entrer entre 3 et 30 caractères.';
 		}
 
-		if (!v::alnum()->length(15, 300)->validate($post['preparation'])) {
+		if (!v::length(15, 300)->validate($post['preparation'])) {
 			$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';	
 		}
 
-		if(!is_uploaded_file($_FILES['url_img']['tmp_name']) || !file_exists($_FILES['url_img']['tmp_name'])){
-			$errors[] = 'Vous devez ajouter une photo.';
-		}
-		else{
-			$finfo = new finfo();
-			$mimeType = $finfo->file($_FILES['url_img']['tmp_name'], FILEINFO_MIME_TYPE);
-
-			if(in_array($mimeType, $mimeTypeAllow)){
-				$url_imgName = uniqid('url_img_');
-				$url_imgName.= '.'.pathinfo($_FILES['url_img']['name'], PATHINFO_EXTENSION);
-
-				
-				if(!is_dir($dirUpload)){
-					mkdir($dirUpload, 0755);
-				}
-
-				if(!move_uploaded_file($_FILES['url_img']['tmp_name'], $dirUpload.$url_imgName)){
-					$errors[] = 'Erreur lors de l\'envoi de votre photo.';
-				}
+		if (strlen($_FILES['url_img']['name']) > 0) {
+			$updatephoto = true;
+			if(!is_uploaded_file($_FILES['url_img']['tmp_name']) || !file_exists($_FILES['url_img']['tmp_name'])){
+				$errors[] = 'Vous devez ajouter une photo.';
 			}
 			else{
-				$errors[] = 'Le type de fichier est invalide. Seules les extensions jpg/jpeg/gif/png sont autorisées.'; 
-			}
+				$finfo = new finfo();
+				$mimeType = $finfo->file($_FILES['url_img']['tmp_name'], FILEINFO_MIME_TYPE);
 
+				if(in_array($mimeType, $mimeTypeAllow)){
+					$url_imgName = uniqid('url_img_');
+					$url_imgName.= '.'.pathinfo($_FILES['url_img']['name'], PATHINFO_EXTENSION);
+
+					
+					if(!is_dir($dirUpload)){
+						mkdir($dirUpload, 0755);
+					}
+
+					if(!move_uploaded_file($_FILES['url_img']['tmp_name'], $dirUpload.$url_imgName)){
+						$errors[] = 'Erreur lors de l\'envoi de votre photo.';
+					}
+				}
+				else{
+					$errors[] = 'Le type de fichier est invalide. Seules les extensions jpg/jpeg/gif/png sont autorisées.'; 
+				}
+
+			}
 		}	
 
 
-			if (count($errors) === 0) { /*a modifier avec $columnSQL*/
+			if (count($errors) === 0) { 
 
-				$update = $bdd->prepare('UPDATE recipe
-					SET title = :title, preparation = :preparation, url_img = :url_img, id_autor = :id_autor,  WHERE id = :idUser'); /* /!\ajouter date*/
+				$columnSQL = 'title = :title, preparation = :preparation, id_autor = :id_autor, date_creation = NOW()';
+
+				if ($updatephoto) {
+					$columnSQL.=', url_img = :url_img';
+				}
+
+				$update = $bdd->prepare('UPDATE recipe SET '.$columnSQL.' WHERE id = :idRecipe'); /* /!\ajouter date*/
 
 				$update->bindValue(':title', $post['title']);
 				$update->bindValue(':preparation', $post['preparation']);
-				$update->bindValue(':url_img', $post['url_img']);
 				$update->bindValue(':id_autor', $_SESSION['user']['username']);
+		
 				$update->bindValue(':idRecipe', $_GET['id'], PDO::PARAM_INT);
+
+				if ($updatephoto) {
+					$update->bindValue(':url_img', $_FILES['url_img']);	
+				}
 
 				if ($update->execute()) {
 					$formValid=true;
@@ -92,22 +109,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 } //fin islogged
 
 
-?><!DOCTYPE html>
+require_once 'header.php';
 
-	<html>
-
-		<head>
-
-			<meta charset="utf-8">
-			<title>Modifier une recette</title>
-
-			<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-			<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-			<link rel="stylesheet" type="text/css" href="">
-
-
-		</head>
-
+?>
 		<body>
 
 			<main class="container">

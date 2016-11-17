@@ -3,6 +3,11 @@
 require_once '../inc/session.php';
 require_once '../inc/connect.php';
 
+if (!isset($is_logged)) {
+    header('Location:login.php');
+    die;
+}
+
 
 $recipe = null;
 
@@ -28,15 +33,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 	}	
 } //fin verif
 
-
-?><!DOCTYPE html>
-	<html>
-		<head>
-			<meta charset="utf-8">
-			<title>supprimer recette</title>
-		</head>
-
-		<body>
+require_once 'header.php';
+?>
 
 		<h1>Supprimer une recette</h1>
 

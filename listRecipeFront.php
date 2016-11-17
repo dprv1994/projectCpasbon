@@ -23,7 +23,7 @@ if ($query->execute()) {
                     <h1><?= $value['title'];?><small class="author"><?= $value['id_autor'];?></small></h1>
                     <img src="<?= $value['url_img'];?>" alt="">
                     <?php if (isset($is_logged)): ?>
-                        <a href=admin/update_recipe.php?id="<?= $value['id'];?>"><button type="button" name="button">Modifier</button></a>
+                        <a href="admin/update_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Modifier</button></a>
                         <a href="admin/delete_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Supprimer</button></a>
                     <?php endif; ?>
                 </div>

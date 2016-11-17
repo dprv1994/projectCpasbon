@@ -7,6 +7,11 @@ require_once '../vendor/autoload.php';
 
 use Respect\Validation\Validator as v;
 
+if (!isset($is_logged)) {
+    header('Location:login.php');
+    die;
+}
+
 $post = [];
 $errors= [];
 $dirUpload = '../img/recette/';
@@ -19,11 +24,11 @@ if (!isset($is_logged)) {
 if (!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-	if (!v::alnum()->length(3, 30)->validate($post['title'])) {
+	if (!v::length(3, 30)->validate($post['title'])) {
 		$errors[] = 'Vous devez entrer entre 3 et 30 caractères.';
 	}
 
-	if (!v::alnum()->length(15, 300)->validate($post['preparation'])) {
+	if (!v::length(15, 300)->validate($post['preparation'])) {
 		$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
 	}
 
@@ -76,7 +81,7 @@ if (!empty($_POST)) {
 } // fin verif
 
 
-require_once '../admin/header.php';
+require_once 'header.php';
 
 ?>
 
