@@ -42,8 +42,9 @@ require_once 'header.php';
     Uniformiser le nom des fichier <br>
     view message a faire entier + admin seulement <br>
     Update recette a faire bootstrap <br>
-    list messages a faire (daniel) une fois fait mettre le lien sur index et dans view message<br>
-    suppression utilisateur ne fonctionne pas faire la même page que valerie pour uniformiser(theo)
+    une fois fait mettre le lien sur index et dans view message<br>
+    page 404 a faire
+
 </code>
 <br><br>
  		<div>
