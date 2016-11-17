@@ -27,7 +27,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 }
 
 
-if(isset($_POST['delete'])){
+if(isset($_POST['delete']) && $_POST['delete'] == true){
 
 	$delete = $bdd->prepare('DELETE FROM users WHERE id = :idUser');
 	$delete->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
@@ -49,7 +49,10 @@ require_once 'header.php';
         <?php if ($is_logged == 'admin'): ?>
             <form method="post">
                 <button class="btn btn-danger btn-lg center-block" id="delete" name="delete" onClick="if(confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?'))
-                alert('Utilisateur supprimer !');">Supprimer l'utilisateur</button>
+                alert('Utilisateur supprimer !');
+                else alert('Utilisateur sauvé !');">
+                	Supprimer l'utilisateur
+                </button>
             </form>
         <?php endif; ?>
     </div>
