@@ -17,6 +17,14 @@ if(isset($_SESSION['id']) && is_numeric($_SESSION['id'])) {
 		$users = $query->fetch();
 	}
 }
+elseif(isset($_GET['id']) && is_numeric($_GET['id'])) {
+	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
+	$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
+
+	if($query->execute()) {
+		$users = $query->fetch();
+	}
+}
 
 use Respect\Validation\Validator as verif;
 
@@ -80,6 +88,11 @@ if(!empty($_POST)) {
 
 require_once 'header.php';
 ?>
+		<ul>
+			<?php
+				echo '<li> <strong> Nom : </strong> '.$users['lastname'].'</li> <li> <strong> Prénom : </strong> '.$users['firstname'].'</li> <li> <strong> Email : </strong>'.$users['email'].'</li> <li> <strong> Pseudo : </strong>'.$users['username'].'</li> <li> <strong> Avatar : </strong> <img src="'.$users['avatar'].'"> </li>';
+			?>
+		</ul>
 
 		<form method="post" enctype="multipart/form-data" class="col-lg-4 col-lg-offset-4">
             <div class="from-group">
