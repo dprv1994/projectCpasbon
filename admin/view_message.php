@@ -39,7 +39,7 @@ require_once 'header.php';
 
 
         <a class="btn btn-info btn-lg"  href="index.php">Liste des messages</a>
-		<a class="btn btn-danger btn-lg" href="delete_message.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
+		<a class="btn btn-danger btn-lg" href="deleteMessage.php?id=<?=$user['id'];?>" title="Editer cet utilisateur">Supprimer</a>
 
 	</body>
 </html>
