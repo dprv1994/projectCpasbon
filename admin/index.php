@@ -36,9 +36,11 @@ require_once 'header.php';
  ?>
 <code>
 
-    a faire :
+    a faire :<br>
 
-    id auteur : rechercher si c l'id ou le nom que l'on doit rentrer et sinon si c l'id faire une jointure.
+    id auteur : rechercher si c l'id ou le nom que l'on doit rentrer et sinon si c l'id faire une jointure.<br>
+
+    Penser a mettre Unique au champ email dans la table
 </code>
 
  		<div>
