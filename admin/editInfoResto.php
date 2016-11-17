@@ -2,7 +2,16 @@
 require_once '../inc/connect.php';
 require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
+
+if (!isset($is_logged)) {
+    header('Location:login.php');
+    die;
+}
+
+
 require_once 'header.php'; ?>
+
+
 <h1>Modification site du restaurant</h1>
 
 <form class="" method="post" enctype="multipart/form-data">
