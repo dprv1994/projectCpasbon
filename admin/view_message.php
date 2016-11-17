@@ -37,7 +37,7 @@ require_once 'header.php';
         <br><?=$message['content'];?><br>
         <br><br>
 
-        <a class="btn btn-succes"href="#">icone qui va bien Lus</a>
+        <a class="btn btn-success"href="#">icone qui va bien Lus</a>
         <a class="btn btn-info btn-lg"  href="listMessages.php">Liste des messages</a>
 		<a class="btn btn-danger btn-lg" href="deleteMessage.php?id=<?=$message['id'];?>" title="Editer cet utilisateur">Supprimer</a>
 
