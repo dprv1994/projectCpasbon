@@ -46,13 +46,11 @@ require_once 'header.php';
         <strong> Email : </strong><?= $user['email']; ?><br>
         <strong> Pseudo : </strong><?= $user['username']; ?><br>
         <strong> Rôle : </strong><?= affichRole($user['role'])?><br>
-        <?php if ($is_logged = 'admin'): ?>
+        <?php if ($is_logged == 'admin'): ?>
             <form method="post">
                 <button class="btn btn-danger btn-lg center-block" id="delete" name="delete" onClick="if(confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?'))
-                alert('Utilisateur supprimer !');">
-                Supprimer l'utilisateur
-            </button>
-        </form>
+                alert('Utilisateur supprimer !');">Supprimer l'utilisateur</button>
+            </form>
         <?php endif; ?>
     </div>
     <div class="col-lg-6">
