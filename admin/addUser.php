@@ -102,9 +102,9 @@ require_once 'header.php';
             <h1>Ajout D'utilisateurs</h1>
 
             <?php if ($formValid == true): ?>
-                <p style="color:green;">Vous avez réussi !</p>
+                <p class="alert-success">Vous avez réussi !</p>
             <?php elseif ($haserror == true): ?>
-                <p style="color:DarkRed;">'.implode('<br>', $errors).'</p>
+                <p class="alert-danger"><?= implode('<br>', $errors);?></p>
             <?php endif; ?>
 
     		<form method="post" enctype="multipart/form-data">
