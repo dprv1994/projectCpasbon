@@ -40,22 +40,25 @@ if(isset($_POST['delete'])){
 require_once 'header.php';
 ?>
 
-        <ul>
-			<?php
-				echo '<li> <strong> Nom : </strong> '.$user['lastname'].'</li> <li> <strong> Prénom : </strong> '.$user['firstname'].'</li> <li> <strong> Email : </strong>'.$user['email'].'</li> <li> <strong> Pseudo : </strong>'.$user['username'].'</li> <li> <strong> Rôle : </strong>'.affichRole($user['role']).'</li> <li> <strong> Avatar : </strong> <img src="'.$user['avatar'].'"> </li>';
-			?>
-		</ul>
-		<br>
-		<form method="post">
-			<button class="deleteB" id="delete" name="delete" onClick="if(confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?'))
-			alert('Utilisateur supprimer !');">
-				Supprimer l'utilisateur
-			</button>
-		</form>
-		<br><br>
+    <div class="col-lg-6">
+        <strong> Nom : </strong><?= $user['lastname']; ?><br>
+        <strong> Prénom : </strong><?= $user['firstname']; ?><br>
+        <strong> Email : </strong><?= $user['email']; ?><br>
+        <strong> Pseudo : </strong><?= $user['username']; ?><br>
+        <strong> Rôle : </strong><?= affichRole($user['role'])?><br>
+        <?php if ($is_logged = 'admin'): ?>
+            <form method="post">
+                <button class="btn btn-danger btn-lg center-block" id="delete" name="delete" onClick="if(confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?'))
+                alert('Utilisateur supprimer !');">
+                Supprimer l'utilisateur
+            </button>
+        </form>
+        <?php endif; ?>
+    </div>
+    <div class="col-lg-6">
+        <strong> Avatar : </strong> <img src="<?= $user['avatar']; ?>">
+    </div>
 
-		<a href="addUser.php">Ajout d'utilisateur</a>
-		<a href="listUser.php">Liste des utilisateurs</a>
 
 		<script type="text/javascript" src="../js/script.js"></script>
 	</body>
