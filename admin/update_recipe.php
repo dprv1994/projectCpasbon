@@ -131,6 +131,8 @@ require_once 'header.php';
 
 					<form method="post" enctype="multipart/form-data">
 
+                        <img class="img-responsive" src="<?=$recipe['url_img'];?>" alt="" />
+
 						<div class="form-group">
 							<label for="title">Titre : </label>
 							<input class="form-control" type="text" id="title" name="title" value="<?=$recipe['title'];?>">

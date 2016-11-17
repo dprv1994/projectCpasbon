@@ -88,6 +88,7 @@ if(!empty($_POST)) {
 
 require_once 'header.php';
 ?>
+<h1>Mon Profil</h1>
 <div class="col-lg-6">
     <ul>
         <strong> Nom : </strong><?= $users['lastname'] ?><br>

@@ -28,6 +28,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 require_once 'header.php';
 ?>
 
+        <h1>Message de <?=$message['username'];?></h1>
 
         <strong> Pseudo : </strong><?=$message['username'];?><br>
         <strong> Email : </strong><?=$message['email'];?><br>
