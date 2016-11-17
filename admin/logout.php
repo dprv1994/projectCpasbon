@@ -18,10 +18,12 @@ if (isset($_GET['logout']) && $_GET['logout'] == 'yes') {
 
 require_once 'header.php';
 
+echo "<h1>Deconnexion</h1>";
+
  if (isset($_SESSION['user'])){
 
      echo $_SESSION['user']['username'] . ', veux-tu te déconnecter ? Vraiment';
-     echo '<br><br><a href="logout.php?logout=yes">Oui, je veux me déconnecter</a>' ;
+     echo '<br><br><a href="logout.php?logout=yes"><button class="btn btn-danger btn-lg" type="button">Oui, je veux me déconnecter</button></a>' ;
 
  }else {
     echo "Tu es déjà déconnecté, tu n'existes pas !!";
@@ -29,3 +31,4 @@ require_once 'header.php';
  }
 
 require_once 'footer.php';
+?>
