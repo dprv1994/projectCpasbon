@@ -2,8 +2,8 @@
 
 require_once '../inc/connect.php';
 require_once '../inc/session.php';
-require_once '../vendor/autoload.php';
 require_once '../inc/functions.php';
+require_once '../vendor/autoload.php';
 
 if (!isset($is_logged)) {
     header('Location:login.php');
@@ -20,11 +20,16 @@ if($query->execute()) {
 
 require_once 'header.php';
 ?>
-        <h1>Liste des utilisateurs :</h1>
+        <h1>Liste des utilisateurs :
+        <?php if ($is_logged == 'admin') {
+            echo '<a href="addUser.php"><button class="btn btn-xs btn-info" type="button">Ajout d\'utilisateur</button></a>';
+        }
+        ?>
+        </h1>
 		<table class="table-striped col-lg-12">
 			<thead>
 				<tr>
-					<th>Rôle</th>
+					<th>Role</th>
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Email</th>
@@ -36,14 +41,17 @@ require_once 'header.php';
 
 			<tbody>
 				<?php foreach ($users as $user) {
-					echo '<tr><td>'.affichRole($user['role']).'</td><td>'.$user['lastname'].'</td>'.'<td>'.$user['firstname'].'</td>'.'<td>'.$user['email'].'</td>'.'<td>'.$user['username'].'</td>'.'<td><a href="updateUser.php?id='.$user['id'].'">Modifier l\'utilisateur</a></td>'.'<td><a href="viewUser.php?id='.$user['id'].'">Voir l\'utilisateur</a></td>'.'</tr>';
-					}
+					echo '<tr><td>'. affichRole($user['role']).'</td><td>'.$user['lastname'].'</td><td>'.$user['firstname'].'</td><td>'.$user['email'].'</td><td>'.$user['username'].'</td><td>';
+                    echo ($is_logged == 'admin') ? '<a href="updateUser.php?id='.$user['id'].'">Modifier l\'utilisateur</a>' : 'Non autorisé';
+                    echo '</td><td>';
+                    echo '<a href="viewUser.php?id='.$user['id'].'">Voir l\'utilisateur</a>';
+                    echo '</td></tr>';
+				}
 				?>
 			</tbody>
 		</table>
 
-		<br><br>
-
-		<a href="addUser.php">Ajout d'utilisateur</a>
-	</body>
-</html>
+		<br><br><br>
+<?php
+require_once 'footer.php';
+?>
