@@ -9,8 +9,6 @@ if (!isset($is_logged)) {
     die;
 }
 
-
-
 if(isset($_SESSION['id']) && is_numeric($_SESSION['id'])) {
 	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
 	$query->bindValue(':idUser', $_SESSION['id'], PDO::PARAM_INT);

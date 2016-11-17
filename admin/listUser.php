@@ -3,6 +3,7 @@
 require_once '../inc/connect.php';
 require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
+require_once '../inc/functions.php';
 
 if (!isset($is_logged)) {
     header('Location:login.php');
@@ -23,6 +24,7 @@ require_once 'header.php';
 		<table class="table-striped col-lg-12">
 			<thead>
 				<tr>
+					<th>Rôle</th>
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Email</th>
@@ -34,7 +36,7 @@ require_once 'header.php';
 
 			<tbody>
 				<?php foreach ($users as $user) {
-					echo '<tr><td>'.$user['lastname'].'</td>'.'<td>'.$user['firstname'].'</td>'.'<td>'.$user['email'].'</td>'.'<td>'.$user['username'].'</td>'.'<td><a href="updateUser.php?id='.$user['id'].'">Modifier l\'utilisateur</a></td>'.'<td><a href="viewUser.php?id='.$user['id'].'">Voir l\'utilisateur</a></td>'.'</tr>';
+					echo '<tr><td>'.affichRole($user['role']).'</td><td>'.$user['lastname'].'</td>'.'<td>'.$user['firstname'].'</td>'.'<td>'.$user['email'].'</td>'.'<td>'.$user['username'].'</td>'.'<td><a href="updateUser.php?id='.$user['id'].'">Modifier l\'utilisateur</a></td>'.'<td><a href="viewUser.php?id='.$user['id'].'">Voir l\'utilisateur</a></td>'.'</tr>';
 					}
 				?>
 			</tbody>
