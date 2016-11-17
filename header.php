@@ -30,7 +30,7 @@
         <div class="header-left">
             <!----start-logo---->
             <div class="logo">
-            <a href="index.html"><h2>CPasBon!</h2>
+            <a href="index.php"><h2>CPasBon!</h2>
             <p>1rue de l'adresse, 33150 Cenon</p><br>
             <p>06.66.66.99</p>
             </a>
@@ -42,8 +42,8 @@
             <div class="top-nav">
                 <ul>
                     <li class="active"><a href="#work">Accueil</a></li>
-                    <li><a href="blog.html">Recettes</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="listRecipeFront.php">Recettes</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
             <!----//End-top-nav---->
