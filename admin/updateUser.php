@@ -4,6 +4,13 @@ require_once '../inc/connect.php';
 require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
 
+if (!isset($is_logged)) {
+    header('Location:login.php');
+    die;
+}
+
+
+
 if(isset($_SESSION['id']) && is_numeric($_SESSION['id'])) {
 	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
 	$query->bindValue(':idUser', $_SESSION['id'], PDO::PARAM_INT);
