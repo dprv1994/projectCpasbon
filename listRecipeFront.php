@@ -1,7 +1,7 @@
 <?php
 require_once 'inc/session.php';
 require_once 'inc/connect.php';
-$query = $bdd->prepare('SELECT * FROM recipe ORDER BY date_creation');
+$query = $bdd->prepare('SELECT * FROM recipe LEFT JOIN users ON recipe.id_autor = users.id ORDER BY recipe.date_creation');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -20,7 +20,7 @@ if ($query->execute()) {
 
             <?php foreach ($preparation as $value): ?>
                 <div class="ficheRecipe">
-                    <h1><a href="RecipeFront.php?id=<?= $value['id'];?>"><?= $value['title'];?></a><small class="author"><?= $value['id_autor'];?></small></h1>
+                    <h1><a href="RecipeFront.php?id=<?= $value['id'];?>"><?= $value['title'];?></a><small class="author"><?= $value['username'];?></small></h1>
                     <img src="<?= $value['url_img'];?>" alt="">
                     <?php if (isset($is_logged)): ?>
                         <a href="admin/update_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Modifier la recette</button></a>

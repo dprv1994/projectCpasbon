@@ -3,12 +3,13 @@ require_once 'inc/session.php';
 require_once 'inc/connect.php';
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
-    $query = $bdd->prepare('SELECT * FROM recipe WHERE id = :id');
+
+
+    $query = $bdd->prepare('SELECT * FROM recipe LEFT JOIN users ON recipe.id_autor = users.id WHERE recipe.id = :id');
     $query->bindValue(':id', $_GET['id']);
     if ($query->execute()) {
         $recette = $query->fetch(PDO::FETCH_ASSOC);
     }
-
 }else {
     $notexist = true ;
     header('Location:listRecipeFront.php');
@@ -29,7 +30,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <div class="info">
                     <span>Date de creation : <?= date('d/m/Y H:i', strtotime($recette['date_creation']));?></span>
                     <span>Categorie : <?= $recette['category'];?></span><br>
-                    <span>Auteur : <?= $recette['id_autor'];?></span><br>
+                    <span>Auteur : <?= $recette['username'];?></span><br>
                 </div>
                 <div class="ingredients">
                     <ul>
@@ -43,7 +44,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 </div>
             </div>
             <p class="content">
-                        <?= $recette['id_autor'];?>
+                        <?= $recette['preparation'];?>
             </p>
         </div>
 

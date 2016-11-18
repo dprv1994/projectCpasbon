@@ -23,7 +23,7 @@ if ($query->execute()) {
 
 }
 
-$query = $bdd->prepare('SELECT * FROM recipe ORDER BY date_creation LIMIT 5');
+$query = $bdd->prepare('SELECT * FROM recipe LEFT JOIN users ON recipe.id_autor = users.id ORDER BY recipe.date_creation LIMIT 5');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -43,6 +43,8 @@ require_once 'header.php';
     Faire l'Update information resto (Théo) <br>
     Faire le slid en JavaScript (Théo)
     Finir Token (Théo) <br>
+    La partie information dans la base de donnée est a modifier completement <br>
+
 
 </code>
 <br><br>
@@ -112,7 +114,7 @@ require_once 'header.php';
 								<td><?=$prep['title']?></td>
 								<td><?=$prep['preparation']?></td>
 								<td><?=date('d/m/Y H:i', strtotime($prep['date_creation']))?></td>
-								<td><?=$prep['id_autor']?></td>
+								<td><?=$prep['username']?></td>
 
 								<td>
 									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Modifier la recette"><i class='glyphicon glyphicon-pencil'></i></a>
