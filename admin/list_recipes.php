@@ -10,13 +10,20 @@ if (!isset($is_logged)) {
 
 require_once 'search.php';
 
+$page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
+$max = 5;
+
+$debut = ($page - 1) * $max; 
 
 	$query = $bdd->prepare('SELECT r.*, u.firstname , u.lastname, u.username, u.avatar
             FROM recipe AS r
             LEFT JOIN users AS u
             ON r.id_autor = u.id
             '.$sql .'
-            ORDER BY r.date_creation');
+            ORDER BY r.date_creation DESC LIMIT  :max OFFSET :debut');
+	/*$query->bindValue(':start',$start,PDO::PARAM_INT):start,;*/
+	$query->bindValue(':debut',$debut,PDO::PARAM_INT);
+	$query->bindValue(':max',$max,PDO::PARAM_INT);
 
 if(!empty($sql)){
 	$query->bindValue(':search', '%'.$get['search'].'%');
@@ -44,6 +51,7 @@ require_once 'header.php';
                      <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                    </span>
                  </div><!-- /input-group -->
+                 <br>
 
     		</form>
         </div>
@@ -62,7 +70,7 @@ require_once 'header.php';
 
 				<?php if (empty($recipes)) { ?>
 						<tr>
-						<td colspan="6">nous n'avons rien trouvé, rententer votre chance</td>
+						<td colspan="6">Nous n'avons rien trouvé, retentez votre chance !</td>
 					</tr>
 				<?php }
 						else { ?>
@@ -96,10 +104,13 @@ require_once 'header.php';
 	                    <a href="delete_recipe.php?id=<?= $recipe['id']?>" title="Supprimer recette"><i class="glyphicon glyphicon-remove"></i></a></td>
 	                    </tr>
 					<?php } ?>
-					<!-- pour afficher date modification fichier filemtime ( string $filename ) -->
+					
 			<?php  }?>
 			</tbody>
 		</table>
+
+		<div><a href="?page=<?php echo $page - 1; ?>">Page précédente</a>
+		<a href="?page=<?php echo $page + 1; ?>">Page suivante</a></div>
 
 		<br><br>
 	</body>

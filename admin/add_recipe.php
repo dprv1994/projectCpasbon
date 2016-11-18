@@ -30,12 +30,12 @@ if (!empty($_POST)) {
 	$Chaine=($post['title']);
 	$Reg = "#[a-zA-Z0-9]{5,140}#";
 				
-	if(!preg_match($Reg, $Chaine)){
+	/*if(!preg_match($Reg, $Chaine)){
 		$errors[] = 'Vous devez entrer entre 5 et 140 caractères.';
-	}
-	/*if (!v::length(15, 300)->validate($post['preparation'])) {
-			$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
 	}*/
+	if (!v::length(5,)->validate($post['preparation'])) {
+			$errors[] = 'Vous devez entrer au minimum 20 caractères.';
+	}
 	$Chaine=($post['preparation']);
 	$Reg = "#[a-zA-Z0-9]{20,}#";
 

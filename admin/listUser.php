@@ -26,7 +26,7 @@ require_once 'header.php';
         }
         ?>
 
-		<table class="table-striped col-lg-12">
+		<table class="table-striped col-lg-12 col-sm-12">
 			<thead>
 				<tr>
 					<th>Statut</th>
