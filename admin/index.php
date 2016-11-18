@@ -27,8 +27,6 @@ if ($query->execute()) {
 $query = $bdd->prepare('SELECT * FROM recipe LEFT JOIN users ON recipe.id_autor = users.id ORDER BY recipe.date_creation LIMIT 10');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
-
-
 }
 
 require_once 'header.php';
