@@ -10,7 +10,7 @@ if (!isset($is_logged)) {
 
 require_once 'search.php';
 
-$page = (!empty($_GET['page'])) ? $_GET['page'] : 1;
+$page = (isset($_GET['page']) && !empty($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
 $max = 5;
 
 $debut = ($page - 1) * $max; 
