@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <title>Admin Cpasbon</title>
+        <title>Admin Cpasbon </title>
 
         <!-- import bootstrap Local si bug box-->
         <!-- <link rel="stylesheet" href="../css/bootstrap.min.css"> -->

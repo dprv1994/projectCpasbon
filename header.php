@@ -2,7 +2,8 @@
 <html>
     <head lang="fr">
         <meta charset="utf-8">
-        <title>Accueil Cpasbon</title>
+        <!-- si ont passe un variable $headerAdd['title'] alors ont affiche cette variable sinon accueil -->
+        <title><?= (isset($headerAdd['title']) && !empty($headerAdd['title']))? $headerAdd['title'] : 'Accueil' ?> | Cpasbon</title>
 
         <!-- Penser a Rajouter toute les meta -->
 
