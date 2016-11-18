@@ -3,23 +3,12 @@ require_once '../inc/connect.php';
 require_once '../inc/session.php';
 require_once '../vendor/autoload.php';
 
-if (!isset($is_logged)) {
+if (!isset($is_logged) && $is_logged == 'editeur') {
     header('Location:login.php');
     die;
 }
-else {
-    $edit = $bdd->prepare('SELECT * FROM contact_information');
-    if($edit->execute()) {
-        $infos = $edit->fetchAll(PDO::FETCH_ASSOC);
-    }
-    else {
-        var_dump($edit->errorInfo());
-        die;
-    }
-}
-echo "<pre>";
-var_dump($infos);
-echo "</pre>";
+
+
 use Respect\Validation\Validator as verif;
 
 $post=[];
@@ -50,37 +39,43 @@ if(!empty($_POST)) {
     if(!verif::intVal()->validate($post['phone'])) {
         $errors[] = 'Veuillez entrer un numéro de téléphone valide.';
     }
-
-    if(!is_uploaded_file($_FILES['picture']['tmp_name']) || !file_exists($_FILES['picture']['tmp_name'])){
-        $errors[] = 'Il faut uploader une image';
-    }
-    else{
-        $finfo = new finfo();
-        $mimeType = $finfo->file($_FILES['picture']['tmp_name'], FILEINFO_MIME_TYPE);
-        $mimeTypeAllow = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/pjpeg'];
-
-        if(in_array($mimeType, $mimeTypeAllow)){
-            $photoName = uniqid('pic_');
-            $photoName.= '.'.pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
+    if (!empty($_FILES['url_img']['name'])) {
+        if(!is_uploaded_file($_FILES['picture']['tmp_name']) || !file_exists($_FILES['picture']['tmp_name'])){
+            $errors[] = 'Il faut uploader une image';
         }
+        else{
+            $finfo = new finfo();
+            $mimeType = $finfo->file($_FILES['picture']['tmp_name'], FILEINFO_MIME_TYPE);
+            $mimeTypeAllow = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/pjpeg'];
 
-        if(!is_dir($dirUpload)){
-            mkdir($dirUpload, 0755);
-        }
+            if(in_array($mimeType, $mimeTypeAllow)){
+                $photoName = uniqid('pic_');
+                $photoName.= '.'.pathinfo($_FILES['picture']['name'], PATHINFO_EXTENSION);
+            }
 
-        if(!move_uploaded_file($_FILES['picture']['tmp_name'], $dirUpload.$photoName)){
+            if(!is_dir($dirUpload)){
+                mkdir($dirUpload, 0755);
+            }
+
+            if(!move_uploaded_file($_FILES['picture']['tmp_name'], $dirUpload.$photoName)){
                 $errors[] = 'Erreur lors de l\'upload de la photo';
+            }
         }
+
     }
 
     if(count($errors) === 0) {
-        $query = $bdd->prepare('UPDATE contact_information SET name = :name, adress = :adress, zipcode = :zipcode, city = :city, phone = :phone, picture = :picture');
+        $query = $bdd->prepare('UPDATE contact_information SET value = :name WHERE contact_information.data = "resto_name";
+            UPDATE contact_information SET value = :adress WHERE contact_information.data = "adress";
+            UPDATE contact_information SET value = :zipcode WHERE contact_information.data = "zipcode";
+            UPDATE contact_information SET value = :city WHERE contact_information.data = "city";
+            UPDATE contact_information SET value = :phone WHERE contact_information.data = "phone";');
         $query->bindValue(':name', $post['name']);
         $query->bindValue(':adress', $post['adress']);
         $query->bindValue(':zipcode', $post['zipcode']);
         $query->bindValue(':city', $post['city']);
         $query->bindValue(':phone', $post['phone']);
-        $query->bindValue(':picture', $dirUpload.$photoName);
+        // $query->bindValue(':picture', $dirUpload.$photoName);
 
         if($query->execute()) {
             $formValid = true;
@@ -89,12 +84,23 @@ if(!empty($_POST)) {
             var_dump($query->errorInfo());
             die;
         }
+        $query->closeCursor();
     }
     else {
         $haserror = true;
     }
-}
 
+}// if !empty post
+
+$edit = $bdd->prepare('SELECT * FROM contact_information');
+if($edit->execute()) {
+    $infos = $edit->fetchAll(PDO::FETCH_ASSOC);
+    $edit->closeCursor();
+}
+else {
+    var_dump($edit->errorInfo());
+    die;
+}
 
 require_once 'header.php'; ?>
 
@@ -110,23 +116,23 @@ require_once 'header.php'; ?>
 <form class="" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name">Nom du restaurant : </label>
-        <input class="form-control" type="text" id="name" name="name">
+        <input class="form-control" type="text" id="name" name="name" value="<?= $infos[0]['value'] ; ?>">
     </div>
     <div class="form-group">
         <label for="adress">Adresse : </label>
-        <input class="form-control" type="text" id="adress" name="adress">
+        <input class="form-control" type="text" id="adress" name="adress" value="<?= $infos[1]['value'] ; ?>">
     </div>
     <div class="form-group">
         <label for="zipcode">Code postal : </label>
-        <input class="form-control" type="text" id="zipcode" name="zipcode">
+        <input class="form-control" type="text" id="zipcode" name="zipcode" value="<?= $infos[2]['value'] ; ?>">
     </div>
     <div class="form-group">
         <label for="city">Ville : </label>
-        <input class="form-control" type="text" id="city" name="city">
+        <input class="form-control" type="text" id="city" name="city" value="<?= $infos[3]['value'] ; ?>">
     </div>
     <div class="form-group">
         <label for="phone">Téléphone : </label>
-        <input class="form-control" type="num" id="phone" name="phone">
+        <input class="form-control" type="num" id="phone" name="phone" value="<?= $infos[4]['value'] ; ?>">
     </div>
     <div class="form-group">
         <label for="picture">Photo : </label>
