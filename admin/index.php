@@ -32,13 +32,11 @@ require_once 'header.php';
 <code>
 
     a faire :<br>
-    id auteur : rechercher si c l'id ou le nom que l'on doit rentrer et sinon si c l'id faire une jointure.<br>
     Penser a mettre Unique au champ email dans la table <br>
     Uniformiser le nom des fichier ?????????? <br>
-    Faire l'Update information resto (Théo) <br>
     Faire le slide en JavaScript (Théo) <br>
     Faire Token (daniel) <br>
-    faire les controles du requis 3 <br>
+    faire les controles du requis 3 regex <br>
     editeur peut juste ajouter des recettes <br>
     commenter notre code <br>
     faire les paginations
