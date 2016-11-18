@@ -39,8 +39,8 @@ require_once 'header.php';
     faire les controles du requis 3 regex <br>
     editeur peut juste ajouter des recettes <br>
     commenter notre code <br>
-    faire les paginations
-
+    faire les paginations <br>
+    dans users rajouté un colonne token ainsi qu'un composer install aprés avoir fait une synchro
 
 
 </code>

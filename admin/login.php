@@ -86,6 +86,7 @@ if (empty($_SESSION) && !empty($_POST)) {
     	    <button id="" name="" class="btn btn-info btn-block ">Se connecter</button>
         </form>
     </div>
+    <a href="forgetPass.php">mot de passe oublié ?</a>
 </div>
 
 
