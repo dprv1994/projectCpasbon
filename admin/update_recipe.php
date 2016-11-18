@@ -12,6 +12,10 @@ if (!isset($is_logged)) {
     header('Location:login.php');
     die;
 }
+elseif (!isset($_GET['id'])) {
+ 	header('Location:list_recipes.php');
+ 	die;
+ }
 
 $post = [];
 $errors= [];
