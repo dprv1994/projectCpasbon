@@ -8,10 +8,11 @@ if (!isset($is_logged)) {
     header('Location:login.php');
     die;
 }
-elseif (!isset($_GET['id'])) {
- 	header('Location:listUser.php');
- 	die;
- }
+// J'ai commenté car cette page permet d'acceder a son propre profil si ont a pas d'id a l'origine !!!
+// elseif ($is_logged == 'editeur' && !isset($_GET['id'])) {
+//  	header('Location:listUser.php');
+//  	die;
+//  }
 
 if(isset($_GET['id']) && is_numeric($_GET['id']) && $is_logged == 'admin') {
     $query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');

@@ -16,6 +16,14 @@ $haserror=false;
 $dirUpload='../img/';
 
 use Respect\Validation\Validator as verif;
+// cherche le dernier slide ajouter garde son id et l'incremente pour renommer le nouveau
+$slides = $bdd->prepare('SELECT * FROM contact_information WHERE data LIKE "slide_%" ORDER BY id DESC');
+if ($slides->execute()) {
+    $Slide = $slides->fetch(PDO::FETCH_ASSOC);
+    $nbSlide = ((int) $Slide['id']) + 1;
+}
+
+
 
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
@@ -47,15 +55,18 @@ if(!empty($_POST)) {
 
 		if(!move_uploaded_file($_FILES['picture']['tmp_name'], $dirUpload.$photoName)){
 				$errors[] = 'Erreur lors de l\'upload de la photo';
-		
+
 		}
 	}
 
 	if(count($errors) === 0){
-		$query = $bdd->prepare('INSERT INTO slide(title, sub_title, picture) VALUES (:title, :sub_title, :picture)');
-		$query->bindValue(':title', $post['title']);
-		$query->bindValue(':sub_title', $post['subTitle']);
-		$query->bindValue(':picture', $dirUpload.$photoName);
+        $group = [$post['title'],$post['subTitle'],'img/'.$photoName];
+        $value = implode(',',$group);
+
+
+		$query = $bdd->prepare('INSERT INTO contact_information (data , value) VALUES (:data , :value)');
+		$query->bindValue(':data', 'slide_' . $nbSlide);
+		$query->bindValue(':value', $value);
 
 		if($query->execute()) {
 			$formValid = true;
@@ -71,6 +82,7 @@ if(!empty($_POST)) {
 }
 
 require_once 'header.php';
+
 ?>
 
  <h1>Ajouter un Slide</h1>
@@ -82,22 +94,20 @@ require_once 'header.php';
 <?php endif; ?>
 
 <form method="post" enctype="multipart/form-data">
-	<label for="title">Titre du Slider :</label><br>
-	<input type="text" id="title" name="title">
+    <div class="form-group">
+        <label for="title">Titre du Slider :</label>
+        <input class="form-control" type="text" id="title" name="title">
+    </div>
+    <div class="form-group">
+        <label for="subTitle">Contenu du Slider :</label><br>
+        <input class="form-control" type="text" id="subTitle" name="subTitle">
+    </div>
+    <div class="form-group">
+        <label for="picture">Image du Slide :</label><br>
+        <input type="file" id="picture" name="picture">
+    </div>
 
-	<br><br>
-
-	<label for="subTitle">Contenu du Slider :</label><br>
-	<input type="text" id="subTitle" name="subTitle">
-
-	<br><br>
-
-	<label for="picture">Image du Slide :</label><br>
-	<input type="file" id="picture" name="picture">
-
-	<br><br>
-
-	<input type="submit" value="Valider le Slider">
+	<input class="btn btn-info btn-lg center-block" type="submit" value="Valider le Slider">
 </form>
 
 <?php require_once 'footer.php'; ?>

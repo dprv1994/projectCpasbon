@@ -20,7 +20,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 			$delete->bindValue(':idSlide', $_GET['id'], PDO::PARAM_INT);
 
 			if ($delete->execute()) {
-				header('Location: listSlide.php');
+				header('Location: editInfoResto.php');
 				die;
 			}
 		}
