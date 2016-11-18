@@ -47,6 +47,7 @@ if(!empty($_POST)) {
 		$errors[] = 'Veuillez sélectionner un statut à cet utilisateur';
 	}
 
+	
 	if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){
 		$errors[] = 'Il faut uploader une image';
 	}
@@ -58,6 +59,7 @@ if(!empty($_POST)) {
 		if(in_array($mimeType, $mimeTypeAllow)){
 			$photoName = uniqid('pic_');
 			$photoName.= '.'.pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+		}
 
 		if(!is_dir($dirUpload)){
 			mkdir($dirUpload, 0755);
@@ -65,10 +67,7 @@ if(!empty($_POST)) {
 
 		if(!move_uploaded_file($_FILES['avatar']['tmp_name'], $dirUpload.$photoName)){
 				$errors[] = 'Erreur lors de l\'upload de la photo';
-			}
-
-		}else{
-			$errors[] = 'Le fichier est invalide';
+		
 		}
 	}
 
