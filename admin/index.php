@@ -42,8 +42,7 @@ require_once 'header.php';
     Uniformiser le nom des fichier ?????????? <br>
     Faire l'Update information resto (Théo) <br>
     Faire le slid en JavaScript (Théo)
-    Finir Token (Théo) <br>
-    La partie information dans la base de donnée est a modifier completement <br>
+    Finir Token (daniel) <br>
 
 
 </code>
@@ -80,9 +79,9 @@ require_once 'header.php';
                             <td><?=$user['email']?></td>
 
                             <td>
-                                <a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message">Voir le message</a>
+                                <a  href="view_message.php?id=<?=$user['id'];?>" title="Voir le message"><i class='glyphicon glyphicon-pencil'></i> Voir le message</a>
                                 &nbsp; - &nbsp;
-                                <a href="deleteMessage.php?id=<?=$user['id'];?>" title="Supprimer le message">Supprimer</a>
+                                <a href="deleteMessage.php?id=<?=$user['id'];?>" title="Supprimer le message"><i class="glyphicon glyphicon-remove"></i> Supprimer</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -120,7 +119,7 @@ require_once 'header.php';
 									<a  href="update_recipe.php?id=<?=$prep['id'];?>" title="Modifier la recette"><i class='glyphicon glyphicon-pencil'></i></a>
 								</td>
                                 <td>
-                                    <a href="delete_recipe.php?id=<?=$prep['id'];?>" title="Supprimer la recette"> <i class="glyphicon glyphicon-remove"></i></a>
+                                    <a href="delete_recipe.php?id=<?=$prep['id'];?>" title="Supprimer la recette"><i class="glyphicon glyphicon-remove"></i></a>
 
                                 </td>
 							</tr>

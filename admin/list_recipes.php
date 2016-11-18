@@ -56,7 +56,7 @@ require_once 'header.php';
 					</tr>
 				<?php }
 						else { ?>
-				
+
 					<?php foreach ($recipes as $recipe) { ?>
 
 						<tr>
@@ -64,29 +64,29 @@ require_once 'header.php';
 						<td>
 							<?php  if(isset($get['search']) && !empty($get['search'])){
 								echo preg_replace('/'.$get['search'].'/', '<mark>'.$get['search'].'</mark>', $recipe['title']);
-							} 
-							else { 
+							}
+							else {
 								echo $recipe['title'];
 							} ?>
 						</td>
 						<td><?php  if(isset($get['search']) && !empty($get['search'])){
 								echo preg_replace('/'.$get['search'].'/', '<mark>'.$get['search'].'</mark>', $recipe['preparation']);
-							} 
-							else { 
+							}
+							else {
 								echo $recipe['preparation'];
 							} ?></td>
 						<td><?php  if(isset($get['search']) && !empty($get['search'])){
 								echo preg_replace('/'.$get['search'].'/', '<mark>'.$get['search'].'</mark>', date('d/m/Y H:i', strtotime($recipe['date_creation'])));
-							} 
-							else { 
+							}
+							else {
 								echo date('d/m/Y H:i', strtotime($recipe['date_creation']));
 							}?></td>
 						<td style="min-width:20px;"><?php echo $recipe['id_autor'];?></td>
-	                    <td style="min-width:20px;"><a  href="update_recipe.php?id=<?php $recipe['id']?>" title="Modifier recette"><i class="glyphicon glyphicon-pencil"></i> </a>
+	                    <td style="min-width:20px;"><a  href="update_recipe.php?id=<?= $recipe['id']?>" title="Modifier recette"><i class="glyphicon glyphicon-pencil"></i> </a>
 	                    <a href="delete_recipe.php?id=<?php  $recipe['id']?>" title="Supprimer recette"><i class="glyphicon glyphicon-remove"></i></a></td>
 	                    </tr>
 					<?php } ?>
-					
+
 					<!-- pour afficher date modification fichier filemtime ( string $filename ) -->
 			<?php  }?>
 			</tbody>
