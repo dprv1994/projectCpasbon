@@ -11,12 +11,12 @@ if (!isset($is_logged)) {
 require_once 'search.php';
 
 
-	$query = $bdd->prepare('
-            SELECT r.*, u.firstname , u.lastname, u.username, u.avatar
+	$query = $bdd->prepare('SELECT r.*, u.firstname , u.lastname, u.username, u.avatar
             FROM recipe AS r
             LEFT JOIN users AS u
             ON r.id_autor = u.id
-            ORDER BY r.date_creation'.$sql);
+            '.$sql .'
+            ORDER BY r.date_creation');
 
 if(!empty($sql)){
 	$query->bindValue(':search', '%'.$get['search'].'%');
@@ -25,7 +25,6 @@ if(!empty($sql)){
 if($query->execute()){
 	$recipes = $query->fetchAll(PDO::FETCH_ASSOC);
 }
-
 	else {
 		var_dump($query->errorInfo());
 		die;
@@ -33,15 +32,21 @@ if($query->execute()){
 
 require_once 'header.php';
 ?>
+
         <h1>Liste des recettes :</h1>
         <a href="add_recipe.php" class='btn btn-xs btn-info'>Ajouter une recette</a>
         <br><br>
+        <div class="row">
+            <form method="get" class="col-lg-6">
+                <div class="input-group">
+                   <input type="search" name="search" class="form-control" placeholder="Pâtes aux .....">
+                   <span class="input-group-btn">
+                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                   </span>
+                 </div><!-- /input-group -->
 
-        <form method="get">
-
-        <input type="text" name="search" placeholder="Rechercher">
-        <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
-		</form>
+    		</form>
+        </div>
 		<table class="table-striped col-lg-12">
 			<thead>
 				<tr>

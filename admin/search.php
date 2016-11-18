@@ -13,7 +13,6 @@ if(!empty($_GET)){
 
 
 	if(isset($get['search']) && !empty($get['search'])){
-		$sql = 'WHERE recipe.title LIKE :search OR recipe.preparation LIKE :search OR recipe.date_creation LIKE :search'; 
-
+		$sql = 'WHERE r.title LIKE :search OR r.preparation LIKE :search OR r.date_creation LIKE :search';
 	}
 }
