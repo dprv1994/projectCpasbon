@@ -9,28 +9,27 @@ if (!isset($is_logged)) {
     die;
 }
 
-
-
+//   requete pour affichage des messages non lus
 $query = $bdd->prepare('SELECT * FROM message WHERE read_msg = 0');
 if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
 
 }
 
+//   requete pour affichage des infos
 $query = $bdd->prepare('SELECT * FROM contact_information');
 if ($query->execute()) {
 	$info = $query->fetch(PDO::FETCH_ASSOC);
 
 }
 
-$query = $bdd->prepare('SELECT * FROM recipe LEFT JOIN users ON recipe.id_autor = users.id ORDER BY recipe.date_creation LIMIT 5');
+//   requete pour affichage des recettes
+$query = $bdd->prepare('SELECT * FROM recipe LEFT JOIN users ON recipe.id_autor = users.id ORDER BY recipe.date_creation LIMIT 10');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
 }
-
-
 
 require_once 'header.php';
  ?>
@@ -41,10 +40,9 @@ require_once 'header.php';
     Penser a mettre Unique au champ email dans la table <br>
     Uniformiser le nom des fichier ?????????? <br>
     Faire l'Update information resto (Théo) <br>
-    Faire le slid en JavaScript (Théo) <br>
+    Faire le slide en JavaScript (Théo) <br>
     Faire Token (daniel) <br>
     faire les controles du requis 3 <br>
-    recherche recette en front <br>
     editeur peut juste ajouter des recettes <br>
     commenter notre code <br>
     faire les paginations
