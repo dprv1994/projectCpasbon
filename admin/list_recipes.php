@@ -62,7 +62,7 @@ require_once 'header.php';
 
 				<?php if (empty($recipes)) { ?>
 						<tr>
-						<td colspan="6">on a rien trouvé</td>
+						<td colspan="6">nous n'avons rien trouvé, rententer votre chance</td>
 					</tr>
 				<?php }
 						else { ?>
