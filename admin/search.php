@@ -1,7 +1,8 @@
 <?php
-
-
-
+    if(strripos($_SERVER['REQUEST_URI'],'search.php') > 0){
+        header('Location:index.php');
+        die;
+    }
 $get = [];
 
 $sql = '';
