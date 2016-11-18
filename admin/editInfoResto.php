@@ -138,34 +138,44 @@ require_once 'header.php'; ?>
         <input type="file" id="picture" name="picture">
     </div>
 
-    <input class="btn btn-info btn-lg center-block" type="submit" value="Modifier">
+    <input class="btn btn-info btn-lg center-block" type="submit" value="Mettre a jour">
 </form>
 
 <!-- SLIDER -->
 <h2>affichage des slider :</h2>
+<a href="addSlide.php">
+    <button type="button" class="btn btn-info btn-xs">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un Slider
+    </button>
+</a>
+<br><br>
 <!-- boucle pour vider les donné récupéré avec un if pour récupérer uniquement les slides -->
 <?php $brCount = 1 ?>
-
+<div class="row">
     <?php foreach ($infos as $value):
         if (strpos($value['data'],'slide_') === 0 ) :
             $slide = explode(',',$value['value']);
             ?>
-            <?= ($brCount %2 == 1)? '<div class="row">' : ''; ?>
-            <div class="col-lg-6">
+
+            <div class="col-lg-4">
                 <div class="media">
-                  <div class="media-left">
-                      <img class="media-object" src="<?= $slide[2] ?>" alt="">
+                  <div class="col-lg-5">
+                      <img class="img-responsive" src="<?= $slide[2] ?>" alt="">
                   </div>
-                  <div class="media-body">
+                  <div class="col-lg-5">
                     <h4 class="media-heading"><?= $slide[0] ?></h4>
                     <?= $slide[1] ?>
                   </div>
+                  <a class="" href="deleteSlide.php?id=<?= $value['id'] ?>"<?= $slide[0] ?>><button class="col-lg-2 btn btn-danger" type="button"><i class="glyphicon glyphicon-minus"></i></button></a>
                 </div>
             </div>
-            <?= ($brCount %2 == 0)? '</div><br>' : ''; $brCount ++;?>
+            <?php echo ($brCount == 3)? '<hr class="col-lg-12">' : '';
+                $brCount++;
+                $brCount = ($brCount > 3)? 1 : $brCount;
+            ?>
 
         <?php endif ; ?>
     <?php endforeach; ?>
-
-
+</div>
+<!-- Fin affichage des slider -->
 <?php require_once 'footer.php'; ?>
