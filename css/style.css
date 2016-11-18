@@ -50,10 +50,10 @@ body{
 
 
 /* ---------------------------Slider*/
-.slider{
+.slider_contain{
     padding: 1em;
 }
-.slider img{
+.slider_contain img{
     width: 100%;
 }
 

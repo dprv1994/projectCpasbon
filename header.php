@@ -25,6 +25,7 @@ if ($query->execute()) {
 
     <!-- Custom CSS -->
     <link href="css/half-slider.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/Slider_style.css">
 
     </head>
 <body>

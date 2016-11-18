@@ -11,9 +11,9 @@ $recettes = $req->fetchAll(PDO::FETCH_ASSOC);
 
 <?php require_once 'header.php'; ?>
 
-        <div class="slider">
+        <div class="slider_contain">
             <div class="wrapper">
-                <img src="http://lorempixel.com/g/400/200" alt="" />
+                <?php include_once 'slide.php';?>
             </div>
         </div>
         <div class="recettes">
