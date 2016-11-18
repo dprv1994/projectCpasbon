@@ -8,7 +8,6 @@ if (!isset($is_logged) && $is_logged == 'editeur') {
     die;
 }
 
-
 use Respect\Validation\Validator as verif;
 
 $post=[];
@@ -106,7 +105,7 @@ require_once 'header.php'; ?>
 
 
 <h1>Modification des informations du restaurant</h1>
-
+<h2>infos du restaurant :</h2>
 <?php if ($formValid == true): ?>
     <p class="alert-success">Les informations du restaurant ont été mise à jour !</p>
 <?php elseif ($haserror == true): ?>
@@ -141,5 +140,32 @@ require_once 'header.php'; ?>
 
     <input class="btn btn-info btn-lg center-block" type="submit" value="Modifier">
 </form>
+
+<!-- SLIDER -->
+<h2>affichage des slider :</h2>
+<!-- boucle pour vider les donné récupéré avec un if pour récupérer uniquement les slides -->
+<?php $brCount = 1 ?>
+
+    <?php foreach ($infos as $value):
+        if (strpos($value['data'],'slide_') === 0 ) :
+            $slide = explode(',',$value['value']);
+            ?>
+            <?= ($brCount %2 == 1)? '<div class="row">' : ''; ?>
+            <div class="col-lg-6">
+                <div class="media">
+                  <div class="media-left">
+                      <img class="media-object" src="<?= $slide[2] ?>" alt="">
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading"><?= $slide[0] ?></h4>
+                    <?= $slide[1] ?>
+                  </div>
+                </div>
+            </div>
+            <?= ($brCount %2 == 0)? '</div><br>' : ''; $brCount ++;?>
+
+        <?php endif ; ?>
+    <?php endforeach; ?>
+
 
 <?php require_once 'footer.php'; ?>
