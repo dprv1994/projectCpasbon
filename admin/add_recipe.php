@@ -24,13 +24,26 @@ if (!isset($is_logged)) {
 if (!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-	if (!v::length(3, 30)->validate($post['title'])) {
+	/*if (!v::length(3, 30)->validate($post['title'])) {
 		$errors[] = 'Vous devez entrer entre 3 et 30 caractères.';
+	}*/
+	$Chaine=($post['title']);
+	$Reg = "#[a-zA-Z0-9]{5,140}#";
+				
+	if(!preg_match($Reg, $Chaine)){
+		$errors[] = 'Vous devez entrer entre 5 et 140 caractères.';
 	}
+	/*if (!v::length(15, 300)->validate($post['preparation'])) {
+			$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
+	}*/
+	$Chaine=($post['preparation']);
+	$Reg = "#[a-zA-Z0-9]{20,}#";
 
-	if (!v::length(15, 300)->validate($post['preparation'])) {
-		$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
-	}
+	if(!preg_match($Reg, $Chaine)){
+		$errors[] = 'Vous devez entrer au minimum 20 caractères.';
+	}		
+
+	
 
 	if(!is_uploaded_file($_FILES['url_img']['tmp_name']) || !file_exists($_FILES['url_img']['tmp_name'])){
 		$errors[] = 'Vous devez ajouter une photo.';
