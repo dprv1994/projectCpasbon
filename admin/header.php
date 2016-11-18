@@ -1,3 +1,9 @@
+<?php
+    if(strripos($_SERVER['REQUEST_URI'],'header.php') > 0){
+        header('Location:index.php');
+        die;
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
