@@ -11,30 +11,27 @@ if (!isset($is_logged)) {
 }
 
 if(isset($_GET['id']) && is_numeric($_GET['id'])) {
-	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
-	$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
+	$query = $bdd->prepare('SELECT * FROM slide WHERE id = :idSlide');
+	$query->bindValue(':idSlide', $_GET['id'], PDO::PARAM_INT);
 
 	if($query->execute()) {
-		$user = $query->fetch();
+		$slide = $query->fetch();
 	}
 	else {
 		var_dump($query->errorInfo());
 		die;
 	}
 }else {
-    header('Location:listUser.php');
+    header('Location:listSlide.php');
     die;
 }
 
 require_once 'header.php';
 ?>
-<h1><?= ucfirst($user['username']); ?></h1>
+
+<h1><?= ucfirst($slide['title']); ?></h1>
     <div class="col-lg-6">
-        <strong> Nom : </strong><?= $user['lastname']; ?><br>
-        <strong> Prénom : </strong><?= $user['firstname']; ?><br>
-        <strong> Email : </strong><?= $user['email']; ?><br>
-        <strong> Pseudo : </strong><?= $user['username']; ?><br>
-        <strong> Statut : </strong><?= affichRole($user['role'])?><br>
+        <strong> Contenu : </strong><?= $slide['sub_title']; ?><br>
         <?php if ($is_logged == 'admin'): ?>
             <!-- <form method="post"> Nécessite AJAX
                 <button class="btn btn-danger btn-lg center-block" id="delete" name="delete" onClick="if(confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?'))
@@ -45,10 +42,10 @@ require_once 'header.php';
             </form> -->
 
             <br><br>
-            <a class="btn btn-danger btn-lg center-block" href="deleteUser.php?id=<?= $user['id']; ?>">Supprimer le profil</a>
+            <a class="btn btn-danger btn-lg center-block" href="deleteSlide.php?id=<?= $slide['id']; ?>">Supprimer le Slide</a>
         <?php endif; ?>
     </div>
     <div class="col-lg-6">
-        <strong> Avatar : </strong> <img class="img-responsive" src="<?= $user['avatar']; ?>">
+        <strong> Image : </strong> <img class="img-responsive" src="<?= $slide['picture']; ?>">
     </div>
-<?php require_once 'footer.php'; ?>
+  <?php require_once 'footer.php'; ?>
