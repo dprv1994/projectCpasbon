@@ -1,7 +1,12 @@
 <?php
 require_once 'inc/session.php';
 require_once 'inc/connect.php';
-$query = $bdd->prepare('SELECT * FROM recipe LEFT JOIN users ON recipe.id_autor = users.id ORDER BY recipe.date_creation');
+$query = $bdd->prepare('
+        SELECT r.*, u.firstname , u.lastname, u.username, u.avatar
+        FROM recipe AS r
+        LEFT JOIN users AS u
+        ON r.id_autor = u.id
+        ORDER BY r.date_creation');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
 }

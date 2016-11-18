@@ -11,7 +11,12 @@ if (!isset($is_logged)) {
 require_once 'search.php';
 
 
-	$query = $bdd->prepare('SELECT * FROM recipe '.$sql);
+	$query = $bdd->prepare('
+            SELECT r.*, u.firstname , u.lastname, u.username, u.avatar
+            FROM recipe AS r
+            LEFT JOIN users AS u
+            ON r.id_autor = u.id
+            ORDER BY r.date_creation'.$sql);
 
 if(!empty($sql)){
 	$query->bindValue(':search', '%'.$get['search'].'%');
@@ -81,12 +86,11 @@ require_once 'header.php';
 							else {
 								echo date('d/m/Y H:i', strtotime($recipe['date_creation']));
 							}?></td>
-						<td style="min-width:20px;"><?php echo $recipe['id_autor'];?></td>
+						<td style="min-width:20px;"><?php echo $recipe['username'];?></td>
 	                    <td style="min-width:20px;"><a  href="update_recipe.php?id=<?= $recipe['id']?>" title="Modifier recette"><i class="glyphicon glyphicon-pencil"></i> </a>
-	                    <a href="delete_recipe.php?id=<?php  $recipe['id']?>" title="Supprimer recette"><i class="glyphicon glyphicon-remove"></i></a></td>
+	                    <a href="delete_recipe.php?id=<?= $recipe['id']?>" title="Supprimer recette"><i class="glyphicon glyphicon-remove"></i></a></td>
 	                    </tr>
 					<?php } ?>
-
 					<!-- pour afficher date modification fichier filemtime ( string $filename ) -->
 			<?php  }?>
 			</tbody>

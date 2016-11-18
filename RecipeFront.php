@@ -5,7 +5,12 @@ require_once 'inc/connect.php';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
 
-    $query = $bdd->prepare('SELECT * FROM recipe LEFT JOIN users ON recipe.id_autor = users.id WHERE recipe.id = :id');
+    $query = $bdd->prepare('
+            SELECT r.*, u.firstname , u.lastname, u.username, u.avatar
+            FROM recipe AS r
+            LEFT JOIN users AS u
+            ON r.id_autor = u.id
+            WHERE recipe.id = :id');
     $query->bindValue(':id', $_GET['id']);
     if ($query->execute()) {
         $recette = $query->fetch(PDO::FETCH_ASSOC);
