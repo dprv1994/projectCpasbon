@@ -19,6 +19,13 @@ if ($query->execute()) {
 
         <!-- css perso -->
         <link rel="stylesheet" href="css/style.css">
+
+        <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap2.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/half-slider.css" rel="stylesheet">
+
     </head>
 <body>
     <div class="topbar">
