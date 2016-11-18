@@ -33,6 +33,7 @@ $errors=[];
 $formValid=false;
 $haserror=false;
 $dirUpload='../img/';
+$photoName = false;
 
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
@@ -41,37 +42,47 @@ if(!empty($_POST)) {
 		$errors[] = 'Veuillez taper un mot de passe valide compris entre 8 et 30 caractères';
 	}
 
-	if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){
-		$errors[] = 'Il faut uploader une image';
-	}
-	else{
-		$finfo = new finfo();
-		$mimeType = $finfo->file($_FILES['avatar']['tmp_name'], FILEINFO_MIME_TYPE);
-		$mimeTypeAllow = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/pjpeg'];
-
-		if(in_array($mimeType, $mimeTypeAllow)){
-			$photoName = uniqid('pic_');
-			$photoName.= '.'.pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-
-		if(!is_dir($dirUpload)){
-			mkdir($dirUpload, 0755);
+	if (strlen($_FILES['avatar']['name']) > 0) {
+		if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){
+			$errors[] = 'Il faut uploader une image';
 		}
+		else{
+			$finfo = new finfo();
+			$mimeType = $finfo->file($_FILES['avatar']['tmp_name'], FILEINFO_MIME_TYPE);
+			$mimeTypeAllow = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif', 'image/pjpeg'];
 
-		if(!move_uploaded_file($_FILES['avatar']['tmp_name'], $dirUpload.$photoName)){
-				$errors[] = 'Erreur lors de l\'upload de la photo';
+			if(in_array($mimeType, $mimeTypeAllow)){
+				$photoName = uniqid('pic_');
+				$photoName.= '.'.pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+
+			if(!is_dir($dirUpload)){
+				mkdir($dirUpload, 0755);
 			}
 
-		}else{
-			$errors[] = 'Le fichier est invalide';
+			if(!move_uploaded_file($_FILES['avatar']['tmp_name'], $dirUpload.$photoName)){
+					$errors[] = 'Erreur lors de l\'upload de la photo';
+				}
+
+			}else{
+				$errors[] = 'Le fichier est invalide';
+			}
 		}
 	}
 
 	if(count($errors) === 0) {
-		$query = $bdd->prepare('UPDATE users SET password = :password, avatar = :avatar WHERE id = :idUser');
+		$columnSQL = 'password = :password';
+
+		if ($photoName) {
+			$columnSQL.=', avatar = :avatar';
+		}
+		$query = $bdd->prepare('UPDATE users SET '.$columnSQL.' WHERE id = :idUser');
 		$user = $query->fetch(PDO::FETCH_ASSOC);
 		$query->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
-		$query->bindValue('avatar', $dirUpload.$photoName);
+		$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
 
+		if($photoName) {
+			$query->bindValue(':avatar', $_FILES['avatar']);
+		}
 		if($query->execute()) {
 			$formValid = true;
 		}
