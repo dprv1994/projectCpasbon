@@ -1,3 +1,10 @@
+<?php
+//   requete pour affichage des infos
+$query = $bdd->query('SELECT * FROM contact_information ');
+if ($query->execute()) {
+	$info = $query->fetchAll(PDO::FETCH_ASSOC);
+}
+ ?>
 <!DOCTYPE html>
 <html>
     <head lang="fr">
@@ -17,9 +24,9 @@
     <div class="topbar">
         <div class="wrapper grid-2">
             <div class="logo one-third">
-                <h2>CPasBon</h2>
-                <span>1 rue de l'adresse, 33150 Cenon</span>
-                <span>06.66.66.99</span>
+                <h2><?= $info[0]['value']; ?></h2>
+                <span><?= $info[1]['value'] . ' , ' . $info[2]['value'] . ' , ' .$info[3]['value']?></span>
+                <span><?= $info[4]['value']; ?></span>
             </div>
             <nav>
                 <ul>
