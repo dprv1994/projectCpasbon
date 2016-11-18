@@ -50,7 +50,10 @@ if(!empty($_POST)) {
 		$haserror = true;
 	}
 }
-
+// ajout du titre dans le header
+$headerAdd = [
+    'title'  => 'Contact'
+];
 require_once 'header.php';
 ?>
 <div class="wrapper">

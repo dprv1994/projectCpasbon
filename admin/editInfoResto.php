@@ -10,14 +10,16 @@ if (!isset($is_logged)) {
 else {
     $edit = $bdd->prepare('SELECT * FROM contact_information');
     if($edit->execute()) {
-        $message = $edit->fetchAll(PDO::FETCH_ASSOC);
+        $infos = $edit->fetchAll(PDO::FETCH_ASSOC);
     }
     else {
         var_dump($edit->errorInfo());
         die;
     }
 }
-
+echo "<pre>";
+var_dump($infos);
+echo "</pre>";
 use Respect\Validation\Validator as verif;
 
 $post=[];
