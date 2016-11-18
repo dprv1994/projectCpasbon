@@ -97,7 +97,7 @@ if(!empty($_POST)) {
 require_once 'header.php'; ?>
 
 
-<h1>Modification des informations du  restaurant</h1>
+<h1>Modification des informations du restaurant</h1>
 
 <?php if ($formValid == true): ?>
     <p class="alert-success">Les informations du restaurant ont été mise à jour !</p>
