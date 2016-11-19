@@ -35,12 +35,10 @@ require_once 'header.php';
     Penser a mettre Unique au champ email dans la table <br>
     Uniformiser le nom des fichier ?????????? <br>
     Faire le slide en JavaScript (Théo) <br>
-    Faire Token (daniel) <br>
     faire les controles du requis 3 regex <br>
-    editeur peut juste ajouter des recettes <br>
+    editeur peut juste ajouter des recettes a controler<br>
     commenter notre code <br>
     faire les paginations <br>
-    dans users rajouté un colonne token ainsi qu'un composer install aprés avoir fait une synchro
 
 
 </code>
