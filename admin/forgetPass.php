@@ -96,7 +96,7 @@ require_once 'header.php';
         <label for="email">Votre Email :</label>
         <input id="email" type="text" name="emailPerdu" class="form-control">
     </div>
-    <input class="btn btn-lg btn-info center-block" type="submit" name="name" value="Envoyer">
+    <input class="btn btn-lg btn-info center-block" type="submit" value="Envoyer">
 </form>
 
 

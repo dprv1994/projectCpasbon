@@ -64,12 +64,17 @@ if (empty($_SESSION) && !empty($_POST)) {
 
 	<?php
 		if ($hasError){
-		 		echo '<p style="color:red;">'.implode('<br>', $error).'</p>';
+		 		echo '<p class="alert alert-danger">'.implode('<br>', $error).'</p>';
 			}
 
 		if($success){
-			echo '<p style="color:green;">LOGIN OK !</p>';
+			echo '<p class="alert alert-success">LOGIN OK !</p>';
 		}
+        // affichage uniquement pour les visiteurs qui arrive de la page mot de pass oublié
+        // pas de sécurité sur le get parce que il affiche juste un message est la valeur envoyé n'est jamais interprété
+        if(isset($_GET['m'])){
+            echo '<p class="alert alert-success">Vous pouvez a present vous connecter avec le nouveau mot de passe enregistré !</p>';
+        }
 	?>
 <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
  	<h1>Connexion</h1>
