@@ -4,16 +4,14 @@ require_once 'inc/connect.php';
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
 
-
-    $query = $bdd->prepare('
-            SELECT r.*, u.firstname , u.lastname, u.username, u.avatar
-            FROM recipe AS r
-            LEFT JOIN users AS u
-            ON r.id_autor = u.id
-            WHERE recipe.id = :id');
+    $query = $bdd->prepare('SELECT r.*, u.firstname , u.lastname, u.username, u.avatar FROM recipe AS r
+            LEFT JOIN users AS u ON r.id_autor = u.id WHERE r.id = :id');
     $query->bindValue(':id', $_GET['id']);
     if ($query->execute()) {
         $recette = $query->fetch(PDO::FETCH_ASSOC);
+    }else {
+        header('Location:listRecipeFront.php');
+        die;
     }
 }else {
     $notexist = true ;
@@ -38,24 +36,25 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <span>Auteur : <?= $recette['username'];?></span><br>
                 </div>
                 <div class="ingredients">
+
+                    <?php $ingredients = explode(',',$recette['ingredient']); ?>
                     <ul>
-                        <li>ingredient 1</li>
-                        <li>ingredient 2</li>
-                        <li>ingredient 3</li>
-                        <li>ingredient 4</li>
-                        <li>ingredient 5</li>
-                        <li>ingredient 6</li>
+                        <?php foreach ($ingredients as $ingredient): ?>
+                            <li><?= $ingredient; ?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
             </div>
             <p class="content">
                         <?= $recette['preparation'];?>
             </p>
+            <?php if (isset($is_logged) && $is_logged == 'admin'): ?>
+                <!-- admin seulement -->
+                <button type="button" name="button">Modifier la recette</button>
+                <button type="button" name="button">Supprimmer la recette</button>
+            <?php endif; ?>
         </div>
 
-        <!-- admin seulement -->
-        <button type="button" name="button">Modifier la recette</button>
-        <button type="button" name="button">Supprimmer la recette</button>
     </div>
 
 

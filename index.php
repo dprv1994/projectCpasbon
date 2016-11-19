@@ -30,7 +30,7 @@ $recettes = $req->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <a href="listRecipeFront.php"><button class="boutonRecettes">Découvrir toutes les recettes des chefs</button></a>
+                <a href="listRecipeFront.php"><button class="boutonRecettes">Découvrir toutes<br>les recettes des chefs</button></a>
             </div>
         </div>
 

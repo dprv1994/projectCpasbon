@@ -29,9 +29,15 @@ if (!empty($_POST)) {
 	}*/
 	$Chaine=($post['title']);
 	$Reg = "#[a-zA-Z0-9]{5,140}#";
-				
+
 	if(!preg_match($Reg, $Chaine)){
 		$errors[] = 'Vous devez entrer entre 5 et 140 caractères.';
+	}
+	if (!v::length(5,3000)->validate($post['ingredients'])) {
+			$errors[] = 'Vous devez entrer au minimum 20 caractères.';
+	}else {
+        $searchRepl = [' ,',', ',' , '];
+	    $ingredients = str_ireplace($searchRepl,',',$post['ingredients']);
 	}
 	if (!v::length(5,3000)->validate($post['preparation'])) {
 			$errors[] = 'Vous devez entrer au minimum 20 caractères.';
@@ -41,9 +47,9 @@ if (!empty($_POST)) {
 /*
 	if(!preg_match($Reg, $Chaine)){
 		$errors[] = 'Vous devez entrer au minimum 20 caractères.';
-	}*/		
+	}*/
 
-	
+
 
 	if(!is_uploaded_file($_FILES['url_img']['tmp_name']) || !file_exists($_FILES['url_img']['tmp_name'])){
 		$errors[] = 'Vous devez ajouter une photo.';
@@ -70,16 +76,17 @@ if (!empty($_POST)) {
 		}
 
 	}
-
+// var_dump('merde');
 
 		if (count($errors) === 0) {
 
-			$insert = $bdd->prepare('INSERT INTO recipe(title, preparation, url_img, date_creation, id_autor) VALUES (:title, :preparation, :url_img, NOW(), :id_autor)');
+			$insert = $bdd->prepare('INSERT INTO recipe(title, ingredient, preparation, url_img, date_creation, id_autor) VALUES (:title, :ingr, :preparation, :url_img, NOW(), :id_autor)');
 
 			$insert->bindValue(':title', $post['title']);
 			$insert->bindValue(':preparation', $post['preparation']);
-			$insert->bindValue(':url_img', $dirUpload.$url_imgName);
-			$insert->bindValue(':id_autor', $_SESSION['user']['username']);
+			$insert->bindValue(':url_img', 'img/recette/'.$url_imgName);
+			$insert->bindValue(':id_autor', $_SESSION['user']['id']);
+			$insert->bindValue(':ingr', $ingredients);
 
 			if ($insert->execute()) {
 				$formValid=true;
@@ -119,12 +126,17 @@ require_once 'header.php';
 
     					<div class="form-group">
     						<label for="title">Titre :</label>
-    						<input class='form-control' type="text" id="title" name="title">
+    						<input class='form-control' type="text" id="title" name="title" placeholder="ex : Poireaux aux ...">
+    					</div>
+
+                        <div class="form-group">
+    						<label for="ingredients">ingredients :</label>
+    						<input class='form-control' type="text" id="ingredients" name="ingredients" placeholder="ex : poirreaux, courgettes, (séparer les ingredients par une virgule)">
     					</div>
 
     					<div class="form-group">
     						<label for="preparation">Contenu :</label>
-    						<textarea class='form-control' type="text" id="preparation" name="preparation"></textarea>
+    						<textarea class='form-control' type="text" id="preparation" name="preparation" placeholder="Preparation, temps de cuisson, ...."></textarea>
     					</div>
 
     					<div class="form-group">
