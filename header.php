@@ -20,7 +20,9 @@ if ($query->execute()) {
         <!-- css perso -->
         <link rel="stylesheet" href="css/style.css">
 
-        <!-- Bootstrap Core CSS -->
+        <!-- Bootstrap Core CSS  et font awsome-->
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/bootstrap2.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -41,7 +43,15 @@ if ($query->execute()) {
                     <li><a href="index.php">Accueil</a></li>
                     <li><a href="listRecipeFront.php">Recettes</a></li>
                     <li><a href="contact.php">Nous Contacter</a></li>
-                </ul>
+                </ul><br>
+                <form method="get" action="listRecipeFront.php" class="searchListRecipes" >
+                       <div class="searchPlacement">
+                           <input type="search" name="search" class="" placeholder="Pâtes aux .....">
+                           <span class="">
+                               <button class="" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                           </span>
+                       </div>
+                </form>
             </nav>
         </div>
     </div>

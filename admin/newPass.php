@@ -30,8 +30,6 @@ if (isset($_POST['check']) && is_numeric($_POST['check']) && isset($_POST['passw
             $errors[] = 'Veuillez reesayer plus tard'
         }
     }
-    // vider le token
-
 }
 
 

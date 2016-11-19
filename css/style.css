@@ -1,11 +1,17 @@
 @charset "UTF-8";
+/*id des couleurs : http://colorhunt.co/c/41890*/
 *{
     box-sizing: border-box;
 }
 body{
-    background: grey;
+    background: #f2ffdf;
 }
-
+h1{
+    display: block;
+    margin: 2em auto;
+    padding-top: 2em;
+    text-align: center;
+}
 .wrapper{
     max-width: 1200px;
     width: 100%;
@@ -15,7 +21,7 @@ body{
 /* ---------------------------TOPBAR*/
 .topbar{
     padding: 1em 0;
-    background: rgb(125, 122, 120) ;
+    background: #c9f0d6 ;
 }
 .logo{
     padding: 0 1em;
@@ -29,16 +35,23 @@ body{
 }
 .topbar nav{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     flex-grow: 1;
 }
+.topbar ul{
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
 .topbar li{
     display: inline-block;
     list-style: none;
+    padding-left:10px;
 }
 .topbar li::after{
-    content: " | ";
+    content: " |  ";
 }
 .topbar li:last-child::after{
     content: none;
@@ -47,7 +60,25 @@ body{
     text-transform: uppercase;
     text-decoration: none;
 }
+/*search*/
+.searchListRecipes{
 
+}
+.searchPlacement{
+    padding: 0.4em;
+    border-radius: 5px 5px 0 0;
+    background: #f2ffdf;
+    position: relative;
+    top: 17px;
+}
+.searchPlacement input[type=search]{
+    padding: 0.2em;
+}
+.searchPlacement button{
+    margin-left: 0.2em;
+    border-radius: 100%;
+    border: 2px solid black
+}
 
 /* ---------------------------Slider*/
 .slider_contain{
@@ -60,17 +91,17 @@ body{
 /* ---------------------------Recette*/
 .recettes{
     padding: 1em ;
-    background: rgb(32, 89, 98) ;
+    background: #c9f0d6 ;
 }
 .recettes button{
+    background: #ffec85;
     cursor: pointer;
     border-radius: 4px;
     padding: 1em;
-    background: rgb(242, 188, 24);
-    border: 1px solid rgb(113, 179, 194);
+    border: 0;
 }
 .recettes button:hover{
-    background: rgb(221, 146, 73) ;
+    background: #ffca61;
 }
 .recettesFlex{
     display: flex;
@@ -80,7 +111,7 @@ body{
 }
 .containerRecipes{
     min-width: 90%;
-    margin: 2em auto;
+    margin: 0 auto;
 }
 .recipe{
     display: flex;
@@ -124,7 +155,54 @@ body{
     justify-content: center;
     flex-direction: column;
 }
+/* ---------------------------PAGE : list recette*/
+.searchListRecipes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.listRecipes input[type=search]{
 
+}
+.ficheRecipe-Container{
+    padding: 5px;
+}
+.ficheRecipe{
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+.ficheRecipe img{
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    background: rgb(72, 182, 120);
+    top: 0;bottom: 0;right: 0;left: 0;
+}
+.ficheRecipe-content{
+    width: 100%;
+    padding: 2em 0 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+
+}
+.ficheRecipe-content h2{
+    font: 1.2em;
+    margin: 0;
+    text-transform: uppercase;
+}
+.ficheRecipe-content h2 a{
+    text-decoration: none;
+}
 
 /* ---------------------------PAGE : contact*/
 .contactForm{
@@ -156,4 +234,13 @@ body{
 }
 .contact button:hover{
     background: rgb(221, 146, 73) ;
+}
+
+
+/*Footer pour le style*/
+.footer{
+    width: 100%;
+    display: block;
+    height: 75px;
+    border-top: 15px solid #c9f0d6;
 }

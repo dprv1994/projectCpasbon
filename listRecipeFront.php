@@ -7,7 +7,7 @@ require_once 'inc/connect.php';
 $get = [];
 $sql = '';
 
-if(!empty($_GET)){
+if(!empty($_GET['search'])){
 	foreach ($_GET as $key => $value) {
 		$get[$key] = trim(strip_tags($value));
 	}
@@ -36,26 +36,18 @@ if ($query->execute()) {
 //                  Fin du traitement
 
 // ajout des meta dans le head via $headeradd
+$titlePage = (!isset($get['search']))? 'Liste Des Recettes' : 'Recherche \' '.$get['search'].' \'';
+
 $headerAdd = [
-    'title'  => 'Liste Des Recettes'
+    'title'  => $titlePage
 ];
 require_once 'header.php' ; ?>
 
-<div class="search">
-    <div class="wrapper"></div>
-</div>
 <div class="listRecipes">
     <div class="wrapper">
-        <h1>La liste des recettes</h1>
-        <form method="get" >
-            <div class="">
-               <input type="search" name="search" class="" placeholder="Pâtes aux .....">
-               <span class="">
-                 <button class="" type="submit">Recherche</button>
-               </span>
-             </div>
-        </form>
-        <div class="grid-4">
+        <h1><?= (isset($get['search']))? 'Recherche d\'une recette : \' '.$get['search'].' \'' : 'La liste des recettes' ?></h1>
+
+        <div class="grid-3-small-2 has-gutter">
             <?php if (!empty($preparation)): ?>
                 <!-- Affichage des recettes si il y a un resultat a la recherche ou pas de resultat : -->
                 <?php foreach ($preparation as $value):
@@ -68,13 +60,14 @@ require_once 'header.php' ; ?>
                     /////////////////////////////////////
                     ?>
 
-                    <div class="ficheRecipe">
-                        <h1><a href="RecipeFront.php?id=<?= $value['id'];?>"><?= $title;?></a><small class="author"><?= $username;?></small></h1>
-                        <img src="<?= $value['url_img'];?>" alt="">
-                        <?php if (isset($is_logged)): ?>
-                            <a href="admin/update_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Modifier la recette</button></a>
-                            <a href="admin/delete_recipe.php?id=<?= $value['id'];?>"><button type="button" name="button">Supprimer la recette</button></a>
-                        <?php endif; ?>
+                    <div class="ficheRecipe-Container">
+                        <div class="ficheRecipe">
+                            <div class="ficheRecipe-content">
+                                <h2><a href="RecipeFront.php?id=<?= $value['id'];?>"><?= $title;?></a></h2>
+                                <span class="author"> de <?= $username;?></span>
+                            </div>
+                            <img src="<?= $value['url_img'];?>" alt="">
+                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
@@ -84,5 +77,8 @@ require_once 'header.php' ; ?>
         </div>
     </div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
 <?php require_once 'footer.php' ; ?>
