@@ -18,7 +18,7 @@ $post=[];
 $errors=[];
 $formValid=false;
 $haserror=false;
-$dirUpload='../img/';
+$dirUpload='../img/avatar/';
 
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
@@ -47,7 +47,7 @@ if(!empty($_POST)) {
 		$errors[] = 'Veuillez sélectionner un statut à cet utilisateur';
 	}
 
-	
+
 	if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){
 		$errors[] = 'Il faut uploader une image';
 	}
@@ -67,7 +67,7 @@ if(!empty($_POST)) {
 
 		if(!move_uploaded_file($_FILES['avatar']['tmp_name'], $dirUpload.$photoName)){
 				$errors[] = 'Erreur lors de l\'upload de la photo';
-		
+
 		}
 	}
 
@@ -79,7 +79,7 @@ if(!empty($_POST)) {
 		$query->bindValue(':username', $post['username']);
 		$query->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
 		$query->bindValue(':role', $post['role']);
-		$query->bindValue('avatar', $dirUpload.$photoName);
+		$query->bindValue('avatar', 'img/avatar/'.$photoName);
 
 		if($query->execute()) {
 			$formValid = true;

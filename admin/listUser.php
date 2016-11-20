@@ -42,8 +42,7 @@ require_once 'header.php';
 				<?php foreach ($users as $user) {
 					echo '<tr><td>'. affichRole($user['role']).'</td><td>'.$user['lastname'].'</td><td>'.$user['firstname'].'</td><td>'.$user['email'].'</td><td>'.$user['username'].'</td><td>';
                     echo '<a href="viewUser.php?id='.$user['id'].'">Voir le profil</a>';
-                    echo '</td>';
-                    echo '</tr>';
+                    echo '</td></tr>';
 				}
 				?>
 			</tbody>

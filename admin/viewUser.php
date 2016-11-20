@@ -51,6 +51,6 @@ require_once 'header.php';
         <?php endif; ?>
     </div>
     <div class="col-lg-6">
-        <strong> Avatar : </strong> <img class="img-responsive" src="<?= $user['avatar']; ?>">
+        <strong> Avatar : </strong> <img class="img-responsive" src="../<?= $user['avatar']; ?>">
     </div>
 <?php require_once 'footer.php'; ?>

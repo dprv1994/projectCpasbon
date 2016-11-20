@@ -36,7 +36,7 @@ $post=[];
 $errors=[];
 $formValid=false;
 $haserror=false;
-$dirUpload='../img/';
+$dirUpload='../img/avatar/';
 $photoName = false;
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
@@ -84,7 +84,7 @@ if(!empty($_POST)) {
 		$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
 
 		if($photoName) {
-			$query->bindValue(':avatar', $_FILES['avatar']);
+			$query->bindValue(':avatar', 'img/avatar/'.$photoName);
 		}
 		if($query->execute()) {
 			$formValid = true;
