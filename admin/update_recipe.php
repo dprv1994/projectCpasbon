@@ -37,8 +37,8 @@ if(isset($is_logged)) {
 		if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,500}#', $post['preparation'])) {
 			$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
 		}
-        if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{20,3000}#', $post['ingredients'])) {
-    			$errors[] = 'Vous devez entrer au minimum 5 caractères.';
+        if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,255}#', $post['ingredients'])) {
+    			$errors[] = 'Vous devez entrer au minimum 5 caractères pour les ingrédients.';
     	}else {
             $searchRepl = [' ,',', ',' , '];
     	    $ingredients = str_ireplace($searchRepl,',',$post['ingredients']);
