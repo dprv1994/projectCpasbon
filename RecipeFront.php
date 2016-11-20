@@ -34,12 +34,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 </div>
                 <div class="one-fifth infos pam">
                     <div class="info">
-                        <div><b>Date de creation : </b><?= date('d/m/Y H:i', strtotime($recette['date_creation']));?></div>
+                        <div><b>Date de création : </b><?= date('d/m/Y H:i', strtotime($recette['date_creation']));?></div>
                         <div><b>Categorie : </b><?= $recette['category'];?></div>
                         <div><b>Auteur : </b> <?= $recette['username'];?></div>
                     </div>
                     <div class="ingredients">
-                        <span><b>Ingredients : </b></span>
+                        <span><b>Ingrédients : </b></span>
                         <?php $ingredients = explode(',',$recette['ingredient']); ?>
                         <ul>
                             <?php foreach ($ingredients as $ingredient): ?>

@@ -28,7 +28,7 @@ if(!empty($_POST)) {
 	}
 
 	if(!preg_match('#[a-zA-Z0-9_\,\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{10,3000}#', $post['content'])) {
-		$errors[] = 'Veuillez entrer un Objet valide';
+		$errors[] = 'Votre message n\'est pas valide';
 	}
 
 	if(count($errors) === 0){
@@ -67,13 +67,13 @@ require_once 'header.php';
             <?php endif; ?>
 
             <form class="contactForm" method="post">
-                            <label for="username">Votre nom</label>
+                            <label for="username">Votre nom : </label>
                             <input type="text" id="username" name="username" placeholder="ex : Pierre Marechal">
-                            <label for="email">Votre email</label>
+                            <label for="email">Votre email : </label>
                             <input type="email" id="email" name="email" placeholder="ex : votreemail@fai.fr">
-                            <label for="subject">Objet du message</label>
+                            <label for="subject">Objet du message : </label>
                             <input type="text" id="subject" name="subject" placeholder="ex : Surprise lors de notre dernière venue">
-                            <label for="content">Contenu de votre message</label>
+                            <label for="content">Votre message : </label>
                             <textarea id="content" name="content" placeholder="Bonjour , ......"></textarea>
                 <button type="submit" name="button">Envoyer le message</button>
             </form>
