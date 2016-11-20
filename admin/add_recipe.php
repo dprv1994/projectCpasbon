@@ -34,7 +34,7 @@ if (!empty($_POST)) {
 		$errors[] = 'Vous devez entrer entre 5 et 140 caractères.';
 	}
 	if (!v::length(5,3000)->validate($post['ingredients'])) {
-			$errors[] = 'Vous devez entrer au minimum 20 caractères.';
+			$errors[] = 'Vous devez entrer au minimum 5 caractères.';
 	}else {
         $searchRepl = [' ,',', ',' , '];
 	    $ingredients = str_ireplace($searchRepl,',',$post['ingredients']);

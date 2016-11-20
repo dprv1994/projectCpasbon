@@ -50,8 +50,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <?php if (isset($is_logged) && $is_logged == 'admin'): ?>
                         <div class="recipeAdmin mtl">
                             <!-- admin seulement -->
-                            <button type="button" class="mtm mbm pas">Modifier la recette</button>
-                            <button type="button" class="mtm mbm pas">Supprimmer la recette</button>
+                            <a href="admin/update_recipe.php?id=<?= $recette['id']?>"><button type="button" class="mtm mbm pas">Modifier la recette</button></a>
+                            <a href="admin/delete_recipe.php?id=<?= $recette['id']?>"><button type="button" class="mtm mbm pas">Supprimmer la recette</button></a>
+
                         </div>
                     <?php endif; ?>
                 </div>
