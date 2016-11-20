@@ -18,7 +18,7 @@ $debut = ($page - 1) * $max;
 
 
 
-$query = $bdd->prepare('SELECT * FROM message');
+$query = $bdd->prepare('SELECT * FROM message LIMIT  :max OFFSET :debut');
 
 $query->bindValue(':debut',$debut,PDO::PARAM_INT);
 $query->bindValue(':max',$max,PDO::PARAM_INT);
