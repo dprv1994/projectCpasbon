@@ -125,7 +125,7 @@ require_once 'header.php';
 ?>
 
 				<h1 class="text-center">Mettre à jour la recette : <?=$recipe['title'];?></h1>
-                <a href="../RecipeFront.php?id=<?=$recipe['id'];?>"><input type="button" class="btn btn-info btn-xs"value="Accés a la recette"></a>
+                <a href="../RecipeFront.php?id=<?=$recipe['id'];?>"><input type="button" class="btn btn-info btn-xs"value="Accès à la recette"></a>
                 <br><br>
 				<?php if(count($errors) > 0): ?>
 					<div class="alert alert-danger">
@@ -150,8 +150,8 @@ require_once 'header.php';
 							<input class="form-control" type="text" id="title" name="title" value="<?=$recipe['title'];?>">
 						</div>
                         <div class="form-group">
-    						<label for="ingredients">Ingredients :</label>
-    						<input class='form-control' type="text" id="ingredients" name="ingredients" value="<?=$recipe['ingredient'];?>" placeholder="ex : poirreaux, courgettes, (séparer les ingredients par une virgule)">
+    						<label for="ingredients">Ingrédients :</label>
+    						<input class='form-control' type="text" id="ingredients" name="ingredients" value="<?=$recipe['ingredient'];?>" placeholder="ex : poireaux, courgettes, (séparer les ingrédients par une virgule)">
     					</div>
 
 						<div class="form-group">
