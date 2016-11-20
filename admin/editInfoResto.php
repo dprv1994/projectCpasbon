@@ -19,23 +19,23 @@ $dirUpload='../img/';
 if(!empty($_POST)) {
     $post = array_map('trim', array_map('strip_tags', $_POST));
 
-    if(!verif::length(3, null)->validate($post['name'])) {
+    if(!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{3,140}#', $post['name'])) {
         $errors[] = 'Veuillez entrer un nom valide.';
     }
 
-    if(!verif::length(3, null)->validate($post['adress'])) {
+    if(!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,140}#', $post['adress'])) {
         $errors[] = 'Veuillez entrer une adresse valide.';
     }
 
-    if(!verif::intVal()->validate($post['zipcode']) && !verif::length(5, 5)->validate($post['zipcode'])) {
+    if(!preg_match('#[0-9]{5,5}#', $post['zipcode'])) {
         $errors[] = 'Veuillez entrer un code postal valide.';
     }
 
-    if(!verif::length(3, null)->validate($post['city'])) {
+    if(!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,140}#', $post['city'])) {
         $errors[] = 'Veuillez entrer une adresse valide.';
     }
 
-    if(!verif::intVal()->validate($post['phone'])) {
+    if(!preg_match('#[0-9]{10,10}#', $post['phone'])) {
         $errors[] = 'Veuillez entrer un numéro de téléphone valide.';
     }
 
