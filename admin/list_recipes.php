@@ -15,18 +15,25 @@ $max = 5;
 
 $debut = ($page - 1) * $max; 
 
+	$count = $bdd->prepare('SELECT count(*) as total
+            FROM recipe AS r
+            LEFT JOIN users AS u
+            ON r.id_autor = u.id
+            '.$sql);
+
 	$query = $bdd->prepare('SELECT r.*, u.firstname , u.lastname, u.username, u.avatar
             FROM recipe AS r
             LEFT JOIN users AS u
             ON r.id_autor = u.id
             '.$sql .'
             ORDER BY r.date_creation DESC LIMIT  :max OFFSET :debut');
-	/*$query->bindValue(':start',$start,PDO::PARAM_INT):start,;*/
+	
 	$query->bindValue(':debut',$debut,PDO::PARAM_INT);
 	$query->bindValue(':max',$max,PDO::PARAM_INT);
 
 if(!empty($sql)){
 	$query->bindValue(':search', '%'.$get['search'].'%');
+	$count->bindValue(':search', '%'.$get['search'].'%');
 }
 
 if($query->execute()){
@@ -36,6 +43,16 @@ if($query->execute()){
 		var_dump($query->errorInfo());
 		die;
 	}
+
+
+	if($count->execute()){
+		$total = $count->fetch(PDO::FETCH_ASSOC);
+		$nb = $total['total'];
+	}
+		else {
+			var_dump($query->errorInfo());
+			die;
+		}
 
 require_once 'header.php';
 ?>
@@ -109,8 +126,11 @@ require_once 'header.php';
 			</tbody>
 		</table>
 
-		<div><a href="?page=<?php echo $page - 1; ?>">Page précédente</a>
-		<a href="?page=<?php echo $page + 1; ?>">Page suivante</a></div>
+			<?php $search = (isset($_GET['search']))? 'search='. $_GET['search'].'&' :'';  ?>
+				<div>Page <?= $page; ?> / <?= ceil($nb/$max); ?><?= ($page!=1) ? '<a href="?'. $search .'page='. ($page - 1) .'">Page précédente</a>':''; ?>
+				<?= $page!= ceil($nb/$max) ? '<a href="?'. $search .'page='. ($page + 1) .'">Page suivante</a>':''; ?>
+
+				</div>
 
 		<br><br>
 	</body>
