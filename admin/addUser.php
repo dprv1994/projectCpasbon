@@ -23,23 +23,23 @@ $dirUpload='../img/';
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-	if(!verif::length(3, null)->validate($post['lastname'])) {
+	if(!preg_match('#[a-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{3,30}#', $post['lastname'])) {
 		$errors[] = 'Veuillez entrer un nom valide.';
 	}
 
-	if(!verif::length(3, null)->validate($post['firstname'])) {
+	if(!preg_match('#[a-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{3,30}#', $post['firstname'])) {
 		$errors[] = 'Veuillez entrer un prénom valide.';
 	}
 
-	if(!verif::email()->validate($post['email'])) {
-		$errors[] = 'Veuillez entrer une adresse email valide0';
+	if(!preg_match('#([a-zA-Z0-9_\.\-\%\+])+\@(([a-zA-Z0-9_\.\-])+\.([a-zA-Z0-9]{2,15}))#', $post['email'])) {
+		$errors[] = 'Veuillez entrer une adresse email valide';
 	}
 
-	if(!verif::length(3, 30)->validate($post['username'])) {
+	if(!preg_match('#[a-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{3,30}#', $post['username'])) {
 		$errors[] = 'Veuillez entrer un pseudo valide.';
 	}
 
-	if(!verif::length(8, 30)->validate($post['password'])) {
+	if(!preg_match('#[a-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{8,30}#', $post['password'])) {
 		$errors[] = 'Veuillez entrer un mot de passe compris entre 8 et 30 caractères';
 	}
 
