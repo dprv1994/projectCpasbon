@@ -124,8 +124,9 @@ require_once 'header.php';
 
 ?>
 
-				<h1 class="text-center">Mettre à jour la recette</h1>
-
+				<h1 class="text-center">Mettre à jour la recette : <?=$recipe['title'];?></h1>
+                <a href="../RecipeFront.php?id=<?=$recipe['id'];?>"><input type="button" class="btn btn-info btn-xs"value="Accés a la recette"></a>
+                <br><br>
 				<?php if(count($errors) > 0): ?>
 					<div class="alert alert-danger">
 						<?=implode('<br>', $errors);?>
@@ -139,7 +140,6 @@ require_once 'header.php';
 				<?php endif; ?>
 
 				<?php if(!empty($recipe)): ?>
-                    <a href="../RecipeFront.php?id=<?=$recipe['id'];?>"><input type="button" class="btn btn-info btn-lg"value="Accés a la recette"></a>
 
 					<form method="post" enctype="multipart/form-data">
 
