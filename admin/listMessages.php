@@ -9,13 +9,33 @@ if (!isset($is_logged)) {
     die;
 }
 
+$page = (isset($_GET['page']) && !empty($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
+$max = 10;
+
+$debut = ($page - 1) * $max; 
+
+    $count = $bdd->prepare('SELECT count(*) as total FROM message ');
+
 
 
 $query = $bdd->prepare('SELECT * FROM message');
+
+$query->bindValue(':debut',$debut,PDO::PARAM_INT);
+$query->bindValue(':max',$max,PDO::PARAM_INT);
+
 if ($query->execute()) {
 	$users = $query->fetchAll(PDO::FETCH_ASSOC);
 
 }
+
+if($count->execute()){
+    $total = $count->fetch(PDO::FETCH_ASSOC);
+    $nb = $total['total'];
+}
+    else {
+        var_dump($query->errorInfo());
+        die;
+    }
 
 
 require_once 'header.php';
@@ -54,6 +74,12 @@ require_once 'header.php';
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
+            <?php $search = (isset($_GET['search']))? 'search='. $_GET['search'].'&' :'';  ?>
+                <div>Page <?= $page; ?> / <?= ceil($nb/$max); ?><?= ($page!=1) ? '<a href="?'. $search .'page='. ($page - 1) .'">Page précédente</a>':''; ?>
+                <?= $page!= ceil($nb/$max) ? '<a href="?'. $search .'page='. ($page + 1) .'">Page suivante</a>':''; ?>
+
+                </div>
     </div>
 
     <hr>
