@@ -35,9 +35,8 @@ require_once 'header.php';
     Penser a mettre Unique au champ email dans la table <br>
     Uniformiser le nom des fichier ?????????? <br>
     faire les controles du requis 3 regex <br>
-    editeur peut juste ajouter des recettes a controler<br>
+    editeur peut juste ajouter des recettes : a controler<br>
     commenter notre code <br>
-    faire les paginations <br>
 
 
 </code>
