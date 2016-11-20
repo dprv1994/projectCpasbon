@@ -1,7 +1,7 @@
 <?php
 require_once 'inc/connect.php';
 
-$req = $bdd->prepare('SELECT * FROM recipe ORDER BY date_creation LIMIT 3');
+$req = $bdd->prepare('SELECT * FROM recipe ORDER BY date_creation DESC LIMIT 3 ');
 $req->execute();
 $recettes = $req->fetchAll(PDO::FETCH_ASSOC);
 
