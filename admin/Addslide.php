@@ -28,12 +28,12 @@ if ($slides->execute()) {
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-	if(!verif::length(3, null)->validate($post['title'])) {
-		$errors[] = 'Veuillez entrer un nom valide.';
+	if(!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{3,20}#', $post['title'])) {
+		$errors[] = 'Veuillez entrer un titre valide.';
 	}
 
-	if(!verif::length(8, null)->validate($post['subTitle'])) {
-		$errors[] = 'Veuillez entrer un prénom valide.';
+	if(!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,30}#', $post['subTitle'])) {
+		$errors[] = 'Veuillez entrer un descriptif valide.';
 	}
 
 	if(!is_uploaded_file($_FILES['picture']['tmp_name']) || !file_exists($_FILES['picture']['tmp_name'])){
