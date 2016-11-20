@@ -30,13 +30,19 @@ if(isset($is_logged)) {
 		$post = array_map('trim', array_map('strip_tags', $_POST));
 
 
-		if (!v::length(3, 30)->validate($post['title'])) {
-			$errors[] = 'Vous devez entrer entre 3 et 30 caractères.';
+		if (!v::length(5, 140)->validate($post['title'])) {
+			$errors[] = 'Vous devez entrer un titre comprenant entre 5 et 140 caractères.';
 		}
 
 		if (!v::length(15, 300)->validate($post['preparation'])) {
 			$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
 		}
+        if (!v::length(5,3000)->validate($post['ingredients'])) {
+    			$errors[] = 'Vous devez entrer au minimum 5 caractères.';
+    	}else {
+            $searchRepl = [' ,',', ',' , '];
+    	    $ingredients = str_ireplace($searchRepl,',',$post['ingredients']);
+    	}
 
 		if (strlen($_FILES['url_img']['name']) > 0) {
 			$updatephoto = true;
@@ -70,7 +76,7 @@ if(isset($is_logged)) {
 
 			if (count($errors) === 0) {
 
-				$columnSQL = 'title = :title, preparation = :preparation, id_autor = :id_autor, date_creation = NOW()';
+				$columnSQL = 'title = :title, preparation = :preparation, ingredient = :ingr, id_autor = :id_autor, date_creation = NOW()';
 
 				if ($updatephoto) {
 					$columnSQL.=', url_img = :url_img';
@@ -81,6 +87,7 @@ if(isset($is_logged)) {
 				$update->bindValue(':title', $post['title']);
 				$update->bindValue(':preparation', $post['preparation']);
 				$update->bindValue(':id_autor', $_SESSION['user']['id']);
+                $update->bindValue(':ingr', $ingredients);
 
 				$update->bindValue(':idRecipe', $_GET['id'], PDO::PARAM_INT);
 
@@ -141,6 +148,10 @@ require_once 'header.php';
 							<label for="title">Titre : </label>
 							<input class="form-control" type="text" id="title" name="title" value="<?=$recipe['title'];?>">
 						</div>
+                        <div class="form-group">
+    						<label for="ingredients">ingredients :</label>
+    						<input class='form-control' type="text" id="ingredients" name="ingredients" value="<?=$recipe['ingredient'];?>" placeholder="ex : poirreaux, courgettes, (séparer les ingredients par une virgule)">
+    					</div>
 
 						<div class="form-group">
 							<label for="preparation">Contenu : </label>
