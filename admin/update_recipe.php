@@ -92,7 +92,7 @@ if(isset($is_logged)) {
 				$update->bindValue(':idRecipe', $_GET['id'], PDO::PARAM_INT);
 
 				if ($updatephoto) {
-					$update->bindValue(':url_img', '/img/'.$url_imgName);
+					$update->bindValue(':url_img', 'img/recette/'.$url_imgName);
 				}
 
 				if ($update->execute()) {
