@@ -29,14 +29,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <div class="recipeView pbl">
             <div class="grid-2-small-1 recipe-top">
                 <div class="recipeIll pam">
-                    <h1>Recette : <?= $recette['title'];?></h1>
+                    <h1>Recette : <?= ucfirst($recette['title']);?></h1>
                     <img src="<?= $recette['url_img'];?>" alt="">
                 </div>
                 <div class="one-fifth infos pam">
                     <div class="info">
                         <div><b>Date de création : </b><?= date('d/m/Y H:i', strtotime($recette['date_creation']));?></div>
                         <div><b>Categorie : </b><?= $recette['category'];?></div>
-                        <div><b>Auteur : </b> <?= $recette['username'];?></div>
+                        <div><b>Auteur : </b> <?= ucfirst($recette['username']);?></div>
                     </div>
                     <div class="ingredients">
                         <span><b>Ingrédients : </b></span>
