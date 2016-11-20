@@ -31,7 +31,7 @@ if (!empty($_POST)) {
 	$Reg = "#[a-zA-Z0-9]{5,140}#";
 
 	if(!preg_match($Reg, $Chaine)){
-		$errors[] = 'Vous devez entrer entre 5 et 140 caractères.';
+		$errors[] = 'Vous devez entrer entre 5 et 140 caractères pour le titre.';
 	}
 	if (!v::length(5,3000)->validate($post['ingredients'])) {
 			$errors[] = 'Vous devez entrer au minimum 5 caractères.';
@@ -153,4 +153,4 @@ require_once 'header.php';
 
 			</main>
 <?php
-require_once '../admin/footer.php';
+require_once 'footer.php';

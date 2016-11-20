@@ -21,7 +21,10 @@
         <nav class="navbar navbar-light bg-faded col-lg-8 col-lg-offset-2">
           <ul class="nav navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="../">Accés au site</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="index.php">Accueil</a>
             </li>
             <li class="navitem">
                 <?= (isset($is_logged))? '<a class="nav-link" href="list_recipes.php">Liste des recettes</a>' : ''; ?>
