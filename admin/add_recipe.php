@@ -27,15 +27,15 @@ if (!empty($_POST)) {
 	if(!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,140}#', $post['title'])){
 		$errors[] = 'Vous devez entrer un titre de 5 à 140 caractères.';
 	}
-	if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,500}#', $post['ingredients'])) {
+	if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,500}#', $post['ingredient'])) {
 			$errors[] = 'Vous devez entrer un titre compris entre 5 et 500 caractères.';
 	}else {
         $searchRepl = [' ,',', ',' , '];
-	    $ingredients = str_ireplace($searchRepl,',',$post['ingredients']);
+	    $ingredient = str_ireplace($searchRepl,',',$post['ingredient']);
 	}
-	if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{20,3000}#', $post['preparation'])) {
+	/*if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{20,3000}#', $post['preparation'])) {
 			$errors[] = 'Vous devez entrer au minimum 20 caractères.';
-	}
+	}*/
 
 	if(!is_uploaded_file($_FILES['url_img']['tmp_name']) || !file_exists($_FILES['url_img']['tmp_name'])){
 		$errors[] = 'Vous devez ajouter une photo.';
@@ -69,10 +69,10 @@ if (!empty($_POST)) {
 			$insert = $bdd->prepare('INSERT INTO recipe(title, ingredient, preparation, url_img, date_creation, id_autor) VALUES (:title, :ingr, :preparation, :url_img, NOW(), :id_autor)');
 
 			$insert->bindValue(':title', $post['title']);
+			$insert->bindValue(':ingr', $post['ingredient']);
 			$insert->bindValue(':preparation', $post['preparation']);
 			$insert->bindValue(':url_img', 'img/recette/'.$url_imgName);
 			$insert->bindValue(':id_autor', $_SESSION['user']['id']);
-			$insert->bindValue(':ingr', $ingredients);
 
 			if ($insert->execute()) {
 				$formValid=true;
@@ -116,8 +116,8 @@ require_once 'header.php';
     					</div>
 
                         <div class="form-group">
-    						<label for="ingredients">Ingrédients : </label>
-    						<input class='form-control' type="text" id="ingredients" name="ingredients" placeholder="ex : poireaux, courgettes, (séparer les ingrédients par une virgule)">
+    						<label for="ingredient">Ingrédients : </label>
+    						<input class='form-control' type="text" id="ingredient" name="ingredient" placeholder="ex : poireaux, courgettes, (séparer les ingrédients par une virgule)">
     					</div>
 
     					<div class="form-group">
