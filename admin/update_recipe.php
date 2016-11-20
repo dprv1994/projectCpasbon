@@ -30,14 +30,14 @@ if(isset($is_logged)) {
 		$post = array_map('trim', array_map('strip_tags', $_POST));
 
 
-		if (!v::length(5, 140)->validate($post['title'])) {
+		if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,140}#', $post['title'])) {
 			$errors[] = 'Vous devez entrer un titre comprenant entre 5 et 140 caractères.';
 		}
 
-		if (!v::length(15, 300)->validate($post['preparation'])) {
+		if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,500}#', $post['preparation'])) {
 			$errors[] = 'Vous devez entrer entre 15 et 300 caractères.';
 		}
-        if (!v::length(5,3000)->validate($post['ingredients'])) {
+        if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{20,3000}#', $post['ingredients'])) {
     			$errors[] = 'Vous devez entrer au minimum 5 caractères.';
     	}else {
             $searchRepl = [' ,',', ',' , '];
