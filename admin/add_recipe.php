@@ -121,7 +121,7 @@ require_once 'header.php';
     					</div>
 
     					<div class="form-group">
-    						<label for="preparation">Contenu : </label>
+    						<label for="preparation">Préparation : </label>
     						<textarea class='form-control' type="text" id="preparation" name="preparation" placeholder="Préparation, temps de cuisson, ...."></textarea>
     					</div>
 
