@@ -1,4 +1,5 @@
 <?php
+require_once 'inc/session.php';
 //   requete pour affichage des infos
 $query = $bdd->query('SELECT * FROM contact_information ');
 if ($query->execute()) {
@@ -9,6 +10,9 @@ if ($query->execute()) {
 <html>
     <head lang="fr">
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index, follow, archive">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- si ont passe un variable $headerAdd['title'] alors ont affiche cette variable sinon accueil -->
         <title><?= (isset($headerAdd['title']) && !empty($headerAdd['title']))? $headerAdd['title'] : 'Accueil' ?> | Cpasbon</title>
 
@@ -18,7 +22,7 @@ if ($query->execute()) {
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/knacss.css">
-        
+
         <link href="https://fonts.googleapis.com/css?family=Slabo+27px|Yellowtail" rel="stylesheet">
 
 
@@ -42,6 +46,7 @@ if ($query->execute()) {
                     <li><a href="index.php">Accueil</a></li>
                     <li><a href="listRecipeFront.php">Recettes</a></li>
                     <li><a href="contact.php">Nous Contacter</a></li>
+                    <?= (isset($is_logged))? '<li><a href="admin/">Administration</a></li>' : ''; ?>
                 </ul><br>
                 <form method="get" action="listRecipeFront.php" class="searchListRecipes" >
                        <div class="searchPlacement">
