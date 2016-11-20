@@ -13,14 +13,6 @@ elseif (!isset($_GET['id'])) {
  	die;
  }
 
-if(isset($_GET['id']) && is_numeric($_GET['id']) && $is_logged == 'admin') {
-    $query = $bdd->prepare('SELECT * FROM slide WHERE id = :idSlide');
-	$query->bindValue(':idSlide', $_GET['id'], PDO::PARAM_INT);
-
-	if($query->execute()) {
-		$slides = $query->fetch();
-	}
-}
 
 use Respect\Validation\Validator as verif;
 
@@ -62,7 +54,7 @@ if(!empty($_POST)) {
 
 			if(!move_uploaded_file($_FILES['picture']['tmp_name'], $dirUpload.$photoName)){
 					$errors[] = 'Erreur lors de l\'upload de la photo';
-			
+
 			}
 		}
 	}
@@ -95,6 +87,14 @@ if(!empty($_POST)) {
 	else {
 		$haserror = true;
 	}
+}
+if(isset($_GET['id']) && is_numeric($_GET['id']) && $is_logged == 'admin') {
+    $query = $bdd->prepare('SELECT * FROM slide WHERE id = :idSlide');
+    $query->bindValue(':idSlide', $_GET['id'], PDO::PARAM_INT);
+
+    if($query->execute()) {
+        $slides = $query->fetch();
+    }
 }
 
 require_once 'header.php';
