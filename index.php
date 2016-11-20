@@ -37,7 +37,7 @@ if ($slides->execute()) {
                             <div class="recipeContent">
                                 <div class="img"><img src="<?= $recette['url_img']; ?>" alt="illustration recette <?= $recette['title']; ?>" /></div>
                                 <h2><?= $recette['title']; ?></h2>
-                                <span><a href="#">Lire la recette</a></span>
+                                <span><a href="RecipeFront.php?id=<?= $recette['id'];?>">Lire la recette</a></span>
                             </div>
                         </div>
                     <?php endforeach; ?>
