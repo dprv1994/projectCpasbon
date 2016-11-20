@@ -26,9 +26,7 @@ elseif(isset($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
 	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
 	$query->bindValue(':idUser', $_SESSION['user']['id'], PDO::PARAM_INT);
 	if($query->execute()) {
-        var_dump($_SESSION['user']['id']);
 		$users = $query->fetch(PDO::FETCH_ASSOC);
-        var_dump($users);
 	}
 }
 
