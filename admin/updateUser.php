@@ -20,6 +20,7 @@ if(isset($_GET['id']) && is_numeric($_GET['id']) && $is_logged == 'admin') {
 
 	if($query->execute()) {
 		$users = $query->fetch(PDO::FETCH_ASSOC);
+        $id = $_GET['id'];
 	}
 }
 elseif(isset($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
@@ -27,6 +28,7 @@ elseif(isset($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
 	$query->bindValue(':idUser', $_SESSION['user']['id'], PDO::PARAM_INT);
 	if($query->execute()) {
 		$users = $query->fetch(PDO::FETCH_ASSOC);
+        $id = $_SESSION['user']['id'];
 	}
 }
 
@@ -82,7 +84,7 @@ if(!empty($_POST)) {
 		$query = $bdd->prepare('UPDATE users SET '.$columnSQL.' WHERE id = :idUser');
 		$user = $query->fetch(PDO::FETCH_ASSOC);
 		$query->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
-		$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
+		$query->bindValue(':idUser', $id, PDO::PARAM_INT);
 		if($photoName) {
 			$query->bindValue(':avatar', 'img/avatar/'.$photoName);
 		}
