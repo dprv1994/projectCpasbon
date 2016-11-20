@@ -15,19 +15,19 @@ $haserror=false;
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-	if(!verif::length(3, null)->validate($post['username'])) {
-		$errors[] = 'Veuillez entrer un Username valide';
+	if(!preg_match('#[a-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{3,30}#', $post['username'])) {
+		$errors[] = 'Veuillez entrer un pseudo valide';
 	}
 
-	if(!verif::email()->validate($post['email'])) {
+	if(!preg_match('#([a-zA-Z0-9_\.\-\%\+])+\@(([a-zA-Z0-9_\.\-])+\.([a-zA-Z0-9]{2,15}))#', $post['email'])) {
 		$errors[] = 'Veuillez entrer un Email valide';
 	}
 
-	if(!verif::length(3, null)->validate($post['subject'])) {
+	if(!preg_match('#[a-zA-Z0-9_\,\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{3,30}#', $post['subject'])) {
 		$errors[] = 'Veuillez entrer un Objet valide';
 	}
 
-	if(!verif::length(10, null)->validate($post['content'])) {
+	if(!preg_match('#[a-zA-Z0-9_\,\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{10,3000}#', $post['content'])) {
 		$errors[] = 'Veuillez entrer un Objet valide';
 	}
 
