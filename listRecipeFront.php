@@ -5,7 +5,7 @@ require_once 'inc/connect.php';
 ////////////////////////////////////////////////////////
 //                  pagination                         //
 $page = (isset($_GET['page']) && !empty($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
-$max = 5;
+$max = 9;
 
 $debut = ($page - 1) * $max;
 
@@ -40,7 +40,7 @@ $query = $bdd->prepare('
         FROM recipe AS r
         LEFT JOIN users AS u
         ON r.id_autor = u.id '.$sql.'
-        ORDER BY r.date_creation');
+        ORDER BY r.date_creation LIMIT  :max OFFSET :debut');
 
 $query->bindValue(':debut',$debut,PDO::PARAM_INT);
 $query->bindValue(':max',$max,PDO::PARAM_INT);
