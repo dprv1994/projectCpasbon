@@ -34,6 +34,7 @@ h1, h2, h3{
     display: block;
 }
 .logo h2{
+    font-family: 'Yellowtail', cursive;
     margin: 0;
     padding: 0;
 }
