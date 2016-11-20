@@ -19,7 +19,8 @@ if ($query->execute()) {
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/knacss.css">
         
-        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Slabo+27px|Yellowtail" rel="stylesheet">
+
 
         <!-- css perso -->
         <link rel="stylesheet" href="css/style.css">
