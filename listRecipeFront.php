@@ -7,7 +7,7 @@ require_once 'inc/connect.php';
 $page = (isset($_GET['page']) && !empty($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
 $max = 5;
 
-$debut = ($page - 1) * $max; 
+$debut = ($page - 1) * $max;
 
 
 
@@ -49,7 +49,7 @@ if(!empty($sql)){
 	$query->bindValue(':search', '%'.$get['search'].'%');
     $count->bindValue(':search', '%'.$get['search'].'%');
 }
-    
+
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -94,7 +94,15 @@ require_once 'header.php' ; ?>
                     <div class="ficheRecipe-Container">
                         <div class="ficheRecipe">
                             <div class="ficheRecipe-content">
-                                <h2><a href="RecipeFront.php?id=<?= $value['id'];?>"><?= $title;?></a></h2>
+                                <?php
+                                // redimensionnement du titre
+                                if(strlen($title)>= 35){
+                                    $titleOk=substr($title,0,35) . "..." ;
+                                }else {
+                                    $titleOk = $title;
+                                }
+                                ?>
+                                <h2><a href="RecipeFront.php?id=<?= $value['id'];?>"><?= $titleOk;?></a></h2>
                                 <span class="author"> de <?= $username;?></span>
                             </div>
                             <img src="<?= $value['url_img'];?>" alt="">

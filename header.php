@@ -31,8 +31,8 @@ if ($query->execute()) {
         <div class="wrapper grid-2">
             <div class="logo one-third">
                 <h2><?= $info[0]['value']; ?></h2>
-                <span><?= $info[1]['value'] . ' , ' . $info[2]['value'] . ' , ' .$info[3]['value']?></span>
-                <span><?= $info[4]['value']; ?></span>
+                <span><?= $info[1]['value'] . ' <br> ' . $info[2]['value'] . '  ' .$info[3]['value']?></span>
+                <span><a href="tel:<?= $info[4]['value']; ?>"><?= $info[4]['value']; ?></a></span>
             </div>
             <nav>
                 <ul>
