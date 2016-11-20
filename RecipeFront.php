@@ -56,7 +56,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <?php endif; ?>
                 </div>
             </div>
-            <h3>Instructions :</h3>
+            <h3>Préparation : </h3>
             <p class="content">
                         <?= $recette['preparation'];?>
             </p>
