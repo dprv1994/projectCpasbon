@@ -76,6 +76,7 @@ if (!empty($_POST)) {
 
 			if ($insert->execute()) {
 				$formValid=true;
+                $POST = NULL;
 			}else {
 
 			var_dump($insert->errorInfo());
@@ -112,17 +113,17 @@ require_once 'header.php';
 
     					<div class="form-group">
     						<label for="title">Titre : </label>
-    						<input class='form-control' type="text" id="title" name="title" placeholder="ex : Poireaux aux ...">
+    						<input class='form-control' type="text" id="title" name="title" placeholder="ex : Poireaux aux ..." value="<?= (isset($_POST['title']))? $_POST['title'] : '' ;?>">
     					</div>
 
                         <div class="form-group">
     						<label for="ingredient">Ingrédients : </label>
-    						<input class='form-control' type="text" id="ingredient" name="ingredient" placeholder="ex : poireaux, courgettes, (séparer les ingrédients par une virgule)">
+    						<input class='form-control' type="text" id="ingredient" name="ingredient" value="<?= (isset($_POST['ingredient']))? $_POST['ingredient'] : '' ;?>" placeholder="ex : poireaux, courgettes, (séparer les ingrédients par une virgule)">
     					</div>
 
     					<div class="form-group">
     						<label for="preparation">Préparation : </label>
-    						<textarea class='form-control' type="text" id="preparation" name="preparation" placeholder="Préparation, temps de cuisson, ...."></textarea>
+    						<textarea class='form-control' type="text" id="preparation" name="preparation" placeholder="Préparation, temps de cuisson, ...."><?= (isset($_POST['preparation']))? $_POST['preparation'] : '' ;?>"</textarea>
     					</div>
 
     					<div class="form-group">

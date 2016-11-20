@@ -40,7 +40,7 @@ $query = $bdd->prepare('
         FROM recipe AS r
         LEFT JOIN users AS u
         ON r.id_autor = u.id '.$sql.'
-        ORDER BY r.date_creation LIMIT  :max OFFSET :debut');
+        ORDER BY r.date_creation DESC LIMIT  :max OFFSET :debut');
 
 $query->bindValue(':debut',$debut,PDO::PARAM_INT);
 $query->bindValue(':max',$max,PDO::PARAM_INT);

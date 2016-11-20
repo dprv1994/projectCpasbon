@@ -68,13 +68,13 @@ require_once 'header.php';
 
             <form class="contactForm" method="post">
                             <label for="username">Votre nom : </label>
-                            <input type="text" id="username" name="username" placeholder="ex : Pierre Marechal">
+                            <input type="text" id="username" name="username" value="<?= (isset($_POST['username']))? $_POST['username'] : '' ;?>"placeholder="ex : Pierre Marechal">
                             <label for="email">Votre email : </label>
-                            <input type="email" id="email" name="email" placeholder="ex : votreemail@fai.fr">
+                            <input type="email" id="email" name="email" value="<?= (isset($_POST['email']))? $_POST['email'] : '' ;?>"placeholder="ex : votreemail@fai.fr">
                             <label for="subject">Objet du message : </label>
-                            <input type="text" id="subject" name="subject" placeholder="ex : Surprise lors de notre dernière venue">
+                            <input type="text" id="subject" name="subject" value="<?= (isset($_POST['subject']))? $_POST['subject'] : '' ;?>"placeholder="ex : Surprise lors de notre dernière venue">
                             <label for="content">Votre message : </label>
-                            <textarea id="content" name="content" placeholder="Bonjour , ......"></textarea>
+                            <textarea id="content" name="content" placeholder="Bonjour , ......"><?= (isset($_POST['content']))? $_POST['content'] : '' ;?></textarea>
                 <button type="submit" name="button">Envoyer le message</button>
             </form>
         </div> <!-- contact END! -->
