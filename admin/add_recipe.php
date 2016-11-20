@@ -117,12 +117,12 @@ require_once 'header.php';
 
                         <div class="form-group">
     						<label for="ingredients">ingredients :</label>
-    						<input class='form-control' type="text" id="ingredients" name="ingredients" placeholder="ex : poirreaux, courgettes, (séparer les ingredients par une virgule)">
+    						<input class='form-control' type="text" id="ingredients" name="ingredients" placeholder="ex : poireaux, courgettes, (séparer les ingredients par une virgule)">
     					</div>
 
     					<div class="form-group">
     						<label for="preparation">Contenu :</label>
-    						<textarea class='form-control' type="text" id="preparation" name="preparation" placeholder="Preparation, temps de cuisson, ...."></textarea>
+    						<textarea class='form-control' type="text" id="preparation" name="preparation" placeholder="Préparation, temps de cuisson, ...."></textarea>
     					</div>
 
     					<div class="form-group">
