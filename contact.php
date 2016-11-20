@@ -40,6 +40,7 @@ if(!empty($_POST)) {
 
 		if($query->execute()) {
 			$formValid = true;
+            $_POST = NULL ;
 		}
 		else {
 			var_dump($query->errorInfo());

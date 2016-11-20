@@ -33,7 +33,7 @@ if (!empty($_POST)) {
         $searchRepl = [' ,',', ',' , '];
 	    $ingredient = str_ireplace($searchRepl,',',$post['ingredient']);
 	}
-	if (!preg_match('#/[(\w+\s)]{20,}/i#', $post['preparation'])) {
+	if (!preg_match('/[(\w+\s)]{20,}/i', $post['preparation'])) {
 			$errors[] = 'Vous devez entrer au minimum 20 caractères.';
 	}
 
@@ -76,7 +76,7 @@ if (!empty($_POST)) {
 
 			if ($insert->execute()) {
 				$formValid=true;
-                $POST = NULL;
+                $_POST = NULL;
 			}else {
 
 			var_dump($insert->errorInfo());
@@ -123,7 +123,7 @@ require_once 'header.php';
 
     					<div class="form-group">
     						<label for="preparation">Préparation : </label>
-    						<textarea class='form-control' type="text" id="preparation" name="preparation" placeholder="Préparation, temps de cuisson, ...."><?= (isset($_POST['preparation']))? $_POST['preparation'] : '' ;?>"</textarea>
+    						<textarea class='form-control' type="text" id="preparation" name="preparation" placeholder="Préparation, temps de cuisson, ...."><?= (isset($_POST['preparation']))? $_POST['preparation'] : '' ;?></textarea>
     					</div>
 
     					<div class="form-group">
