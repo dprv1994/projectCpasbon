@@ -35,7 +35,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <div class="one-fifth infos pam">
                     <div class="info">
                         <div><b>Date de création : </b><?= date('d/m/Y H:i', strtotime($recette['date_creation']));?></div>
-                        <div><b>Categorie : </b><?= $recette['category'];?></div>
                         <div><b>Auteur : </b> <?= ucfirst($recette['username']);?></div>
                     </div>
                     <div class="ingredients">
