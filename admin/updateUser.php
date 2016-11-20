@@ -19,15 +19,16 @@ if(isset($_GET['id']) && is_numeric($_GET['id']) && $is_logged == 'admin') {
 	$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
 
 	if($query->execute()) {
-		$users = $query->fetch();
+		$users = $query->fetch(PDO::FETCH_ASSOC);
 	}
 }
 elseif(isset($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
 	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
 	$query->bindValue(':idUser', $_SESSION['user']['id'], PDO::PARAM_INT);
-
 	if($query->execute()) {
-		$users = $query->fetch();
+        var_dump($_SESSION['user']['id']);
+		$users = $query->fetch(PDO::FETCH_ASSOC);
+        var_dump($users);
 	}
 }
 
@@ -39,7 +40,6 @@ $formValid=false;
 $haserror=false;
 $dirUpload='../img/';
 $photoName = false;
-
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
@@ -122,7 +122,7 @@ require_once 'header.php';
                 <input class="" type="file" id="avatar" name="avatar">
             </div>
             <br><br>
-            <input class="btn btn-info btn-lg center-block" type="submit" value="Mettre à jour votre profil">
+            <input class="btn btn-info btn-lg center-block" type="submit" value="Mettre à jour le profil">
         </form>
 
     </ul>
