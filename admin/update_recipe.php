@@ -139,6 +139,7 @@ require_once 'header.php';
 				<?php endif; ?>
 
 				<?php if(!empty($recipe)): ?>
+                    <a href="../RecipeFront.php?id=<?=$recipe['id'];?>"><input type="button" class="btn btn-info btn-lg"value="Accés a la recette"></a>
 
 					<form method="post" enctype="multipart/form-data">
 
