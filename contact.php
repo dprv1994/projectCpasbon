@@ -27,7 +27,7 @@ if(!empty($_POST)) {
 		$errors[] = 'Veuillez entrer un Objet valide';
 	}
 
-	if(!preg_match('#[a-zA-Z0-9_\,\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{10,3000}#', $post['content'])) {
+	if(!verif::length(20, 30000)->validate($post['content'])) {
 		$errors[] = 'Votre message n\'est pas valide';
 	}
 
