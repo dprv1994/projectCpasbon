@@ -33,7 +33,7 @@ if (!empty($_POST)) {
         $searchRepl = [' ,',', ',' , '];
 	    $ingredient = str_ireplace($searchRepl,',',$post['ingredient']);
 	}
-	if (!preg_match('/[(\w+\s)]{20,}/i', $post['preparation'])) {
+	if (!preg_match('#/[(\w+\s)]{20,}/i#', $post['preparation'])) {
 			$errors[] = 'Vous devez entrer au minimum 20 caractères.';
 	}
 

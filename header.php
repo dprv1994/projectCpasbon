@@ -18,6 +18,8 @@ if ($query->execute()) {
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/knacss.css">
+        
+        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
 
         <!-- css perso -->
         <link rel="stylesheet" href="css/style.css">
