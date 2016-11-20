@@ -22,7 +22,7 @@ if ($query->execute()) {
 }
 
 //   requete pour affichage des recettes
-$query = $bdd->query('SELECT * FROM recipe LEFT JOIN users ON recipe.id_autor = users.id ORDER BY recipe.date_creation LIMIT 10');
+$query = $bdd->query('SELECT recipe.* , users.username FROM recipe LEFT JOIN users ON recipe.id_autor = users.id ORDER BY recipe.date_creation LIMIT 10');
 if ($query->execute()) {
 	$preparation = $query->fetchAll(PDO::FETCH_ASSOC);
 }
