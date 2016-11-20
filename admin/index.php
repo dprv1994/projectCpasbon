@@ -32,6 +32,7 @@ require_once 'header.php';
 <code>
 
     a faire :<br>
+    mettre input à la place textarea en dernière solution
     Penser a mettre Unique au champ email dans la table <br>
     Uniformiser le nom des fichier ?????????? <br>
     editeur peut juste ajouter des recettes : a controler<br>
