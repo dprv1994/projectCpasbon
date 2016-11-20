@@ -15,7 +15,7 @@ $haserror=false;
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-	if(!preg_match('#[a-zA-Z0-9_\.\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{3,30}#', $post['username'])) {
+	if(!preg_match('#[^AZza-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{3,30}#', $post['username'])) {
 		$errors[] = 'Veuillez entrer un pseudo valide';
 	}
 
