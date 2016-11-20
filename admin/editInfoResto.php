@@ -31,8 +31,8 @@ if(!empty($_POST)) {
         $errors[] = 'Veuillez entrer un code postal valide.';
     }
 
-    if(!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,140}#', $post['city'])) {
-        $errors[] = 'Veuillez entrer une adresse valide.';
+    if(!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{2,140}#', $post['city'])) {
+        $errors[] = 'Veuillez entrer un nom de ville valide.';
     }
 
     if(!preg_match('#[0-9]{10,10}#', $post['phone'])) {
@@ -81,7 +81,7 @@ require_once 'header.php'; ?>
 <h1>Modification des informations du restaurant</h1>
 <h2>infos du restaurant :</h2>
 <?php if ($formValid == true): ?>
-    <p class="alert-success">Les informations du restaurant ont été mise à jour !</p>
+    <p class="alert-success">Les informations du restaurant ont été mises à jour !</p>
 <?php elseif ($haserror == true): ?>
     <p class="alert-danger"><?= implode('<br>', $errors);?></p>
 <?php endif; ?>
@@ -112,10 +112,10 @@ require_once 'header.php'; ?>
 </form>
 
 <!-- SLIDER -->
-<h2>affichage des slider :</h2>
+<h2>Affichage des slides :</h2>
 <a href="Addslide.php">
     <button type="button" class="btn btn-info btn-xs">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un Slider
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un slide
     </button>
 </a>
 <br><br>

@@ -39,7 +39,7 @@ if (empty($errors)) {
             $r->bindValue(':email',$email);
             if ($r->execute()) {
                 // envoi de l'email :
-                $monMessage = 'pour créé un mot de passe click here -> <a href="admin/newPass.php?token='.$token.'&email='.$email.'">Clik click click</a>';
+                $monMessage = 'pour créer un mot de passe clicquer ici -> <a href="admin/newPass.php?token='.$token.'&email='.$email.'">Clik click click</a>';
 
 
                 $mail = new PHPMailer;
@@ -80,7 +80,7 @@ require_once 'header.php';
 <form class="col-lg-6 col-lg-offset-3" method="post">
     <h1>Mot de passe oublié :</h1>
     <p>
-        un lien va vous être envoyer par email afin de changer votre mot de passe.
+        Un lien va vous être envoyer par email afin de changer votre mot de passe.
     </p>
     <?php if (!empty($errors)): ?>
         <div class="alert alert-danger">
@@ -89,11 +89,11 @@ require_once 'header.php';
     <?php endif; ?>
     <?php if (isset($success)): ?>
         <div class="alert alert-success">
-            Un mail vien de vous être envoyé !!
+            Un mail vient de vous être envoyé !!
         </div>
     <?php endif; ?>
     <div class="form-group">
-        <label for="email">Votre Email :</label>
+        <label for="email">Votre Email : </label>
         <input id="email" type="text" name="emailPerdu" class="form-control">
     </div>
     <input class="btn btn-lg btn-info center-block" type="submit" value="Envoyer">

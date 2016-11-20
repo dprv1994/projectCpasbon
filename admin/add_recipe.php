@@ -28,7 +28,7 @@ if (!empty($_POST)) {
 		$errors[] = 'Vous devez entrer un titre de 5 à 140 caractères.';
 	}
 	if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,500}#', $post['ingredients'])) {
-			$errors[] = 'Vous devez entrer un titre de 5 à 500 caractères.';
+			$errors[] = 'Vous devez entrer un titre compris entre 5 et 500 caractères.';
 	}else {
         $searchRepl = [' ,',', ',' , '];
 	    $ingredients = str_ireplace($searchRepl,',',$post['ingredients']);
@@ -111,22 +111,22 @@ require_once 'header.php';
     				<form method="post" enctype="multipart/form-data">
 
     					<div class="form-group">
-    						<label for="title">Titre :</label>
+    						<label for="title">Titre : </label>
     						<input class='form-control' type="text" id="title" name="title" placeholder="ex : Poireaux aux ...">
     					</div>
 
                         <div class="form-group">
-    						<label for="ingredients">ingredients :</label>
+    						<label for="ingredients">Ingrédients : </label>
     						<input class='form-control' type="text" id="ingredients" name="ingredients" placeholder="ex : poireaux, courgettes, (séparer les ingredients par une virgule)">
     					</div>
 
     					<div class="form-group">
-    						<label for="preparation">Contenu :</label>
+    						<label for="preparation">Contenu : </label>
     						<textarea class='form-control' type="text" id="preparation" name="preparation" placeholder="Préparation, temps de cuisson, ...."></textarea>
     					</div>
 
     					<div class="form-group">
-    						<label for="url_img">Photo :</label>
+    						<label for="url_img">Photo : </label>
     						<input type="file" id="url_img" name="url_img">
     					</div>
 

@@ -42,7 +42,7 @@ require_once 'header.php';
 <br><br>
  		<div>
             <h1><?= $info[0]['value']; ?></h1>
-                <?= (isset($is_logged) && $is_logged == 'admin') ? '<a class="btn btn-info btn-xs" href="editInfoResto.php">Modifier les infos du restaurant</a><br><br>' : '' ; ?>
+                <?= (isset($is_logged) && $is_logged == 'admin') ? '<a class="btn btn-info btn-xs" href="editInfoResto.php">Modifier les informations du restaurant</a><br><br>' : '' ; ?>
             <span><b>Adresse :</b> <?= $info[1]['value'] . ' , ' . $info[2]['value'] . ' , ' .$info[3]['value'] . ' - <b>Téléphone : </b>' .$info[4]['value']; ?></span>
 
 		</div>

@@ -48,10 +48,10 @@ require_once 'header.php';
 
 		<?php if(empty($slide)): ?>
 			<div class="alert alert-danger">
-				Ce Slide n'existe pas.
+				Ce slide n'existe pas.
 			</div>
 		<?php else: ?>
-			<p>Voulez-vous vraiment supprimer le Slide : <?=$slideTitle;?>?</p>
+			<p>Voulez-vous vraiment supprimer le slide : <?=$slideTitle;?>?</p>
             <img src="<?=$slideUrl;?>" alt="" />
             <p><?=$slideContent;?></p>
 		<?php endif; ?>

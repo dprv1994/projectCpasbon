@@ -21,7 +21,7 @@
         <nav class="navbar navbar-light bg-faded col-lg-8 col-lg-offset-2">
           <ul class="nav navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="../">Accés au site</a>
+              <a class="nav-link" href="../">Accès au site</a>
             </li>
             <li class="nav-item active">
               <a class="nav-link" href="index.php">Accueil</a>

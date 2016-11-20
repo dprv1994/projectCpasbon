@@ -37,7 +37,7 @@ if(!empty($_POST)) {
 	}
 
 	if(!is_uploaded_file($_FILES['picture']['tmp_name']) || !file_exists($_FILES['picture']['tmp_name'])){
-		$errors[] = 'Il faut uploader une image';
+		$errors[] = 'Vous devez ajouter une image';
 	}
 	else{
 		$finfo = new finfo();
@@ -95,19 +95,19 @@ require_once 'header.php';
 
 <form method="post" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="title">Titre du Slider :</label>
+        <label for="title">Titre du Slide : </label>
         <input class="form-control" type="text" id="title" name="title">
     </div>
     <div class="form-group">
-        <label for="subTitle">Contenu du Slider :</label><br>
+        <label for="subTitle">Contenu du slide : </label><br>
         <input class="form-control" type="text" id="subTitle" name="subTitle">
     </div>
     <div class="form-group">
-        <label for="picture">Image du Slide :</label><br>
+        <label for="picture">Image du slide : </label><br>
         <input type="file" id="picture" name="picture">
     </div>
 
-	<input class="btn btn-info btn-lg center-block" type="submit" value="Valider le Slider">
+	<input class="btn btn-info btn-lg center-block" type="submit" value="Valider le slide">
 </form>
 
 <?php require_once 'footer.php'; ?>

@@ -57,7 +57,7 @@ if($query->execute()){
 require_once 'header.php';
 ?>
 
-        <h1>Liste des recettes :</h1>
+        <h1>Liste des recettes </h1>
         <a href="add_recipe.php" class='btn btn-xs btn-info'>Ajouter une recette</a>
         <br><br>
         <div class="row">
