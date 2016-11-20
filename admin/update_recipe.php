@@ -150,7 +150,7 @@ require_once 'header.php';
 							<input class="form-control" type="text" id="title" name="title" value="<?=$recipe['title'];?>">
 						</div>
                         <div class="form-group">
-    						<label for="ingredients">ingredients :</label>
+    						<label for="ingredients">Ingredients :</label>
     						<input class='form-control' type="text" id="ingredients" name="ingredients" value="<?=$recipe['ingredient'];?>" placeholder="ex : poirreaux, courgettes, (séparer les ingredients par une virgule)">
     					</div>
 

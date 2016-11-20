@@ -25,7 +25,7 @@ if (empty($_SESSION) && !empty($_POST)) {
 		}
 
 	if (!verif::length(3, null)->validate($post['password'])) {
-			$error[] = 'le mot de passe doit faire au moin 3 caractères';
+			$error[] = 'le mot de passe doit faire au moins 3 caractères';
 		}
 
 	if (count($error)===0) {
@@ -73,7 +73,7 @@ if (empty($_SESSION) && !empty($_POST)) {
         // affichage uniquement pour les visiteurs qui arrive de la page mot de pass oublié
         // pas de sécurité sur le get parce que il affiche juste un message est la valeur envoyé n'est jamais interprété
         if(isset($_GET['m'])){
-            echo '<p class="alert alert-success">Vous pouvez a present vous connecter avec le nouveau mot de passe enregistré !</p>';
+            echo '<p class="alert alert-success">Vous pouvez à present vous connecter avec le nouveau mot de passe enregistré !</p>';
         }
 	?>
 <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
@@ -91,7 +91,7 @@ if (empty($_SESSION) && !empty($_POST)) {
     	    <button id="" name="" class="btn btn-info btn-block ">Se connecter</button>
         </form>
     </div>
-    <a href="forgetPass.php">mot de passe oublié ?</a>
+    <a href="forgetPass.php">Mot de passe oublié ?</a>
 </div>
 
 

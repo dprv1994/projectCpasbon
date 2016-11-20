@@ -44,12 +44,12 @@ if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
 	if(!preg_match('#[a-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{8,30}#', $post['password'])) {
-		$errors[] = 'Veuillez taper un mot de passe valide compris entre 8 et 30 caractères';
+		$errors[] = 'Veuillez entrer un mot de passe compris entre 8 et 30 caractères';
 	}
 
 	if (strlen($_FILES['avatar']['name']) > 0) {
 		if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){
-			$errors[] = 'Il faut uploader une image';
+			$errors[] = 'Vous devez ajouter une image';
 		}
 		else{
 			$finfo = new finfo();
@@ -111,7 +111,7 @@ require_once 'header.php';
         <strong>Prénom : </strong><?= $users['firstname'] ?><br>
         <strong>Email : </strong><?= $users['email'] ?><br>
         <strong>Pseudo : </strong><?= $users['username'] ?><br>
-        <h4>Modifier votre mot de passe ou votre avatar :</h4>
+        <h4>Modifier votre mot de passe ou votre avatar : </h4>
         <form method="post" enctype="multipart/form-data">
             <div class="from-group">
                 <label for="password">Nouveau mot de passe : </label><br>

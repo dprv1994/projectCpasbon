@@ -54,7 +54,7 @@ require_once 'header.php';
 
 <?php if ($passOK): ?>
     <form class="col-lg-6 col-lg-offset-3" method="post">
-        <h1>Generation d'un nouveau mot de passe :</h1>
+        <h1>Géneration d'un nouveau mot de passe : </h1>
         <?php if (!empty($errors)): ?>
             <div class="alert alert-danger">
                 <?= implode('<br>',$errors) ?>
@@ -62,13 +62,13 @@ require_once 'header.php';
         <?php endif; ?>
         <?php if (isset($success)): ?>
             <div class="alert alert-success">
-                Votre Mot de Passe est enregistré !!
+                Votre mot de passe est enregistré !
             </div>
         <?php endif; ?>
         <div class="form-group">
             <input type="hidden" name="check" value="<?= $user['id']; ?>">
             <input type="hidden" name="email" value="<?= $user['email']; ?>">
-            <label for="password">Nouveau Mot de passe :</label>
+            <label for="password">Nouveau mot de passe : </label>
             <input id="password" type="text" name="password" class="form-control">
         </div>
         <input class="btn btn-lg btn-info center-block" type="submit" value="Enregistrer">
