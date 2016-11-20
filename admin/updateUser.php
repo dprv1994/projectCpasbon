@@ -39,15 +39,24 @@ $errors=[];
 $formValid=false;
 $haserror=false;
 $dirUpload='../img/avatar/';
-$photoName = false;
+$changePass = false;
+$changePict = false;
+
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-	if(!preg_match('#[a-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{8,30}#', $post['password'])) {
-		$errors[] = 'Veuillez entrer un mot de passe compris entre 8 et 30 caractères';
-	}
+    if (isset($post['password']) && !empty($post['password'])) {
+
+        $changePass = true ;
+
+        if(!preg_match('#[a-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{8,30}#', $post['password'])) {
+            $errors[] = 'Veuillez entrer un mot de passe compris entre 8 et 30 caractères';
+        }
+    }
 
 	if (strlen($_FILES['avatar']['name']) > 0) {
+
+        $changePict = true ;
 
 		if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){
 			$errors[] = 'Vous devez ajouter une image';
@@ -75,19 +84,21 @@ if(!empty($_POST)) {
 		}
 	}
 
-	if(count($errors) === 0) {
-		$columnSQL = 'password = :password';
+	if(count($errors) === 0 && ($changePict || $changePass)) {
 
-		if ($photoName) {
-			$columnSQL.=', avatar = :avatar';
-		}
+        $changePass = ($changePass)? 'password = :password' : '';
+        $changePict = ($changePict)? 'avatar = :avatar' : '';
+		$columnSQL = (!empty($changePict) && !empty($changePass))? $changePass .', '. $changePict : $changePass . $changePict;
+
 		$query = $bdd->prepare('UPDATE users SET '.$columnSQL.' WHERE id = :idUser');
 		$user = $query->fetch(PDO::FETCH_ASSOC);
-		$query->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
+        if (!empty($changePass)) {
+            $query->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
+        }
+        if (!empty($changePict)) {
+            $query->bindValue(':avatar', 'img/avatar/'.$photoName);
+        }
 		$query->bindValue(':idUser', $id, PDO::PARAM_INT);
-		if($photoName) {
-			$query->bindValue(':avatar', 'img/avatar/'.$photoName);
-		}
 		if($query->execute()) {
 			$formValid = true;
 		}
