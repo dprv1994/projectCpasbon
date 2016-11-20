@@ -35,7 +35,6 @@ require_once 'header.php';
 					<th>Adresse email</th>
 					<th>Pseudo</th>
                     <th>Information</th>
-					<th>Modification</th>
 				</tr>
 			</thead>
 
@@ -43,9 +42,8 @@ require_once 'header.php';
 				<?php foreach ($users as $user) {
 					echo '<tr><td>'. affichRole($user['role']).'</td><td>'.$user['lastname'].'</td><td>'.$user['firstname'].'</td><td>'.$user['email'].'</td><td>'.$user['username'].'</td><td>';
                     echo '<a href="viewUser.php?id='.$user['id'].'">Voir le profil</a>';
-                    echo '</td><td>';
-                    echo ($is_logged == 'admin') ? '<a href="updateUser.php?id='.$user['id'].'">Modifier le profil</a>' : 'Vous n\'êtes pas autorisé à voir cette page.';
-                    echo '</td></tr>';
+                    echo '</td>';
+                    echo '</tr>';
 				}
 				?>
 			</tbody>

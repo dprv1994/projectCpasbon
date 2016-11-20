@@ -45,6 +45,8 @@ require_once 'header.php';
             </form> -->
 
             <br><br>
+            <a class="btn btn-info btn-lg center-block" href="updateUser.php?id=<?= $user['id']; ?>">Modifier le profil</a>
+            <br><br>
             <a class="btn btn-danger btn-lg center-block" href="deleteUser.php?id=<?= $user['id']; ?>">Supprimer le profil</a>
         <?php endif; ?>
     </div>
