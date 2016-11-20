@@ -24,32 +24,18 @@ if (!isset($is_logged)) {
 if (!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-	/*if (!v::length(3, 30)->validate($post['title'])) {
-		$errors[] = 'Vous devez entrer entre 3 et 30 caractères.';
-	}*/
-	$Chaine=($post['title']);
-	$Reg = "#[a-zA-Z0-9]{5,140}#";
-
-	if(!preg_match($Reg, $Chaine)){
-		$errors[] = 'Vous devez entrer entre 5 et 140 caractères pour le titre.';
+	if(!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,140}#', $post['title'])){
+		$errors[] = 'Vous devez entrer un titre de 5 à 140 caractères.';
 	}
-	if (!v::length(5,3000)->validate($post['ingredients'])) {
-			$errors[] = 'Vous devez entrer au minimum 5 caractères.';
+	if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{5,500}#', $post['ingredients'])) {
+			$errors[] = 'Vous devez entrer un titre de 5 à 500 caractères.';
 	}else {
         $searchRepl = [' ,',', ',' , '];
 	    $ingredients = str_ireplace($searchRepl,',',$post['ingredients']);
 	}
-	if (!v::length(5,3000)->validate($post['preparation'])) {
+	if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{20,3000}#', $post['preparation'])) {
 			$errors[] = 'Vous devez entrer au minimum 20 caractères.';
 	}
-	/*$Chaine=($post['preparation']);
-	$Reg = "#[a-zA-Z0-9]{20,}#";*/
-/*
-	if(!preg_match($Reg, $Chaine)){
-		$errors[] = 'Vous devez entrer au minimum 20 caractères.';
-	}*/
-
-
 
 	if(!is_uploaded_file($_FILES['url_img']['tmp_name']) || !file_exists($_FILES['url_img']['tmp_name'])){
 		$errors[] = 'Vous devez ajouter une photo.';
@@ -153,4 +139,4 @@ require_once 'header.php';
 
 			</main>
 <?php
-require_once 'footer.php';
+require_once '../admin/footer.php';
