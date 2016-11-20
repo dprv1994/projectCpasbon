@@ -14,23 +14,6 @@ if (!isset($is_logged)) {
 //  	die;
 //  }
 
-if(isset($_GET['id']) && is_numeric($_GET['id']) && $is_logged == 'admin') {
-    $query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
-	$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
-
-	if($query->execute()) {
-		$users = $query->fetch(PDO::FETCH_ASSOC);
-        $id = $_GET['id'];
-	}
-}
-elseif(isset($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
-	$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
-	$query->bindValue(':idUser', $_SESSION['user']['id'], PDO::PARAM_INT);
-	if($query->execute()) {
-		$users = $query->fetch(PDO::FETCH_ASSOC);
-        $id = $_SESSION['user']['id'];
-	}
-}
 
 use Respect\Validation\Validator as verif;
 
@@ -41,6 +24,13 @@ $haserror=false;
 $dirUpload='../img/avatar/';
 $changePass = false;
 $changePict = false;
+
+if(isset($_GET['id']) && is_numeric($_GET['id']) && $is_logged == 'admin') {
+    $id = $_GET['id'];
+}
+elseif(isset($_SESSION['user']['id']) && is_numeric($_SESSION['user']['id'])) {
+    $id = $_SESSION['user']['id'];
+}
 
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
@@ -104,6 +94,7 @@ if(!empty($_POST)) {
 		}
 		else {
 			var_dump($query->errorInfo());
+            header('Location:updateUser.php');
 			die;
 		}
 	}
@@ -112,6 +103,14 @@ if(!empty($_POST)) {
 	}
 
 }
+
+// requete pour récupérer les infos :
+$query = $bdd->prepare('SELECT * FROM users WHERE id = :idUser');
+$query->bindValue(':idUser', $id, PDO::PARAM_INT);
+if($query->execute()) {
+    $users = $query->fetch(PDO::FETCH_ASSOC);
+}
+
 
 require_once 'header.php';
 ?>
