@@ -43,7 +43,7 @@ $photoName = false;
 if(!empty($_POST)) {
 	$post = array_map('trim', array_map('strip_tags', $_POST));
 
-	if(!verif::length(8, 30)->validate($post['password'])) {
+	if(!preg_match('#[a-zA-Z0-9_\-\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{8,30}#', $post['password'])) {
 		$errors[] = 'Veuillez taper un mot de passe valide compris entre 8 et 30 caractères';
 	}
 
