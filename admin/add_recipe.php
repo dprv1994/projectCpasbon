@@ -33,9 +33,9 @@ if (!empty($_POST)) {
         $searchRepl = [' ,',', ',' , '];
 	    $ingredient = str_ireplace($searchRepl,',',$post['ingredient']);
 	}
-	/*if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{20,3000}#', $post['preparation'])) {
+	if (!preg_match('#[a-zA-Z0-9_\-\,\é\à\è\ê\ë\î\ï\û\ü\â\ä\ô\ö]{20,3000}#', $post['preparation'])) {
 			$errors[] = 'Vous devez entrer au minimum 20 caractères.';
-	}*/
+	}
 
 	if(!is_uploaded_file($_FILES['url_img']['tmp_name']) || !file_exists($_FILES['url_img']['tmp_name'])){
 		$errors[] = 'Vous devez ajouter une photo.';
