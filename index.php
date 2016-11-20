@@ -19,11 +19,11 @@ if ($slides->execute()) {
                 <?php foreach ($slideGroup as $slideUnit): ?>
                     <?php $slide = explode(',',$slideUnit['value']); ?>
                     <div class="slidesContainer">
-                        <img src="<?= $slide['2']; ?>" alt="" width="640px" height="310px" />
                         <div class="slideContent">
                             <h2><?= $slide['0']; ?></h2>
                             <span><?= $slide['1']; ?></span>
                         </div>
+                        <img src="<?= $slide['2']; ?>" alt="" width="640px" height="310px" />
                     </div>
                 <?php endforeach; ?>
             </div>

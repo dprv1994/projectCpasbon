@@ -91,6 +91,8 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
+    max-height: 600px;
+    overflow: hidden;
 }
 .slideContent{
     padding: 2em 0;
@@ -102,6 +104,7 @@ h1{
     background: rgba(255, 255, 255, 0.6);;
     width: 100%;
     z-index: 11;
+    top: 40%
 }
 
 /* ---------------------------Recette*/
@@ -141,12 +144,14 @@ h1{
     overflow: hidden;
 }
 .recipeContent h2{
+    padding: 0.2em;
     margin: 0;
 }
 .recipeContent .img img{
     width: 100%;
 }
 .recipeContent{
+    text-align: center;
     color: #ffec85;
     overflow: hidden;
     border-radius: 25px 25px 5px 5px;
