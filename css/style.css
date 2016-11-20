@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 body{
+    font-family: 'Slabo 27px', serif;
     background: #f2ffdf;
 }
 h1{
@@ -16,6 +17,9 @@ h1{
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+}
+h1, h2, h3{
+    font-family: 'Slabo 27px', serif;
 }
 
 /* ---------------------------TOPBAR*/
