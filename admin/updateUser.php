@@ -46,6 +46,7 @@ if(!empty($_POST)) {
 	}
 
 	if (strlen($_FILES['avatar']['name']) > 0) {
+
 		if(!is_uploaded_file($_FILES['avatar']['tmp_name']) || !file_exists($_FILES['avatar']['tmp_name'])){
 			$errors[] = 'Vous devez ajouter une image';
 		}
@@ -82,7 +83,6 @@ if(!empty($_POST)) {
 		$user = $query->fetch(PDO::FETCH_ASSOC);
 		$query->bindValue(':password', password_hash($post['password'], PASSWORD_DEFAULT));
 		$query->bindValue(':idUser', $_GET['id'], PDO::PARAM_INT);
-
 		if($photoName) {
 			$query->bindValue(':avatar', 'img/avatar/'.$photoName);
 		}
@@ -103,6 +103,13 @@ if(!empty($_POST)) {
 require_once 'header.php';
 ?>
 <h1>Mon Profil</h1>
+
+ <?php if ($formValid == true): ?>
+    <p class="alert-success">Le profil a été modifié.</p>
+<?php elseif ($haserror == true): ?>
+    <p class="alert-danger"><?= implode('<br>', $errors);?></p>
+<?php endif; ?>
+
 <div class="col-lg-6">
     <ul>
         <strong>Nom : </strong><?= $users['lastname'] ?><br>
