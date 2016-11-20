@@ -26,33 +26,40 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
 
     <div class="wrapper">
-        <div class="recipeView">
-            <h1><?= $recette['title'];?></h1>
-            <img src="<?= $recette['url_img'];?>" alt="">
-            <div class="grid-2">
-                <div class="info">
-                    <span>Date de creation : <?= date('d/m/Y H:i', strtotime($recette['date_creation']));?></span>
-                    <span>Categorie : <?= $recette['category'];?></span><br>
-                    <span>Auteur : <?= $recette['username'];?></span><br>
+        <div class="recipeView pbl">
+            <div class="grid-2-small-1 recipe-top">
+                <div class="recipeIll pam">
+                    <h1>Recette : <?= $recette['title'];?></h1>
+                    <img src="<?= $recette['url_img'];?>" alt="">
                 </div>
-                <div class="ingredients">
-
-                    <?php $ingredients = explode(',',$recette['ingredient']); ?>
-                    <ul>
-                        <?php foreach ($ingredients as $ingredient): ?>
-                            <li><?= $ingredient; ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+                <div class="one-fifth infos pam">
+                    <div class="info">
+                        <div><b>Date de creation : </b><?= date('d/m/Y H:i', strtotime($recette['date_creation']));?></div>
+                        <div><b>Categorie : </b><?= $recette['category'];?></div>
+                        <div><b>Auteur : </b> <?= $recette['username'];?></div>
+                    </div>
+                    <div class="ingredients">
+                        <span><b>Ingredients : </b></span>
+                        <?php $ingredients = explode(',',$recette['ingredient']); ?>
+                        <ul>
+                            <?php foreach ($ingredients as $ingredient): ?>
+                                <li><?= $ingredient; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <?php if (isset($is_logged) && $is_logged == 'admin'): ?>
+                        <div class="recipeAdmin mtl">
+                            <!-- admin seulement -->
+                            <button type="button" class="mtm mbm pas">Modifier la recette</button>
+                            <button type="button" class="mtm mbm pas">Supprimmer la recette</button>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
+            <h3>Instructions :</h3>
             <p class="content">
                         <?= $recette['preparation'];?>
             </p>
-            <?php if (isset($is_logged) && $is_logged == 'admin'): ?>
-                <!-- admin seulement -->
-                <button type="button" name="button">Modifier la recette</button>
-                <button type="button" name="button">Supprimmer la recette</button>
-            <?php endif; ?>
         </div>
 
     </div>

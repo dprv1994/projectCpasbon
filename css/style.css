@@ -163,16 +163,6 @@ h1{
     margin-bottom: 1em;
 }
 
-/* ---------------------------PAGE : Recette*/
-.recipeView{
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
 /* ---------------------------PAGE : list recette*/
 .searchListRecipes{
     display: flex;
@@ -223,7 +213,38 @@ h1{
     color: #ffec85 ;
     text-decoration: none;
 }
-
+/* ---------------------------PAGE : Recette simple*/
+.recipeView{
+    width: 100%;
+}
+.recipe-top{
+    width: 100%;
+}
+.recipeView img{
+    width: 100%;
+    height: auto;
+}
+.recipeView .info{
+    margin-top: 2em;
+}
+.recipeView .infos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+.recipeView h3{
+    align-self: flex-start;
+}
+.recipeIll{
+    flex: 1;
+}
+.recipeAdmin button{
+    width: 100%;
+    border-radius:5px;
+    border: 2px solid rgb(113, 124, 3) ;
+    cursor: pointer;
+}
 /* ---------------------------PAGE : contact*/
 .contactForm{
     width: 100%;
