@@ -146,6 +146,6 @@ require_once 'header.php';
     </ul>
 </div>
 <div class="col-lg-6">
-    <strong>Avatar : </strong><img class="img-responsive" src="<?= $users['avatar'] ?>">
+    <strong>Avatar : </strong><img class="img-responsive" src="../<?= $users['avatar'] ?>">
 </div>
 <?php require_once 'footer.php'; ?>
