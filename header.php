@@ -14,20 +14,16 @@ if ($query->execute()) {
 
         <!-- Penser a Rajouter toute les meta -->
 
-        <!-- import de knacss -->
+        <!-- libraairie externe-->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/owl.carousel.css">
         <link rel="stylesheet" href="css/knacss.css">
 
         <!-- css perso -->
         <link rel="stylesheet" href="css/style.css">
 
-        <!-- Bootstrap Core CSS  et font awsome-->
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/bootstrap2.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="css/half-slider.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/Slider_style.css">
 
     </head>
 <body>

@@ -113,7 +113,7 @@ require_once 'header.php'; ?>
 
 <!-- SLIDER -->
 <h2>affichage des slider :</h2>
-<a href="addSlide.php">
+<a href="Addslide.php">
     <button type="button" class="btn btn-info btn-xs">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Ajouter un Slider
     </button>
