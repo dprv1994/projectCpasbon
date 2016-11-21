@@ -29,16 +29,6 @@ if ($query->execute()) {
 
 require_once 'header.php';
  ?>
-<code>
-
-    a faire :<br>
-    mettre input à la place textarea en dernière solution
-    Penser a mettre Unique au champ email dans la table <br>
-    Uniformiser le nom des fichier ?????????? <br>
-    commenter notre code <br>
-
-
-</code>
 <br><br>
  		<div>
             <h1><?= $info[0]['value']; ?></h1>
